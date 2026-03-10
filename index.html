@@ -41,6 +41,16 @@
         /* ===========================================
            RESET & BASE
            =========================================== */
+        @font-face {
+            font-family: 'Host Grotesk';
+            src: url('hostGrotesk.ttf') format('truetype');
+            font-weight: 400 800;
+        }
+        @font-face {
+            font-family: 'Pristine';
+            src: url('pristine-Bold.ttf') format('truetype');
+            font-weight: 700;
+        }
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         /* ===========================================
@@ -477,6 +487,47 @@
         }
 
         /* ===========================================
+           BUBBLE ANIMATIONS
+           =========================================== */
+        @keyframes bubble1 {
+            0% { transform: translateY(0) scale(1); opacity: 0; }
+            10% { opacity: 1; }
+            100% { transform: translateY(-50vh) scale(1.5); opacity: 0; }
+        }
+        @keyframes bubble2 {
+            0% { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
+            10% { opacity: 1; }
+            100% { transform: translateY(-45vh) translateX(20px) scale(1.3); opacity: 0; }
+        }
+        @keyframes bubble3 {
+            0% { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
+            10% { opacity: 1; }
+            100% { transform: translateY(-55vh) translateX(-15px) scale(1.4); opacity: 0; }
+        }
+
+        /* ===========================================
+           FISH ANIMATIONS
+           =========================================== */
+        @keyframes fish1 {
+            0%, 100% { transform: scaleX(-1) translate(0, 0); }
+            25% { transform: scaleX(-1) translate(-40px, -15px); }
+            50% { transform: scaleX(-1) translate(-80px, 5px); }
+            75% { transform: scaleX(-1) translate(-30px, 10px); }
+        }
+        @keyframes fish2 {
+            0%, 100% { transform: translate(0, 0); }
+            25% { transform: translate(50px, -10px); }
+            50% { transform: translate(90px, 8px); }
+            75% { transform: translate(40px, -5px); }
+        }
+        @keyframes fish3 {
+            0%, 100% { transform: scaleX(-1) translate(0, 0); }
+            25% { transform: scaleX(-1) translate(-30px, 10px); }
+            50% { transform: scaleX(-1) translate(-60px, -8px); }
+            75% { transform: scaleX(-1) translate(-20px, 12px); }
+        }
+
+        /* ===========================================
            RESPONSIVE BREAKPOINTS
            =========================================== */
         @media (max-height: 700px) {
@@ -533,7 +584,7 @@
          SLIDE 1: TITLE
          =========================================== -->
     <section class="slide title-slide" aria-label="Title">
-        <span class="slide-num">01 / 12</span>
+        <span class="slide-num">01 / 14</span>
         <div class="pill reveal" style="margin-bottom: var(--content-gap);">HACKERSCHOOL WEEK 8</div>
         <h1 class="reveal">Intro to<br>AI Agents.</h1>
         <p class="subtitle reveal">What it takes to build AI systems that work.</p>
@@ -550,7 +601,7 @@
          SLIDE 2: ABOUT ME
          =========================================== -->
     <section class="slide content-slide" aria-label="About Me">
-        <span class="slide-num">02 / 12</span>
+        <span class="slide-num">02 / 14</span>
         <div class="slide-content" style="flex-direction: row; align-items: center; gap: clamp(2rem, 5vw, 5rem);">
             <div style="flex: 1;">
                 <div class="label reveal">ABOUT ME</div>
@@ -573,7 +624,7 @@
          SLIDE 3: WHAT IS AN AGENT?
          =========================================== -->
     <section class="slide content-slide" aria-label="What is an Agent">
-        <span class="slide-num">03 / 12</span>
+        <span class="slide-num">03 / 14</span>
         <div class="slide-content">
             <div class="label reveal">THE BASICS</div>
             <h2 class="reveal">What is<br>an Agent?</h2>
@@ -599,7 +650,7 @@
          SLIDE 3: THE AGENT LOOP
          =========================================== -->
     <section class="slide content-slide" aria-label="The Agent Loop">
-        <span class="slide-num">04 / 12</span>
+        <span class="slide-num">04 / 14</span>
         <div class="slide-content">
             <div class="label reveal">THE CORE PATTERN</div>
             <h2 class="reveal">The Agent<br>Loop.</h2>
@@ -629,7 +680,7 @@
          SLIDE 4: THREE COMPONENTS
          =========================================== -->
     <section class="slide content-slide" aria-label="Three Components">
-        <span class="slide-num">05 / 12</span>
+        <span class="slide-num">05 / 14</span>
         <div class="slide-content">
             <div class="label reveal">BUILDING BLOCKS</div>
             <h2 class="reveal">What Every<br>Agent Needs.</h2>
@@ -657,7 +708,7 @@
          SLIDE 5: TOOLS
          =========================================== -->
     <section class="slide content-slide" aria-label="Tools">
-        <span class="slide-num">06 / 12</span>
+        <span class="slide-num">06 / 14</span>
         <div class="slide-content">
             <div class="label reveal">ACTION LAYER</div>
             <h2 class="reveal">Tools.</h2>
@@ -684,7 +735,7 @@
          SLIDE 6: HOW TOOL CALLING WORKS
          =========================================== -->
     <section class="slide content-slide" aria-label="Tool Calling">
-        <span class="slide-num">07 / 12</span>
+        <span class="slide-num">07 / 14</span>
         <div class="slide-content">
             <div class="label reveal">THE FLOW</div>
             <h2 class="reveal">How Tool Calling<br>Works.</h2>
@@ -724,7 +775,7 @@
          SLIDE 7: SYSTEM PROMPTS
          =========================================== -->
     <section class="slide content-slide" aria-label="System Prompts">
-        <span class="slide-num">08 / 12</span>
+        <span class="slide-num">08 / 14</span>
         <div class="slide-content">
             <div class="label reveal">IDENTITY &amp; RULES</div>
             <h2 class="reveal">System<br>Prompts.</h2>
@@ -756,7 +807,7 @@
          SLIDE 8: CONTEXT & MEMORY
          =========================================== -->
     <section class="slide content-slide" aria-label="Context and Memory">
-        <span class="slide-num">09 / 12</span>
+        <span class="slide-num">09 / 14</span>
         <div class="slide-content">
             <div class="label reveal">PERSISTENCE</div>
             <h2 class="reveal">Context &amp;<br>Memory.</h2>
@@ -799,7 +850,7 @@
          SLIDE 9: MODEL SELECTION
          =========================================== -->
     <section class="slide content-slide" aria-label="Model Selection">
-        <span class="slide-num">10 / 12</span>
+        <span class="slide-num">10 / 14</span>
         <div class="slide-content">
             <div class="label reveal">CHOOSING RIGHT</div>
             <h2 class="reveal">Model<br>Selection.</h2>
@@ -835,7 +886,7 @@
          SLIDE 10: MODEL ROUTING
          =========================================== -->
     <section class="slide content-slide" aria-label="Model Routing">
-        <span class="slide-num">11 / 12</span>
+        <span class="slide-num">11 / 14</span>
         <div class="slide-content">
             <div class="label reveal">IN PRACTICE</div>
             <h2 class="reveal">Model<br>Routing.</h2>
@@ -860,7 +911,7 @@
          SLIDE 12: NOW YOU BUILD
          =========================================== -->
     <section class="slide title-slide" aria-label="Transition to Arena">
-        <span class="slide-num">12 / 12</span>
+        <span class="slide-num">12 / 14</span>
         <div class="pill reveal" style="margin-bottom: var(--content-gap);">THE ARENA</div>
         <h1 class="reveal">Now You<br>Build.</h1>
         <p class="subtitle reveal">You've learned the theory. Time to apply it.</p>
@@ -870,6 +921,46 @@
                 OBSERVE &#9670; DECIDE &#9670; ACT &#9670; REPEAT &#9670; BUILD TOOLS &#9670; WRITE PROMPTS &#9670; SHIP AGENTS &#9670; BREAK THINGS &#9670;
                 OBSERVE &#9670; DECIDE &#9670; ACT &#9670; REPEAT &#9670; BUILD TOOLS &#9670; WRITE PROMPTS &#9670; SHIP AGENTS &#9670; BREAK THINGS &#9670;
             </span>
+        </div>
+    </section>
+
+    <!-- ===========================================
+         SLIDE 13: TINYFISH
+         =========================================== -->
+    <section class="slide" aria-label="TinyFish" style="padding: 0; background: #0a1628; background-image: none; overflow: hidden; position: relative;">
+        <span class="slide-num" style="color: rgba(255,255,255,0.3); z-index: 10;">13 / 14</span>
+        <!-- Ocean waves -->
+        <svg style="position: absolute; bottom: 0; left: 0; width: 100%; height: 45%;" viewBox="0 0 1440 320" preserveAspectRatio="none">
+            <path fill="#0099ff" fill-opacity="0.3" d="M0,160L48,176C96,192,192,224,288,213.3C384,203,480,149,576,133.3C672,117,768,139,864,165.3C960,192,1056,224,1152,218.7C1248,213,1344,171,1392,149.3L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+                <animate attributeName="d" dur="6s" repeatCount="indefinite" values="M0,160L48,176C96,192,192,224,288,213.3C384,203,480,149,576,133.3C672,117,768,139,864,165.3C960,192,1056,224,1152,218.7C1248,213,1344,171,1392,149.3L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z;M0,128L48,149.3C96,171,192,213,288,218.7C384,224,480,192,576,165.3C672,139,768,117,864,133.3C960,149,1056,203,1152,213.3C1248,224,1344,192,1392,176L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z;M0,160L48,176C96,192,192,224,288,213.3C384,203,480,149,576,133.3C672,117,768,139,864,165.3C960,192,1056,224,1152,218.7C1248,213,1344,171,1392,149.3L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"/>
+            </path>
+        </svg>
+        <svg style="position: absolute; bottom: 0; left: 0; width: 100%; height: 40%;" viewBox="0 0 1440 320" preserveAspectRatio="none">
+            <path fill="#0077cc" fill-opacity="0.5" d="M0,192L48,186.7C96,181,192,171,288,181.3C384,192,480,224,576,218.7C672,213,768,171,864,160C960,149,1056,171,1152,186.7C1248,203,1344,213,1392,218.7L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+                <animate attributeName="d" dur="8s" repeatCount="indefinite" values="M0,192L48,186.7C96,181,192,171,288,181.3C384,192,480,224,576,218.7C672,213,768,171,864,160C960,149,1056,171,1152,186.7C1248,203,1344,213,1392,218.7L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z;M0,224L48,218.7C96,213,192,203,288,186.7C384,171,480,149,576,160C672,171,768,213,864,218.7C960,224,1056,192,1152,181.3C1248,171,1344,181,1392,186.7L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z;M0,192L48,186.7C96,181,192,171,288,181.3C384,192,480,224,576,218.7C672,213,768,171,864,160C960,149,1056,171,1152,186.7C1248,203,1344,213,1392,218.7L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"/>
+            </path>
+        </svg>
+        <svg style="position: absolute; bottom: 0; left: 0; width: 100%; height: 35%;" viewBox="0 0 1440 320" preserveAspectRatio="none">
+            <path fill="#005fa3" fill-opacity="0.7" d="M0,256L48,245.3C96,235,192,213,288,208C384,203,480,213,576,229.3C672,245,768,267,864,261.3C960,256,1056,224,1152,208C1248,192,1344,192,1392,192L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+                <animate attributeName="d" dur="10s" repeatCount="indefinite" values="M0,256L48,245.3C96,235,192,213,288,208C384,203,480,213,576,229.3C672,245,768,267,864,261.3C960,256,1056,224,1152,208C1248,192,1344,192,1392,192L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z;M0,192L48,192C96,192,192,192,288,208C384,224,480,256,576,261.3C672,267,768,245,864,229.3C960,213,1056,203,1152,208C1248,213,1344,235,1392,245.3L1440,256L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z;M0,256L48,245.3C96,235,192,213,288,208C384,203,480,213,576,229.3C672,245,768,267,864,261.3C960,256,1056,224,1152,208C1248,192,1344,192,1392,192L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"/>
+            </path>
+        </svg>
+        <!-- Bubbles -->
+        <div style="position: absolute; width: 8px; height: 8px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.15); top: 60%; right: 20%; z-index: 3; animation: bubble1 7s ease-in infinite;"></div>
+        <div style="position: absolute; width: 5px; height: 5px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.1); top: 65%; right: 35%; z-index: 3; animation: bubble2 9s ease-in infinite; animation-delay: 2s;"></div>
+        <div style="position: absolute; width: 6px; height: 6px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.12); top: 55%; right: 50%; z-index: 3; animation: bubble3 11s ease-in infinite; animation-delay: 4s;"></div>
+        <div style="position: absolute; width: 4px; height: 4px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.08); top: 70%; left: 25%; z-index: 3; animation: bubble1 13s ease-in infinite; animation-delay: 1s;"></div>
+        <!-- Light rays -->
+        <div style="position: absolute; top: 0; right: 10%; width: 200px; height: 100%; background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, transparent 60%); transform: skewX(-10deg); z-index: 1;"></div>
+        <div style="position: absolute; top: 0; right: 30%; width: 120px; height: 100%; background: linear-gradient(180deg, rgba(255,255,255,0.02) 0%, transparent 50%); transform: skewX(-15deg); z-index: 1;"></div>
+        <!-- Swimming fish -->
+        <img src="tinyfish.avif" alt="" style="position: absolute; width: 80px; top: 30%; right: 15%; z-index: 4; animation: fish1 8s ease-in-out infinite; transform: scaleX(-1);">
+        <img src="tinyfish.avif" alt="" style="position: absolute; width: 35px; top: 40%; right: 40%; z-index: 4; animation: fish3 12s ease-in-out infinite; transform: scaleX(-1); opacity: 0.6;">
+        <!-- Content -->
+        <div class="slide-content" style="justify-content: center; align-items: flex-start; z-index: 5; padding: var(--slide-padding);">
+            <div class="pill reveal" style="margin-bottom: var(--element-gap);">POWERED BY</div>
+            <h1 class="reveal" style="color: white; font-size: clamp(3rem, 9vw, 8rem); font-family: 'Host Grotesk', sans-serif; font-weight: 800;">TinyFish</h1>
+            <p class="reveal" style="color: var(--accent); font-family: 'Pristine', serif; font-weight: 700; font-size: clamp(1.2rem, 2.5vw, 2rem); max-width: 40ch; margin-top: var(--element-gap);">The web wasn't built for agents. We're fixing that.</p>
         </div>
     </section>
 
