@@ -23,12 +23,12 @@
             --font-headline: 'Inter', sans-serif;
             --font-mono: 'IBM Plex Mono', monospace;
 
-            --title-size: clamp(2.5rem, 7vw, 5.5rem);
-            --h2-size: clamp(2rem, 5.5vw, 4.5rem);
-            --h3-size: clamp(1.2rem, 2.5vw, 1.75rem);
-            --body-size: clamp(0.8rem, 1.4vw, 1.1rem);
-            --label-size: clamp(0.6rem, 0.9vw, 0.8rem);
-            --small-size: clamp(0.55rem, 0.8vw, 0.7rem);
+            --title-size: clamp(3.5rem, 9vw, 7.5rem);
+            --h2-size: clamp(3rem, 7.5vw, 6.5rem);
+            --h3-size: clamp(1.8rem, 3.5vw, 2.5rem);
+            --body-size: clamp(1.1rem, 2vw, 1.6rem);
+            --label-size: clamp(0.85rem, 1.3vw, 1.15rem);
+            --small-size: clamp(0.75rem, 1.1vw, 1rem);
 
             --slide-padding: clamp(1.5rem, 5vw, 5rem);
             --content-gap: clamp(0.75rem, 2vw, 2rem);
@@ -588,17 +588,465 @@
     <!-- ===========================================
          SLIDE 1: TITLE
          =========================================== -->
-    <section class="slide title-slide" aria-label="Title">
-        <span class="slide-num">01 / 09</span>
-        <div class="pill reveal" style="margin-bottom: var(--content-gap);">HACKATHON WORKSHOP</div>
-        <h1 class="reveal">TinyFish<br>Web Agent.</h1>
-        <p class="subtitle reveal">Automate any website with natural language. Get set up in 5 minutes.</p>
-        <p class="meta reveal">Pranav Janakiraman &mdash; TinyFish</p>
-        <div class="ticker">
+    <section class="slide title-slide" aria-label="Title" style="background: var(--ink); background-image: none;">
+        <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 30%, rgba(232,97,26,0.1) 0%, transparent 50%);"></div>
+        <div class="slide-content" style="justify-content: center; z-index: 5; gap: 0;">
+            <div class="reveal" style="display: flex; align-items: center; gap: 0.6em; margin-bottom: clamp(1.5rem, 3vh, 2.5rem);">
+                <img src="tinyfish.avif" alt="TinyFish" style="width: 50px; height: 50px;">
+            </div>
+            <h1 class="reveal" style="color: var(--bg); font-size: clamp(2.5rem, 6.5vw, 5.5rem); line-height: 1.05; font-family: var(--font-headline); font-weight: 900;">The TinyFish<br>Hackathon.</h1>
+            <p class="reveal" style="color: rgba(245,241,235,0.6); font-family: var(--font-mono); font-size: clamp(0.9rem, 1.4vw, 1.2rem); max-width: 50ch; margin-top: 0.8em; line-height: 1.6;">Build extraordinary things on the Open Web.</p>
+            <p class="reveal" style="color: rgba(245,241,235,0.35); font-family: var(--font-mono); font-size: var(--small-size); margin-top: 1em;">Supported by <strong style="color: var(--bg);">OpenAI</strong> and <strong style="color: var(--bg);">Acacia College</strong></p>
+        </div>
+        <div class="ticker" style="position: absolute; bottom: 0; left: 0; right: 0;">
             <span class="ticker-inner">
                 SCRAPE &#9670; AUTOMATE &#9670; EXTRACT &#9670; NAVIGATE &#9670; FILL FORMS &#9670; CLICK BUTTONS &#9670; READ PAGES &#9670; RETURN JSON &#9670;
                 SCRAPE &#9670; AUTOMATE &#9670; EXTRACT &#9670; NAVIGATE &#9670; FILL FORMS &#9670; CLICK BUTTONS &#9670; READ PAGES &#9670; RETURN JSON &#9670;
             </span>
+        </div>
+    </section>
+
+    <!-- ===========================================
+         SLIDE 0: WELCOME SPEECH
+         =========================================== -->
+    <section class="slide" aria-label="Welcome Speech" style="padding: 0; background: var(--ink); background-image: none; overflow: hidden; position: relative;">
+        <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 40%, rgba(232,97,26,0.06) 0%, transparent 60%);"></div>
+        <div class="slide-content" style="justify-content: center; align-items: center; z-index: 5; padding: var(--slide-padding); gap: 0; text-align: center;">
+            <div class="reveal" style="font-family: var(--font-mono); font-size: var(--label-size); text-transform: uppercase; letter-spacing: 0.3em; color: var(--accent);">Welcome Speech</div>
+            <h1 class="reveal" style="color: var(--bg); font-size: clamp(2.5rem, 6vw, 5rem); font-family: var(--font-headline); font-weight: 900; margin-top: 0.3em;">Master Heng</h1>
+            <p class="reveal" style="color: rgba(245,241,235,0.5); font-family: var(--font-mono); font-size: clamp(0.9rem, 1.3vw, 1.15rem); margin-top: 0.6em;">Acacia College</p>
+        </div>
+    </section>
+
+    <!-- ===========================================
+         SLIDE: INTRO TO TINYFISH
+         =========================================== -->
+    <section class="slide" aria-label="Intro to TinyFish" style="padding: 0; background: #0a0a0a; background-image: none; overflow: hidden; position: relative;">
+        <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 50%, rgba(232,97,26,0.06) 0%, transparent 60%);"></div>
+        <div class="slide-content" style="justify-content: center; align-items: center; z-index: 5; padding: var(--slide-padding); gap: 0; text-align: center;">
+            <img src="tinyfish.avif" alt="TinyFish" class="reveal" style="width: clamp(80px, 12vw, 120px); height: clamp(80px, 12vw, 120px); margin-bottom: clamp(1rem, 2vh, 1.5rem);">
+            <div class="reveal" style="font-family: var(--font-mono); font-size: var(--label-size); text-transform: uppercase; letter-spacing: 0.3em; color: var(--accent);">Intro to</div>
+            <h1 class="reveal" style="color: var(--bg); font-size: clamp(3rem, 7vw, 6rem); font-family: 'Host Grotesk', var(--font-headline), sans-serif; font-weight: 800; margin-top: 0.2em;">TinyFish</h1>
+            <p class="reveal" style="color: rgba(245,241,235,0.6); font-family: var(--font-mono); font-size: var(--body-size); max-width: 55ch; margin-top: 0.8em; line-height: 1.7;">We deploy <strong style="color: var(--bg);">enterprise-grade web agents at scale</strong>.</p>
+            <p class="reveal" style="color: rgba(245,241,235,0.45); font-family: var(--font-mono); font-size: var(--small-size); max-width: 55ch; margin-top: 0.6em; line-height: 1.7;">Think of agents that browse the web like a human &mdash; but with greater intelligence, and super great at navigating complicated workflows.</p>
+            <!-- Three capability pills -->
+            <div class="reveal" style="display: flex; gap: clamp(0.5rem, 1.2vw, 1rem); margin-top: clamp(1rem, 2vh, 1.5rem); flex-wrap: wrap; justify-content: center;">
+                <div style="background: rgba(245,241,235,0.06); border: 1px solid rgba(245,241,235,0.12); border-radius: 6px; padding: 0.5em 1em; text-align: center;">
+                    <div style="color: var(--accent); font-family: var(--font-headline); font-weight: 800; font-size: var(--body-size);">Multi-step Forms</div>
+                    <div style="color: rgba(245,241,235,0.4); font-size: var(--small-size); margin-top: 0.2em;">Complex workflows, done.</div>
+                </div>
+                <div style="background: rgba(245,241,235,0.06); border: 1px solid rgba(245,241,235,0.12); border-radius: 6px; padding: 0.5em 1em; text-align: center;">
+                    <div style="color: var(--accent); font-family: var(--font-headline); font-weight: 800; font-size: var(--body-size);">Bypass CAPTCHAs</div>
+                    <div style="color: rgba(245,241,235,0.4); font-size: var(--small-size); margin-top: 0.2em;">Bot protection? No problem.</div>
+                </div>
+                <div style="background: rgba(245,241,235,0.06); border: 1px solid rgba(245,241,235,0.12); border-radius: 6px; padding: 0.5em 1em; text-align: center;">
+                    <div style="color: var(--accent); font-family: var(--font-headline); font-weight: 800; font-size: var(--body-size);">Behind Auth Walls</div>
+                    <div style="color: rgba(245,241,235,0.4); font-size: var(--small-size); margin-top: 0.2em;">Extract data from gated sites.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===========================================
+         INSURANCE: BEFORE (THE PROBLEM)
+         =========================================== -->
+    <section class="slide" aria-label="Insurance Before" style="padding: 0; background: #0a0a0a; background-image: none; overflow: hidden; position: relative;">
+        <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 30%, rgba(255,68,68,0.06) 0%, transparent 60%);"></div>
+        <div class="slide-content" style="justify-content: center; z-index: 5; padding: var(--slide-padding); gap: 0;">
+            <div class="reveal" style="font-family: var(--font-mono); font-size: var(--label-size); text-transform: uppercase; letter-spacing: 0.2em; color: #ff6666;">Sound Familiar?</div>
+            <h2 class="reveal" style="color: var(--bg); margin-top: 0.3em; font-size: clamp(2rem, 5vw, 4rem);">Ever Bought Insurance?</h2>
+            <p class="reveal" style="color: rgba(245,241,235,0.6); font-family: var(--font-mono); font-size: clamp(0.85rem, 1.2vw, 1.05rem); max-width: 55ch; margin-top: 0.8em; line-height: 1.7;">You know the drill. Fill out the same personal details on every insurer's website. Name, NRIC, address, income, health history&hellip; over and over.</p>
+            <div class="reveal" style="background: rgba(245,241,235,0.03); border: 1px solid rgba(245,241,235,0.08); border-radius: 4px; padding: clamp(1.5rem, 2.5vw, 2.5rem); margin-top: var(--content-gap); position: relative; max-width: 600px;">
+                <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: rgba(255,68,68,0.6); border-radius: 4px 4px 0 0;"></div>
+                <div style="font-family: var(--font-mono); font-size: var(--small-size); text-transform: uppercase; letter-spacing: 0.15em; color: #ff6666; font-weight: 700;">The Old Way</div>
+                <div style="color: var(--bg); font-family: var(--font-headline); font-weight: 800; font-size: clamp(2.5rem, 4vw, 3.5rem); margin-top: 0.4em; line-height: 1;">10&ndash;20 min</div>
+                <div style="color: rgba(245,241,235,0.4); font-family: var(--font-mono); font-size: var(--small-size); margin-top: 0.3em;">per quote, per insurer</div>
+                <ul style="color: rgba(245,241,235,0.5); font-size: clamp(0.8rem, 1.1vw, 1rem); margin-top: 1.2em; padding-left: 0; line-height: 2; list-style: none;">
+                    <li>&#x2717; Fill the same form 5 times</li>
+                    <li>&#x2717; Compare quotes manually in a spreadsheet</li>
+                    <li>&#x2717; Still not sure you got the best deal</li>
+                </ul>
+            </div>
+            <p class="reveal" style="color: rgba(245,241,235,0.3); font-family: var(--font-mono); font-size: clamp(0.85rem, 1.2vw, 1.05rem); margin-top: var(--content-gap);">What if I told you TinyFish can do all of this in <strong style="color: var(--accent);">5 minutes</strong>?</p>
+        </div>
+    </section>
+
+    <!-- ===========================================
+         INSURANCE: AFTER (DEPLOY AGENTS AT SCALE)
+         =========================================== -->
+    <style>
+        /* Agent card: starts orange/working, transitions to green/complete */
+        @keyframes cardComplete {
+            0% { border-color: var(--accent); background: #fff9f5; }
+            100% { border-color: #22c55e; background: #f0fdf4; }
+        }
+        @keyframes fishToCheck {
+            0%, 40% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0; transform: scale(0.5); }
+            100% { opacity: 0; transform: scale(0); display: none; }
+        }
+        @keyframes checkAppear {
+            0%, 50% { opacity: 0; transform: scale(0); }
+            70% { opacity: 1; transform: scale(1.2); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        @keyframes statusToComplete {
+            0%, 40% { color: var(--accent); }
+            60%, 100% { color: #22c55e; }
+        }
+        .ac {
+            background: #fff9f5;
+            border: 1.5px dashed var(--accent);
+            border-radius: 8px;
+            padding: clamp(0.3rem, 0.6vw, 0.5rem);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.2em;
+            animation: cardComplete 0.3s ease-out forwards paused;
+        }
+        .ac .ac-head {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 0.35em;
+            font-size: clamp(0.5rem, 0.7vw, 0.6rem);
+            color: #555;
+            font-family: var(--font-mono);
+            font-weight: 600;
+        }
+        .ac .ac-badge {
+            width: 15px; height: 15px; border-radius: 50%;
+            display: inline-flex; align-items: center; justify-content: center;
+            font-size: 0.45rem; font-weight: 700; color: white; flex-shrink: 0;
+        }
+        .ac .ac-bars {
+            width: 85%; display: flex; flex-direction: column; gap: 3px; margin: 0.15em 0;
+        }
+        .ac .ac-bars span {
+            height: 4px; background: #e8e8e8; border-radius: 2px;
+        }
+        .ac .ac-bars span:nth-child(1) { width: 92%; }
+        .ac .ac-bars span:nth-child(2) { width: 60%; }
+        .ac .ac-bars span:nth-child(3) { width: 78%; }
+        .ac .ac-icon {
+            position: relative;
+            width: clamp(30px, 4vw, 42px);
+            height: clamp(30px, 4vw, 42px);
+        }
+        .ac .ac-icon img {
+            position: absolute; inset: 0; width: 100%; height: 100%;
+            animation: fishToCheck 0.6s ease-out forwards paused;
+        }
+        .ac .ac-icon .ac-check {
+            position: absolute; inset: 0;
+            display: flex; align-items: center; justify-content: center;
+            animation: checkAppear 0.6s ease-out forwards paused;
+        }
+        .ac .ac-icon .ac-check span {
+            width: clamp(24px, 3.5vw, 36px); height: clamp(24px, 3.5vw, 36px);
+            border-radius: 50%; background: #22c55e;
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-size: clamp(0.7rem, 1.2vw, 1rem); font-weight: 700;
+        }
+        .ac .ac-status {
+            font-size: clamp(0.45rem, 0.6vw, 0.55rem);
+            font-family: var(--font-mono);
+            font-weight: 600;
+            animation: statusToComplete 0.6s ease-out forwards paused;
+        }
+        /* When triggered, play all animations */
+        .ac-grid.playing .ac,
+        .ac-grid.playing .ac .ac-icon img,
+        .ac-grid.playing .ac .ac-icon .ac-check,
+        .ac-grid.playing .ac .ac-status {
+            animation-play-state: running;
+        }
+        /* Staggered delays — each card completes in sequence */
+        .ac:nth-child(1) { animation-delay: 0.1s; }
+        .ac:nth-child(2) { animation-delay: 0.18s; }
+        .ac:nth-child(3) { animation-delay: 0.26s; }
+        .ac:nth-child(4) { animation-delay: 0.34s; }
+        .ac:nth-child(5) { animation-delay: 0.42s; }
+        .ac:nth-child(6) { animation-delay: 0.5s; }
+        .ac:nth-child(7) { animation-delay: 0.58s; }
+        .ac:nth-child(8) { animation-delay: 0.66s; }
+        .ac:nth-child(9) { animation-delay: 0.74s; }
+        .ac:nth-child(10) { animation-delay: 0.82s; }
+        .ac:nth-child(11) { animation-delay: 0.9s; }
+        .ac:nth-child(12) { animation-delay: 0.98s; }
+        .ac:nth-child(13) { animation-delay: 1.06s; }
+        .ac:nth-child(14) { animation-delay: 1.14s; }
+        .ac:nth-child(15) { animation-delay: 1.22s; }
+        .ac:nth-child(16) { animation-delay: 1.3s; }
+        .ac:nth-child(17) { animation-delay: 1.38s; }
+        .ac:nth-child(18) { animation-delay: 1.46s; }
+        .ac:nth-child(19) { animation-delay: 1.54s; }
+        .ac:nth-child(20) { animation-delay: 1.62s; }
+        .ac .ac-icon img { animation-delay: inherit; }
+        .ac .ac-icon .ac-check { animation-delay: inherit; }
+        .ac .ac-status { animation-delay: inherit; }
+    </style>
+    <section class="slide" id="agentSlide" aria-label="Insurance After" style="padding: 0; background: #f5f5f0; background-image: none; overflow: hidden; position: relative; cursor: pointer;" onclick="document.querySelector('.ac-grid').classList.add('playing');">
+        <div class="slide-content" style="justify-content: center; align-items: center; z-index: 5; padding: var(--slide-padding); gap: 0;">
+            <!-- Header pill -->
+            <div class="reveal" style="background: #1a1a1a; color: white; font-family: var(--font-headline); font-weight: 800; font-size: clamp(0.9rem, 1.3vw, 1.15rem); padding: 0.6em 1.8em; border-radius: 999px; display: flex; align-items: center; gap: 0.6em; margin-bottom: clamp(1rem, 2vh, 1.5rem);">
+                <span style="background: var(--accent); width: 1.6em; height: 1.6em; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.85em;">3</span>
+                Navigate &amp; extract from the web
+            </div>
+            <!-- 4x5 Agent Grid -->
+            <div class="ac-grid reveal" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: clamp(0.35rem, 0.7vw, 0.6rem); width: 100%; max-width: 900px;">
+                <div class="ac"><div class="ac-head"><span class="ac-badge" style="background:#e74c3c;">A</span>aetna.com</div><div class="ac-bars"><span></span><span></span><span></span></div><div class="ac-icon"><img src="tinyfish.avif" alt=""><div class="ac-check"><span>&#x2713;</span></div></div><div class="ac-status">Complete</div></div>
+                <div class="ac"><div class="ac-head"><span class="ac-badge" style="background:#3498db;">B</span>uhc.com</div><div class="ac-bars"><span></span><span></span><span></span></div><div class="ac-icon"><img src="tinyfish.avif" alt=""><div class="ac-check"><span>&#x2713;</span></div></div><div class="ac-status">Complete</div></div>
+                <div class="ac"><div class="ac-head"><span class="ac-badge" style="background:#9b59b6;">C</span>cigna.com</div><div class="ac-bars"><span></span><span></span><span></span></div><div class="ac-icon"><img src="tinyfish.avif" alt=""><div class="ac-check"><span>&#x2713;</span></div></div><div class="ac-status">Complete</div></div>
+                <div class="ac"><div class="ac-head"><span class="ac-badge" style="background:#e67e22;">D</span>bcbs.com</div><div class="ac-bars"><span></span><span></span><span></span></div><div class="ac-icon"><img src="tinyfish.avif" alt=""><div class="ac-check"><span>&#x2713;</span></div></div><div class="ac-status">Complete</div></div>
+                <div class="ac"><div class="ac-head"><span class="ac-badge" style="background:#f1c40f;">E</span>humana.com</div><div class="ac-bars"><span></span><span></span><span></span></div><div class="ac-icon"><img src="tinyfish.avif" alt=""><div class="ac-check"><span>&#x2713;</span></div></div><div class="ac-status">Complete</div></div>
+                <div class="ac"><div class="ac-head"><span class="ac-badge" style="background:#1abc9c;">F</span>anthem.com</div><div class="ac-bars"><span></span><span></span><span></span></div><div class="ac-icon"><img src="tinyfish.avif" alt=""><div class="ac-check"><span>&#x2713;</span></div></div><div class="ac-status">Complete</div></div>
+                <div class="ac"><div class="ac-head"><span class="ac-badge" style="background:#2ecc71;">G</span>kaiser.com</div><div class="ac-bars"><span></span><span></span><span></span></div><div class="ac-icon"><img src="tinyfish.avif" alt=""><div class="ac-check"><span>&#x2713;</span></div></div><div class="ac-status">Complete</div></div>
+                <div class="ac"><div class="ac-head"><span class="ac-badge" style="background:#e91e63;">H</span>centene.com</div><div class="ac-bars"><span></span><span></span><span></span></div><div class="ac-icon"><img src="tinyfish.avif" alt=""><div class="ac-check"><span>&#x2713;</span></div></div><div class="ac-status">Complete</div></div>
+                <div class="ac"><div class="ac-head"><span class="ac-badge" style="background:#673ab7;">I</span>molina.com</div><div class="ac-bars"><span></span><span></span><span></span></div><div class="ac-icon"><img src="tinyfish.avif" alt=""><div class="ac-check"><span>&#x2713;</span></div></div><div class="ac-status">Complete</div></div>
+                <div class="ac"><div class="ac-head"><span class="ac-badge" style="background:#ff9800;">J</span>wellcare.com</div><div class="ac-bars"><span></span><span></span><span></span></div><div class="ac-icon"><img src="tinyfish.avif" alt=""><div class="ac-check"><span>&#x2713;</span></div></div><div class="ac-status">Complete</div></div>
+                <div class="ac"><div class="ac-head"><span class="ac-badge" style="background:#e74c3c;">K</span>aetna.com</div><div class="ac-bars"><span></span><span></span><span></span></div><div class="ac-icon"><img src="tinyfish.avif" alt=""><div class="ac-check"><span>&#x2713;</span></div></div><div class="ac-status">Complete</div></div>
+                <div class="ac"><div class="ac-head"><span class="ac-badge" style="background:#3498db;">L</span>uhc.com</div><div class="ac-bars"><span></span><span></span><span></span></div><div class="ac-icon"><img src="tinyfish.avif" alt=""><div class="ac-check"><span>&#x2713;</span></div></div><div class="ac-status">Complete</div></div>
+                <div class="ac"><div class="ac-head"><span class="ac-badge" style="background:#9b59b6;">M</span>cigna.com</div><div class="ac-bars"><span></span><span></span><span></span></div><div class="ac-icon"><img src="tinyfish.avif" alt=""><div class="ac-check"><span>&#x2713;</span></div></div><div class="ac-status">Complete</div></div>
+                <div class="ac"><div class="ac-head"><span class="ac-badge" style="background:#e67e22;">N</span>bcbs.com</div><div class="ac-bars"><span></span><span></span><span></span></div><div class="ac-icon"><img src="tinyfish.avif" alt=""><div class="ac-check"><span>&#x2713;</span></div></div><div class="ac-status">Complete</div></div>
+                <div class="ac"><div class="ac-head"><span class="ac-badge" style="background:#f1c40f;">O</span>humana.com</div><div class="ac-bars"><span></span><span></span><span></span></div><div class="ac-icon"><img src="tinyfish.avif" alt=""><div class="ac-check"><span>&#x2713;</span></div></div><div class="ac-status">Complete</div></div>
+                <div class="ac"><div class="ac-head"><span class="ac-badge" style="background:#1abc9c;">P</span>anthem.com</div><div class="ac-bars"><span></span><span></span><span></span></div><div class="ac-icon"><img src="tinyfish.avif" alt=""><div class="ac-check"><span>&#x2713;</span></div></div><div class="ac-status">Complete</div></div>
+                <div class="ac"><div class="ac-head"><span class="ac-badge" style="background:#2ecc71;">Q</span>kaiser.com</div><div class="ac-bars"><span></span><span></span><span></span></div><div class="ac-icon"><img src="tinyfish.avif" alt=""><div class="ac-check"><span>&#x2713;</span></div></div><div class="ac-status">Complete</div></div>
+                <div class="ac"><div class="ac-head"><span class="ac-badge" style="background:#e91e63;">R</span>centene.com</div><div class="ac-bars"><span></span><span></span><span></span></div><div class="ac-icon"><img src="tinyfish.avif" alt=""><div class="ac-check"><span>&#x2713;</span></div></div><div class="ac-status">Complete</div></div>
+                <div class="ac"><div class="ac-head"><span class="ac-badge" style="background:#673ab7;">S</span>molina.com</div><div class="ac-bars"><span></span><span></span><span></span></div><div class="ac-icon"><img src="tinyfish.avif" alt=""><div class="ac-check"><span>&#x2713;</span></div></div><div class="ac-status">Complete</div></div>
+                <div class="ac"><div class="ac-head"><span class="ac-badge" style="background:#ff9800;">T</span>wellcare.com</div><div class="ac-bars"><span></span><span></span><span></span></div><div class="ac-icon"><img src="tinyfish.avif" alt=""><div class="ac-check"><span>&#x2713;</span></div></div><div class="ac-status">Complete</div></div>
+            </div>
+            <!-- Bottom row: +30 more & status -->
+            <div class="reveal" style="display: flex; align-items: center; gap: clamp(1.5rem, 4vw, 3rem); margin-top: clamp(0.8rem, 1.5vh, 1.2rem);">
+                <div style="border: 2px dashed #ccc; border-radius: 8px; padding: 0.6em 1.2em; text-align: center;">
+                    <div style="color: #aaa; font-family: var(--font-headline); font-weight: 800; font-size: clamp(1.5rem, 2.5vw, 2rem);">+30</div>
+                    <div style="color: #bbb; font-family: var(--font-mono); font-size: 0.6rem;">more agents</div>
+                </div>
+                <div style="background: #eee; border-radius: 999px; padding: 0.5em 1.5em; display: flex; align-items: center; gap: 0.6em;">
+                    <img src="tinyfish.avif" alt="" style="width: 22px; height: 22px; opacity: 0.7;">
+                    <span style="color: #666; font-family: var(--font-mono); font-size: clamp(0.75rem, 1vw, 0.9rem);">Locating member records...</span>
+                </div>
+            </div>
+            <!-- Result output -->
+            <div class="reveal" style="display: flex; gap: clamp(0.6rem, 1.5vw, 1rem); margin-top: clamp(0.8rem, 1.5vh, 1.2rem); width: 100%; max-width: 900px;">
+                <div style="flex: 1; background: #1a1a1a; border-radius: 6px; padding: 0.6em 0.8em; overflow: hidden;">
+                    <div style="font-family: var(--font-mono); font-size: 0.5rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 0.4em; font-weight: 700;">JSON Output</div>
+                    <div style="font-family: var(--font-mono); font-size: 0.55rem; color: rgba(245,241,235,0.5); line-height: 1.5; white-space: pre;">{ <span style="color: var(--accent);">"insurer"</span>: <span style="color: #a855f7;">"Aetna"</span>,
+  <span style="color: var(--accent);">"premium"</span>: <span style="color: #22c55e;">$342/mo</span>,
+  <span style="color: var(--accent);">"coverage"</span>: <span style="color: #a855f7;">"$500k"</span>,
+  <span style="color: var(--accent);">"deductible"</span>: <span style="color: #22c55e;">$1,500</span> }</div>
+                </div>
+                <div style="flex: 1; background: #1a1a1a; border-radius: 6px; padding: 0.6em 0.8em; overflow: hidden;">
+                    <div style="font-family: var(--font-mono); font-size: 0.5rem; text-transform: uppercase; letter-spacing: 0.1em; color: #3b82f6; margin-bottom: 0.4em; font-weight: 700;">LLM Summary</div>
+                    <div style="font-size: 0.55rem; color: rgba(245,241,235,0.5); line-height: 1.5;">Based on your profile, <strong style="color: #f5f1eb;">Kaiser</strong> offers the best value at <strong style="color: #22c55e;">$298/mo</strong> with $500k coverage and the lowest deductible. Aetna is a close second with broader network coverage in your area.</div>
+                </div>
+            </div>
+            <p class="reveal" style="color: var(--accent); font-family: var(--font-mono); font-size: clamp(0.85rem, 1.2vw, 1.05rem); margin-top: clamp(0.5rem, 1vh, 0.8rem); font-weight: 700;">50 insurers. 50 agents. 5 minutes. All at once.</p>
+        </div>
+    </section>
+
+    <!-- ===========================================
+         TINYFISH INTRO: THE FULL STACK
+         =========================================== -->
+    <section class="slide" aria-label="The Full Stack" style="padding: 0; background: #0a0a0a; background-image: none; overflow: hidden; position: relative;">
+        <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at 80% 50%, rgba(100,60,180,0.12) 0%, transparent 50%), radial-gradient(ellipse at 20% 80%, rgba(232,97,26,0.08) 0%, transparent 50%);"></div>
+        <div class="slide-content" style="justify-content: center; z-index: 5; padding: var(--slide-padding); gap: 0;">
+            <div style="display: flex; align-items: center; gap: 0.6em; margin-bottom: clamp(2rem, 5vh, 4rem);">
+                <img src="tinyfish.avif" alt="TinyFish" style="width: 40px; height: 40px;">
+                <span style="color: var(--bg); font-family: var(--font-headline); font-weight: 800; font-size: clamp(1rem, 1.5vw, 1.3rem);">TinyFish</span>
+            </div>
+            <div class="reveal" style="font-family: var(--font-mono); font-size: var(--label-size); text-transform: uppercase; letter-spacing: 0.2em; color: rgba(245,241,235,0.4);">Agent-Native Web Infrastructure</div>
+            <h1 class="reveal" style="color: var(--bg); font-size: clamp(2.5rem, 6.5vw, 5.5rem); line-height: 1; margin-top: 0.3em; font-family: var(--font-headline); font-weight: 900;">The Full Stack for<br><span style="background: linear-gradient(135deg, #8b5cf6, #a855f7, #ec4899, #f97316); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">the Agentic Web</span></h1>
+            <p class="reveal" style="color: rgba(245,241,235,0.5); font-family: var(--font-mono); font-size: clamp(0.85rem, 1.2vw, 1.1rem); max-width: 55ch; margin-top: 1em; line-height: 1.6;">Navigate, automate, and take actions on the entire web &ndash; top to bottom.</p>
+        </div>
+    </section>
+
+    <!-- ===========================================
+         TINYFISH INTRO: THE PROBLEM
+         =========================================== -->
+    <section class="slide" aria-label="Web Not Built for Agents" style="padding: 0; background: #0d1b2a; background-image: none; overflow: hidden; position: relative;">
+        <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at 90% 10%, rgba(100,60,180,0.08) 0%, transparent 50%);"></div>
+        <div class="slide-content" style="justify-content: center; z-index: 5; padding: var(--slide-padding); gap: 0;">
+            <div style="display: flex; gap: clamp(2rem, 4vw, 4rem); align-items: flex-start;">
+                <!-- Left column -->
+                <div style="flex: 0 0 42%; min-width: 0; overflow: hidden;">
+                    <div class="reveal" style="display: flex; align-items: center; gap: 0.5em; margin-bottom: 0.5em;">
+                        <div style="width: 30px; height: 2px; background: #22c55e;"></div>
+                        <span style="font-family: var(--font-mono); font-size: var(--label-size); text-transform: uppercase; letter-spacing: 0.2em; color: #22c55e;">The Problem</span>
+                    </div>
+                    <h2 class="reveal" style="color: var(--bg); font-size: clamp(2rem, 4.5vw, 3.5rem); line-height: 1.05;">The Web Wasn't Built for Agents</h2>
+                    <!-- Three web layers -->
+                    <div class="reveal" style="display: flex; flex-direction: column; gap: clamp(0.5rem, 1vw, 0.8rem); margin-top: var(--content-gap);">
+                        <div style="background: rgba(88,80,200,0.6); border-radius: 4px; padding: 0.6em 1em;">
+                            <div style="color: var(--bg); font-weight: 700; font-size: var(--body-size);">Indexed Web <span style="color: rgba(245,241,235,0.5); font-weight: 400;">&mdash; Searchable</span></div>
+                            <div style="color: rgba(245,241,235,0.7); font-size: var(--small-size); margin-top: 0.2em;">Static pages search can reach.</div>
+                        </div>
+                        <div style="background: rgba(168,85,247,0.5); border-radius: 4px; padding: 0.6em 1em;">
+                            <div style="color: var(--bg); font-weight: 700; font-size: var(--body-size);">Live Web <span style="color: rgba(245,241,235,0.5); font-weight: 400;">&mdash; Dynamic</span></div>
+                            <div style="color: rgba(245,241,235,0.7); font-size: var(--small-size); margin-top: 0.2em;">Dynamic pages, real-time data, JS-rendered.</div>
+                        </div>
+                        <div style="background: rgba(120,60,40,0.6); border-radius: 4px; padding: 0.6em 1em;">
+                            <div style="color: var(--bg); font-weight: 700; font-size: var(--body-size);">Deep Web <span style="color: rgba(245,241,235,0.5); font-weight: 400;">&mdash; Vast majority</span></div>
+                            <div style="color: rgba(245,241,235,0.7); font-size: var(--small-size); margin-top: 0.2em;">Behind logins, forms, gates, portals.</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Right column: challenges -->
+                <div style="flex: 1; min-width: 0;">
+                    <div class="reveal" style="font-family: var(--font-mono); font-size: var(--small-size); text-transform: uppercase; letter-spacing: 0.15em; color: rgba(245,241,235,0.35); margin-bottom: 1em;">It's not just deep. It's&hellip;</div>
+                    <div class="reveal" style="display: flex; flex-direction: column; gap: clamp(0.5rem, 1vw, 0.8rem);">
+                        <div style="background: rgba(245,241,235,0.04); border: 1px solid rgba(245,241,235,0.08); border-radius: 4px; padding: 0.8em 1em; display: flex; align-items: center; gap: 0.8em;">
+                            <span style="color: #3b82f6; font-family: var(--font-headline); font-weight: 800; font-size: clamp(0.9rem, 1.2vw, 1.1rem); min-width: 6em;">Complex</span>
+                            <span style="color: rgba(245,241,235,0.45); font-size: var(--small-size);">SPAs, shadow DOMs, iframes, infinite scroll. No two sites work the same way.</span>
+                        </div>
+                        <div style="background: rgba(245,241,235,0.04); border: 1px solid rgba(245,241,235,0.08); border-radius: 4px; padding: 0.8em 1em; display: flex; align-items: center; gap: 0.8em;">
+                            <span style="color: #a855f7; font-family: var(--font-headline); font-weight: 800; font-size: clamp(0.9rem, 1.2vw, 1.1rem); min-width: 6em;">Dynamic</span>
+                            <span style="color: rgba(245,241,235,0.45); font-size: var(--small-size);">Prices change by the second. Content shifts with geography, device, and time.</span>
+                        </div>
+                        <div style="background: rgba(245,241,235,0.04); border: 1px solid rgba(245,241,235,0.08); border-radius: 4px; padding: 0.8em 1em; display: flex; align-items: center; gap: 0.8em;">
+                            <span style="color: #22c55e; font-family: var(--font-headline); font-weight: 800; font-size: clamp(0.9rem, 1.2vw, 1.1rem); min-width: 6em;">Gated</span>
+                            <span style="color: rgba(245,241,235,0.45); font-size: var(--small-size);">Logins, CAPTCHAs, anti-bot systems, rate limits. Most of the web is locked.</span>
+                        </div>
+                        <div style="background: rgba(245,241,235,0.04); border: 1px solid rgba(245,241,235,0.08); border-radius: 4px; padding: 0.8em 1em; display: flex; align-items: center; gap: 0.8em;">
+                            <span style="color: #f97316; font-family: var(--font-headline); font-weight: 800; font-size: clamp(0.9rem, 1.2vw, 1.1rem); min-width: 6em;">Fragmented</span>
+                            <span style="color: rgba(245,241,235,0.45); font-size: var(--small-size);">One question spans 10 sites. No single API covers it all.</span>
+                        </div>
+                    </div>
+                    <p class="reveal" style="color: rgba(245,241,235,0.3); font-family: var(--font-mono); font-size: var(--small-size); margin-top: 1em; text-align: center; line-height: 1.6;">1.4B websites. 130T+ known URLs. ~400B indexed.<br>The next generation of web users won't be just people.<br>They'll be agents, AI, and machines.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===========================================
+         TINYFISH INTRO: THE LANDSCAPE
+         =========================================== -->
+    <section class="slide" aria-label="The Landscape" style="padding: 0; background: #0d1b2a; background-image: none; overflow: hidden; position: relative;">
+        <div class="slide-content" style="justify-content: center; z-index: 5; padding: var(--slide-padding); gap: 0;">
+            <div style="display: flex; align-items: center; gap: 0.5em; margin-bottom: 0.5em;">
+                <div style="width: 30px; height: 2px; background: var(--accent);"></div>
+                <span class="reveal" style="font-family: var(--font-mono); font-size: var(--label-size); text-transform: uppercase; letter-spacing: 0.2em; color: var(--accent);">The Landscape</span>
+            </div>
+            <h2 class="reveal" style="color: var(--bg); font-size: clamp(2rem, 4.5vw, 3.5rem); line-height: 1.05;">Everyone Builds One Piece</h2>
+            <p class="reveal" style="color: rgba(245,241,235,0.45); font-family: var(--font-mono); font-size: var(--small-size); margin-top: 0.5em;">Today's solutions each solve a fragment. None cover the full stack.</p>
+            <!-- Three cards -->
+            <div class="reveal" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(0.6rem, 1.5vw, 1.2rem); margin-top: var(--content-gap);">
+                <div style="background: rgba(245,241,235,0.04); border: 1px solid rgba(245,241,235,0.08); border-radius: 4px; padding: clamp(0.8rem, 1.5vw, 1.2rem);">
+                    <div style="font-size: 1.5em; margin-bottom: 0.4em;">&#x1F50D;</div>
+                    <div style="color: var(--bg); font-family: var(--font-headline); font-weight: 800; font-size: clamp(0.9rem, 1.2vw, 1.1rem);">Search APIs</div>
+                    <div style="color: rgba(245,241,235,0.4); font-size: var(--small-size); margin-top: 0.3em; line-height: 1.5;">Index the surface web. Fast lookups, but only coverage on indexed contents.</div>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.3em; margin-top: 0.6em;">
+                        <span style="font-size: 0.6rem; color: rgba(245,241,235,0.3); border: 1px solid rgba(245,241,235,0.1); border-radius: 2px; padding: 0.2em 0.5em;">Static documents only</span>
+                        <span style="font-size: 0.6rem; color: rgba(245,241,235,0.3); border: 1px solid rgba(245,241,235,0.1); border-radius: 2px; padding: 0.2em 0.5em;">Limited reach</span>
+                    </div>
+                </div>
+                <div style="background: rgba(245,241,235,0.04); border: 1px solid rgba(245,241,235,0.08); border-radius: 4px; padding: clamp(0.8rem, 1.5vw, 1.2rem);">
+                    <div style="font-size: 1.5em; margin-bottom: 0.4em;">&#x1F310;</div>
+                    <div style="color: var(--bg); font-family: var(--font-headline); font-weight: 800; font-size: clamp(0.9rem, 1.2vw, 1.1rem);">Headless Browsers</div>
+                    <div style="color: rgba(245,241,235,0.4); font-size: var(--small-size); margin-top: 0.3em; line-height: 1.5;">Needed infrastructure, but no intelligence. Plumbing without a brain.</div>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.3em; margin-top: 0.6em;">
+                        <span style="font-size: 0.6rem; color: rgba(245,241,235,0.3); border: 1px solid rgba(245,241,235,0.1); border-radius: 2px; padding: 0.2em 0.5em;">No reasoning</span>
+                        <span style="font-size: 0.6rem; color: rgba(245,241,235,0.3); border: 1px solid rgba(245,241,235,0.1); border-radius: 2px; padding: 0.2em 0.5em;">Manual scripts</span>
+                    </div>
+                </div>
+                <div style="background: rgba(245,241,235,0.04); border: 1px solid rgba(245,241,235,0.08); border-radius: 4px; padding: clamp(0.8rem, 1.5vw, 1.2rem);">
+                    <div style="font-size: 1.5em; margin-bottom: 0.4em;">&#x1F916;</div>
+                    <div style="color: var(--bg); font-family: var(--font-headline); font-weight: 800; font-size: clamp(0.9rem, 1.2vw, 1.1rem);">LLM Automation Tools</div>
+                    <div style="color: rgba(245,241,235,0.4); font-size: var(--small-size); margin-top: 0.3em; line-height: 1.5;">AI bolted onto third-party browsers. Custom logic that works once but breaks over time.</div>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.3em; margin-top: 0.6em;">
+                        <span style="font-size: 0.6rem; color: rgba(245,241,235,0.3); border: 1px solid rgba(245,241,235,0.1); border-radius: 2px; padding: 0.2em 0.5em;">Fragile pipelines</span>
+                        <span style="font-size: 0.6rem; color: rgba(245,241,235,0.3); border: 1px solid rgba(245,241,235,0.1); border-radius: 2px; padding: 0.2em 0.5em;">High latency</span>
+                    </div>
+                </div>
+            </div>
+            <p class="reveal" style="color: rgba(245,241,235,0.5); font-family: var(--font-mono); font-size: clamp(0.8rem, 1.1vw, 1rem); margin-top: var(--content-gap); text-align: center;">Search, browser, and automate <strong style="color: var(--bg);">need to work as one.</strong></p>
+        </div>
+    </section>
+
+    <!-- ===========================================
+         TINYFISH INTRO: ONE PLATFORM
+         =========================================== -->
+    <section class="slide" aria-label="TinyFish One Platform" style="padding: 0; background: #0d1b2a; background-image: none; overflow: hidden; position: relative;">
+        <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 80%, rgba(232,97,26,0.06) 0%, transparent 50%);"></div>
+        <div class="slide-content" style="justify-content: center; align-items: center; z-index: 5; padding: var(--slide-padding); gap: 0; text-align: center;">
+            <div class="reveal" style="font-family: var(--font-mono); font-size: var(--label-size); text-transform: uppercase; letter-spacing: 0.3em; color: rgba(245,241,235,0.4);">Introducing</div>
+            <h1 class="reveal" style="color: var(--bg); font-size: clamp(2.5rem, 6vw, 5rem); font-family: 'Pristine', serif; font-weight: 700; margin-top: 0.3em;">TinyFish. One Platform.</h1>
+            <!-- Three product cards -->
+            <div class="reveal" style="display: flex; gap: clamp(1.5rem, 3vw, 3rem); margin-top: var(--content-gap); justify-content: center; align-items: center; flex-wrap: wrap;">
+                <div style="text-align: center; background: rgba(245,241,235,0.03); border: 1px solid rgba(245,241,235,0.08); border-radius: 8px; padding: clamp(1rem, 2vw, 1.5rem) clamp(1.5rem, 3vw, 2.5rem);">
+                    <div style="font-size: 2em; margin-bottom: 0.3em;">&#x1F310;</div>
+                    <div style="color: var(--bg); font-family: var(--font-headline); font-weight: 800; font-size: clamp(1rem, 1.3vw, 1.2rem);">Web Browser</div>
+                    <div style="color: rgba(245,241,235,0.4); font-size: var(--small-size); margin-top: 0.2em;">Launch into the web</div>
+                    <div style="margin-top: 0.6em; font-size: 0.6rem; color: rgba(245,241,235,0.35); border: 1px solid rgba(245,241,235,0.15); border-radius: 10px; padding: 0.2em 0.8em; display: inline-block;">Coming Soon</div>
+                </div>
+                <!-- Center: Web Agent (highlighted) -->
+                <div style="text-align: center; background: rgba(232,97,26,0.08); border: 2px solid rgba(232,97,26,0.4); border-radius: 8px; padding: clamp(1.5rem, 2.5vw, 2rem) clamp(2rem, 4vw, 3rem); transform: scale(1.05);">
+                    <div style="font-family: var(--font-mono); font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 0.5em; font-weight: 700;">The Core</div>
+                    <img src="tinyfish.avif" alt="TinyFish" style="width: 60px; height: 60px; margin-bottom: 0.5em;">
+                    <div style="color: var(--bg); font-family: var(--font-headline); font-weight: 800; font-size: clamp(1.2rem, 1.6vw, 1.4rem);">Web Agent</div>
+                    <div style="color: rgba(245,241,235,0.4); font-size: var(--small-size); margin-top: 0.2em;">Navigate, extract, act</div>
+                    <div style="margin-top: 0.6em; font-size: 0.6rem; color: var(--accent); border: 1px solid var(--accent); border-radius: 10px; padding: 0.2em 0.8em; display: inline-block; font-weight: 700;">Live Now</div>
+                </div>
+                <div style="text-align: center; background: rgba(245,241,235,0.03); border: 1px solid rgba(245,241,235,0.08); border-radius: 8px; padding: clamp(1rem, 2vw, 1.5rem) clamp(1.5rem, 3vw, 2.5rem);">
+                    <div style="font-size: 2em; margin-bottom: 0.3em;">&#x1F50D;</div>
+                    <div style="color: var(--bg); font-family: var(--font-headline); font-weight: 800; font-size: clamp(1rem, 1.3vw, 1.2rem);">Web Search</div>
+                    <div style="color: rgba(245,241,235,0.4); font-size: var(--small-size); margin-top: 0.2em;">Find what matters fast</div>
+                    <div style="margin-top: 0.6em; font-size: 0.6rem; color: rgba(245,241,235,0.35); border: 1px solid rgba(245,241,235,0.15); border-radius: 10px; padding: 0.2em 0.8em; display: inline-block;">Coming Soon</div>
+                </div>
+            </div>
+            <p class="reveal" style="color: rgba(245,241,235,0.4); font-family: var(--font-mono); font-size: clamp(0.8rem, 1.1vw, 1rem); margin-top: var(--content-gap); max-width: 50ch; line-height: 1.6;">The web agent is live today. More infrastructure is coming.<br><strong style="color: var(--bg);">One platform that covers the full stack.</strong></p>
+        </div>
+    </section>
+
+    <!-- ===========================================
+         TINYFISH INTRO: PARALLEL AGENTS
+         =========================================== -->
+    <section class="slide" aria-label="Parallel Agents" style="padding: 0; background: #0d1b2a; background-image: none; overflow: hidden; position: relative;">
+        <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 20%, rgba(168,85,247,0.06) 0%, transparent 50%);"></div>
+        <div class="slide-content" style="justify-content: center; z-index: 5; padding: var(--slide-padding); gap: 0;">
+            <div style="display: flex; align-items: center; gap: 0.5em; margin-bottom: 0.5em;">
+                <div style="width: 30px; height: 2px; background: linear-gradient(90deg, #6366f1, var(--accent));"></div>
+                <span class="reveal" style="font-family: var(--font-mono); font-size: var(--label-size); text-transform: uppercase; letter-spacing: 0.2em; color: var(--accent);">Better Together</span>
+            </div>
+            <h2 class="reveal" style="color: var(--bg); font-size: clamp(1.8rem, 4vw, 3rem); line-height: 1.05;">One Prompt. Many in Parallel.<br>Structured Data.</h2>
+            <!-- Flow diagram -->
+            <div class="reveal" style="margin-top: var(--content-gap); display: flex; flex-direction: column; align-items: center; gap: clamp(0.6rem, 1.5vw, 1rem);">
+                <!-- User intent box -->
+                <div style="background: rgba(245,241,235,0.05); border: 1px solid rgba(245,241,235,0.15); border-radius: 8px; padding: 0.8em 2em; text-align: center;">
+                    <div style="font-family: var(--font-mono); font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.15em; color: rgba(245,241,235,0.35); margin-bottom: 0.3em;">User Intent</div>
+                    <div style="color: var(--bg); font-family: var(--font-headline); font-weight: 700; font-size: clamp(0.85rem, 1.2vw, 1.05rem);">"Extract hotel details from 4 Japanese ryokan websites"</div>
+                </div>
+                <!-- Arrows down -->
+                <div style="color: rgba(245,241,235,0.2); font-size: 1.2em;">&#x2193;&nbsp;&nbsp;&#x2193;&nbsp;&nbsp;&#x2193;&nbsp;&nbsp;&#x2193;</div>
+                <!-- Four browser windows -->
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(0.4rem, 1vw, 0.8rem); width: 100%;">
+                    <div style="background: rgba(245,241,235,0.04); border: 1px solid rgba(245,241,235,0.1); border-radius: 6px; padding: 0.6em 0.8em; min-width: 0;">
+                        <div style="display: flex; gap: 3px; margin-bottom: 0.4em;"><span style="width: 6px; height: 6px; border-radius: 50%; background: #ff5f56;"></span><span style="width: 6px; height: 6px; border-radius: 50%; background: #ffbd2e;"></span><span style="width: 6px; height: 6px; border-radius: 50%; background: #27ca40;"></span><span style="color: rgba(245,241,235,0.3); font-size: 0.55rem; margin-left: 0.3em;">Resort Club Iseshima</span></div>
+                        <div style="font-size: 0.55rem; color: rgba(245,241,235,0.35); line-height: 1.6;">&#x1F310; Navigating JP site&hellip;<br>&#x1F4C4; Reading room types<br>&#x1F4B0; Extracting &yen; pricing</div>
+                    </div>
+                    <div style="background: rgba(245,241,235,0.04); border: 1px solid rgba(245,241,235,0.1); border-radius: 6px; padding: 0.6em 0.8em; min-width: 0;">
+                        <div style="display: flex; gap: 3px; margin-bottom: 0.4em;"><span style="width: 6px; height: 6px; border-radius: 50%; background: #ff5f56;"></span><span style="width: 6px; height: 6px; border-radius: 50%; background: #ffbd2e;"></span><span style="width: 6px; height: 6px; border-radius: 50%; background: #27ca40;"></span><span style="color: rgba(245,241,235,0.3); font-size: 0.55rem; margin-left: 0.3em;">Toranoyu Ryokan</span></div>
+                        <div style="font-size: 0.55rem; color: rgba(245,241,235,0.35); line-height: 1.6;">&#x1F310; Loading onsen page&hellip;<br>&#x1F4C4; Finding amenities<br>&#x1F4B0; Parsing JP text</div>
+                    </div>
+                    <div style="background: rgba(245,241,235,0.04); border: 1px solid rgba(245,241,235,0.1); border-radius: 6px; padding: 0.6em 0.8em; min-width: 0;">
+                        <div style="display: flex; gap: 3px; margin-bottom: 0.4em;"><span style="width: 6px; height: 6px; border-radius: 50%; background: #ff5f56;"></span><span style="width: 6px; height: 6px; border-radius: 50%; background: #ffbd2e;"></span><span style="width: 6px; height: 6px; border-radius: 50%; background: #27ca40;"></span><span style="color: rgba(245,241,235,0.3); font-size: 0.55rem; margin-left: 0.3em;">Hanayama Onsen</span></div>
+                        <div style="font-size: 0.55rem; color: rgba(245,241,235,0.35); line-height: 1.6;">&#x1F310; Browsing gallery&hellip;<br>&#x1F4C4; Reading plan details<br>&#x1F4B0; Structuring data</div>
+                    </div>
+                    <div style="background: rgba(245,241,235,0.04); border: 1px solid rgba(245,241,235,0.1); border-radius: 6px; padding: 0.6em 0.8em; min-width: 0;">
+                        <div style="display: flex; gap: 3px; margin-bottom: 0.4em;"><span style="width: 6px; height: 6px; border-radius: 50%; background: #ff5f56;"></span><span style="width: 6px; height: 6px; border-radius: 50%; background: #ffbd2e;"></span><span style="width: 6px; height: 6px; border-radius: 50%; background: #27ca40;"></span><span style="color: rgba(245,241,235,0.3); font-size: 0.55rem; margin-left: 0.3em;">Atarayo Nishizu</span></div>
+                        <div style="font-size: 0.55rem; color: rgba(245,241,235,0.35); line-height: 1.6;">&#x1F310; Exploring rooms&hellip;<br>&#x1F4C4; Capturing rates<br>&#x1F4B0; Extracting contact</div>
+                    </div>
+                </div>
+                <!-- Arrows down -->
+                <div style="color: rgba(245,241,235,0.2); font-size: 1.2em;">&#x2193;&nbsp;&nbsp;&#x2193;&nbsp;&nbsp;&#x2193;&nbsp;&nbsp;&#x2193;</div>
+                <!-- Aggregated result -->
+                <div style="background: rgba(232,97,26,0.08); border: 1px solid rgba(232,97,26,0.3); border-radius: 8px; padding: 0.8em 2em; text-align: center;">
+                    <div style="font-family: var(--font-mono); font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 0.3em;">Aggregated Result</div>
+                    <div style="color: var(--bg); font-family: var(--font-headline); font-weight: 700; font-size: clamp(0.85rem, 1.2vw, 1.05rem);">4 hotels &ndash; names, pricing, amenities, contact &ndash; structured JSON in seconds</div>
+                </div>
+            </div>
+            <p class="reveal" style="color: rgba(245,241,235,0.35); font-family: var(--font-mono); font-size: var(--small-size); margin-top: var(--content-gap); text-align: center;">One API call. Web agents operating on multiple concurrent browsers. Any website, any language &rarr; structured data you want.</p>
         </div>
     </section>
 
@@ -622,25 +1070,6 @@
             <p class="reveal" style="color: rgba(245,241,235,0.6); font-family: var(--font-body); font-size: clamp(0.9rem, 1.4vw, 1.2rem); max-width: 55ch; line-height: 1.6; margin-top: 0.8em;">
                 Chatbots are limited. Today we build <strong style="color: var(--bg);">autonomous agents</strong> that can browse, search, and extract real-time data from the messy parts of the internet.
             </p>
-            <!-- Key stats row -->
-            <div class="reveal" style="display: flex; gap: clamp(2rem, 5vw, 5rem); margin-top: clamp(1.5rem, 4vh, 3rem); flex-wrap: wrap; justify-content: center;">
-                <div style="text-align: center;">
-                    <div style="font-family: var(--font-headline); font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 900; color: var(--accent); line-height: 1;">300</div>
-                    <div style="font-family: var(--font-mono); font-size: var(--small-size); color: rgba(245,241,235,0.4); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.3em;">Hackers</div>
-                </div>
-                <div style="text-align: center;">
-                    <div style="font-family: var(--font-headline); font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 900; color: var(--accent); line-height: 1;">9hrs</div>
-                    <div style="font-family: var(--font-mono); font-size: var(--small-size); color: rgba(245,241,235,0.4); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.3em;">To Build</div>
-                </div>
-                <div style="text-align: center;">
-                    <div style="font-family: var(--font-headline); font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 900; color: var(--accent); line-height: 1;">$22k+</div>
-                    <div style="font-family: var(--font-mono); font-size: var(--small-size); color: rgba(245,241,235,0.4); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.3em;">In Prizes</div>
-                </div>
-                <div style="text-align: center;">
-                    <div style="font-family: var(--font-headline); font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 900; color: var(--bg); line-height: 1;">$2M</div>
-                    <div style="font-family: var(--font-mono); font-size: var(--small-size); color: rgba(245,241,235,0.4); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.3em;">Seed Path</div>
-                </div>
-            </div>
             <!-- Powered by logos row -->
             <div class="reveal" style="display: flex; align-items: center; gap: 1.5em; margin-top: clamp(1.5rem, 4vh, 3rem); font-family: var(--font-mono); font-size: var(--small-size); color: rgba(245,241,235,0.3); text-transform: uppercase; letter-spacing: 0.1em;">
                 <span style="color: var(--accent); font-weight: 700; font-size: 1.1em;">TinyFish</span>
@@ -648,6 +1077,104 @@
                 <span style="color: var(--bg); font-weight: 700; font-size: 1.1em;">OpenAI</span>
                 <span style="opacity: 0.3;">&times;</span>
                 <span style="color: rgba(245,241,235,0.6); font-weight: 700; font-size: 1.1em;">Acacia AI Society</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===========================================
+         SLIDE: TIMELINE / SCHEDULE
+         =========================================== -->
+    <section class="slide" aria-label="Timeline" style="padding: 0; background: var(--ink); background-image: none; overflow: hidden; position: relative;">
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--accent);"></div>
+        <div class="slide-content" style="justify-content: center; z-index: 5; padding: var(--slide-padding); gap: 0;">
+            <div class="reveal" style="font-family: var(--font-mono); font-size: var(--label-size); text-transform: uppercase; letter-spacing: 0.2em; color: var(--accent);">March 28, 2026</div>
+            <h2 class="reveal" style="color: var(--bg); margin-top: 0.3em;">Today's Schedule.</h2>
+            <div class="reveal" style="display: flex; flex-direction: column; gap: 0; margin-top: var(--content-gap); position: relative; padding-left: clamp(1.5rem, 3vw, 2.5rem);">
+                <!-- Vertical timeline line -->
+                <div style="position: absolute; left: 6px; top: 8px; bottom: 8px; width: 2px; background: rgba(245,241,235,0.1);"></div>
+                <!-- Registration -->
+                <div style="display: flex; align-items: flex-start; gap: clamp(0.8rem, 2vw, 1.5rem); padding: clamp(0.4rem, 0.8vh, 0.6rem) 0; position: relative;">
+                    <div style="position: absolute; left: calc(-1 * clamp(1.5rem, 3vw, 2.5rem) + 2px); top: calc(clamp(0.4rem, 0.8vh, 0.6rem) + 4px); width: 10px; height: 10px; border-radius: 50%; background: var(--accent); border: 2px solid var(--ink);"></div>
+                    <div style="font-family: var(--font-mono); font-size: var(--small-size); color: var(--accent); font-weight: 700; min-width: 6em; flex-shrink: 0;">9:00 AM</div>
+                    <div><div style="color: var(--bg); font-family: var(--font-headline); font-weight: 800; font-size: clamp(0.85rem, 1.2vw, 1.05rem);">Registration</div><div style="color: rgba(245,241,235,0.45); font-size: var(--small-size); margin-top: 0.15em;">Check-in, grab your TinyFish swag, and finalize team formation.</div></div>
+                </div>
+                <!-- Opening & Workshop -->
+                <div style="display: flex; align-items: flex-start; gap: clamp(0.8rem, 2vw, 1.5rem); padding: clamp(0.4rem, 0.8vh, 0.6rem) 0; position: relative;">
+                    <div style="position: absolute; left: calc(-1 * clamp(1.5rem, 3vw, 2.5rem) + 2px); top: calc(clamp(0.4rem, 0.8vh, 0.6rem) + 4px); width: 10px; height: 10px; border-radius: 50%; background: var(--accent); border: 2px solid var(--ink);"></div>
+                    <div style="font-family: var(--font-mono); font-size: var(--small-size); color: var(--accent); font-weight: 700; min-width: 6em; flex-shrink: 0;">9:45 AM</div>
+                    <div><div style="color: var(--bg); font-family: var(--font-headline); font-weight: 800; font-size: clamp(0.85rem, 1.2vw, 1.05rem);">Opening &amp; Technical Workshop</div><div style="color: rgba(245,241,235,0.45); font-size: var(--small-size); margin-top: 0.15em;">Opening remarks + deep-dive workshop on TinyFish APIs and OpenAI Codex.</div></div>
+                </div>
+                <!-- Hacking Begins -->
+                <div style="display: flex; align-items: flex-start; gap: clamp(0.8rem, 2vw, 1.5rem); padding: clamp(0.4rem, 0.8vh, 0.6rem) 0; position: relative;">
+                    <div style="position: absolute; left: calc(-1 * clamp(1.5rem, 3vw, 2.5rem) + 2px); top: calc(clamp(0.4rem, 0.8vh, 0.6rem) + 4px); width: 10px; height: 10px; border-radius: 50%; background: var(--bg); border: 2px solid var(--ink);"></div>
+                    <div style="font-family: var(--font-mono); font-size: var(--small-size); color: var(--bg); font-weight: 700; min-width: 6em; flex-shrink: 0;">10:30 AM</div>
+                    <div><div style="color: var(--bg); font-family: var(--font-headline); font-weight: 800; font-size: clamp(0.85rem, 1.2vw, 1.05rem);">Hacking Begins</div><div style="color: rgba(245,241,235,0.45); font-size: var(--small-size); margin-top: 0.15em;">Ready, set, build!</div></div>
+                </div>
+                <!-- Working Lunch -->
+                <div style="display: flex; align-items: flex-start; gap: clamp(0.8rem, 2vw, 1.5rem); padding: clamp(0.4rem, 0.8vh, 0.6rem) 0; position: relative;">
+                    <div style="position: absolute; left: calc(-1 * clamp(1.5rem, 3vw, 2.5rem) + 2px); top: calc(clamp(0.4rem, 0.8vh, 0.6rem) + 4px); width: 10px; height: 10px; border-radius: 50%; background: rgba(245,241,235,0.3); border: 2px solid var(--ink);"></div>
+                    <div style="font-family: var(--font-mono); font-size: var(--small-size); color: rgba(245,241,235,0.5); font-weight: 700; min-width: 6em; flex-shrink: 0;">12:30 PM</div>
+                    <div><div style="color: var(--bg); font-family: var(--font-headline); font-weight: 800; font-size: clamp(0.85rem, 1.2vw, 1.05rem);">Working Lunch</div><div style="color: rgba(245,241,235,0.45); font-size: var(--small-size); margin-top: 0.15em;">Catered lunch is served. Keep building &mdash; maximize your time before the freeze.</div></div>
+                </div>
+                <!-- Code Freeze -->
+                <div style="display: flex; align-items: flex-start; gap: clamp(0.8rem, 2vw, 1.5rem); padding: clamp(0.4rem, 0.8vh, 0.6rem) 0; position: relative;">
+                    <div style="position: absolute; left: calc(-1 * clamp(1.5rem, 3vw, 2.5rem) + 2px); top: calc(clamp(0.4rem, 0.8vh, 0.6rem) + 4px); width: 10px; height: 10px; border-radius: 50%; background: #ff4444; border: 2px solid var(--ink);"></div>
+                    <div style="font-family: var(--font-mono); font-size: var(--small-size); color: #ff4444; font-weight: 700; min-width: 6em; flex-shrink: 0;">4:00 PM</div>
+                    <div><div style="color: var(--bg); font-family: var(--font-headline); font-weight: 800; font-size: clamp(0.85rem, 1.2vw, 1.05rem);">Code Freeze &amp; Submissions</div><div style="color: rgba(245,241,235,0.45); font-size: var(--small-size); margin-top: 0.15em;">Hard stop for coding. Submit your GitHub repos and project demos.</div></div>
+                </div>
+                <!-- Judging -->
+                <div style="display: flex; align-items: flex-start; gap: clamp(0.8rem, 2vw, 1.5rem); padding: clamp(0.4rem, 0.8vh, 0.6rem) 0; position: relative;">
+                    <div style="position: absolute; left: calc(-1 * clamp(1.5rem, 3vw, 2.5rem) + 2px); top: calc(clamp(0.4rem, 0.8vh, 0.6rem) + 4px); width: 10px; height: 10px; border-radius: 50%; background: rgba(245,241,235,0.3); border: 2px solid var(--ink);"></div>
+                    <div style="font-family: var(--font-mono); font-size: var(--small-size); color: rgba(245,241,235,0.5); font-weight: 700; min-width: 6em; flex-shrink: 0;">4:30 PM</div>
+                    <div><div style="color: var(--bg); font-family: var(--font-headline); font-weight: 800; font-size: clamp(0.85rem, 1.2vw, 1.05rem);">Judging Begins</div></div>
+                </div>
+                <!-- Winners -->
+                <div style="display: flex; align-items: flex-start; gap: clamp(0.8rem, 2vw, 1.5rem); padding: clamp(0.4rem, 0.8vh, 0.6rem) 0; position: relative;">
+                    <div style="position: absolute; left: calc(-1 * clamp(1.5rem, 3vw, 2.5rem) + 2px); top: calc(clamp(0.4rem, 0.8vh, 0.6rem) + 4px); width: 10px; height: 10px; border-radius: 50%; background: #ffd700; border: 2px solid var(--ink);"></div>
+                    <div style="font-family: var(--font-mono); font-size: var(--small-size); color: #ffd700; font-weight: 700; min-width: 6em; flex-shrink: 0;">5:30 PM</div>
+                    <div><div style="color: var(--bg); font-family: var(--font-headline); font-weight: 800; font-size: clamp(0.85rem, 1.2vw, 1.05rem);">Winner Announcement &amp; Closing</div><div style="color: rgba(245,241,235,0.45); font-size: var(--small-size); margin-top: 0.15em;">Awards ceremony and closing thoughts on the future of the Open Web.</div></div>
+                </div>
+                <!-- Closing Speech -->
+                <div style="display: flex; align-items: flex-start; gap: clamp(0.8rem, 2vw, 1.5rem); padding: clamp(0.4rem, 0.8vh, 0.6rem) 0; position: relative;">
+                    <div style="position: absolute; left: calc(-1 * clamp(1.5rem, 3vw, 2.5rem) + 2px); top: calc(clamp(0.4rem, 0.8vh, 0.6rem) + 4px); width: 10px; height: 10px; border-radius: 50%; background: var(--accent); border: 2px solid var(--ink);"></div>
+                    <div style="font-family: var(--font-mono); font-size: var(--small-size); color: var(--accent); font-weight: 700; min-width: 6em; flex-shrink: 0;">6:00 PM</div>
+                    <div><div style="color: var(--bg); font-family: var(--font-headline); font-weight: 800; font-size: clamp(0.85rem, 1.2vw, 1.05rem);">Closing Speech</div><div style="color: rgba(245,241,235,0.45); font-size: var(--small-size); margin-top: 0.15em;">By a special guest.</div></div>
+                </div>
+                <!-- Exit -->
+                <div style="display: flex; align-items: flex-start; gap: clamp(0.8rem, 2vw, 1.5rem); padding: clamp(0.4rem, 0.8vh, 0.6rem) 0; position: relative;">
+                    <div style="position: absolute; left: calc(-1 * clamp(1.5rem, 3vw, 2.5rem) + 2px); top: calc(clamp(0.4rem, 0.8vh, 0.6rem) + 4px); width: 10px; height: 10px; border-radius: 50%; background: rgba(245,241,235,0.15); border: 2px solid var(--ink);"></div>
+                    <div style="font-family: var(--font-mono); font-size: var(--small-size); color: rgba(245,241,235,0.35); font-weight: 700; min-width: 6em; flex-shrink: 0;">6:30 PM</div>
+                    <div><div style="color: rgba(245,241,235,0.5); font-family: var(--font-headline); font-weight: 800; font-size: clamp(0.85rem, 1.2vw, 1.05rem);">Exit</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===========================================
+         SLIDE: TEAM FORMATION
+         =========================================== -->
+    <section class="slide" aria-label="Team Formation" style="padding: 0; background: var(--ink); background-image: none; overflow: hidden; position: relative;">
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--accent);"></div>
+        <div class="slide-content" style="justify-content: center; z-index: 5; padding: var(--slide-padding); gap: 0;">
+            <div class="reveal" style="font-family: var(--font-mono); font-size: var(--label-size); text-transform: uppercase; letter-spacing: 0.2em; color: var(--accent);">Get Started</div>
+            <h2 class="reveal" style="color: var(--bg); margin-top: 0.3em;">Team Formation.</h2>
+            <p class="reveal" style="color: rgba(245,241,235,0.5); font-family: var(--font-mono); font-size: var(--small-size); margin-top: 0.5em;">Go to <a href="https://sg-hackathon.tinyfish.ai" target="_blank" style="color: var(--accent); text-decoration: underline;">sg-hackathon.tinyfish.ai</a></p>
+            <div class="reveal" style="display: flex; gap: clamp(1.5rem, 3vw, 3rem); margin-top: var(--content-gap); align-items: flex-start; flex-wrap: wrap;">
+                <!-- Rules -->
+                <div style="flex: 1; min-width: 280px; background: rgba(245,241,235,0.04); border: 1px solid rgba(245,241,235,0.1); border-radius: 4px; padding: clamp(1.2rem, 2vw, 2rem);">
+                    <div style="color: var(--bg); font-family: var(--font-headline); font-weight: 800; font-size: var(--body-size); margin-bottom: 0.6em;">How team formation works</div>
+                    <ul style="color: rgba(245,241,235,0.6); font-size: var(--small-size); line-height: 2; padding-left: 1.2em;">
+                        <li>Teams can have <strong style="color: var(--bg);">1&ndash;3 members</strong>.</li>
+                        <li>Create a team to become the <strong style="color: var(--bg);">team leader</strong>, or wait for an invite.</li>
+                        <li>Leaders invite members using their <strong style="color: var(--bg);">3-digit participant ID</strong> (shown on your dashboard).</li>
+                        <li>You can only be on <strong style="color: var(--bg);">one team</strong> at a time.</li>
+                        <li>Accepting an invite auto-declines all other pending invites.</li>
+                    </ul>
+                </div>
+                <!-- Screenshot -->
+                <div style="flex: 1; min-width: 280px; background: rgba(245,241,235,0.04); border: 1px solid rgba(245,241,235,0.1); border-radius: 4px; padding: clamp(1rem, 1.5vw, 1.5rem);">
+                    <img src="team-formation.png" alt="Team formation dashboard" style="width: 100%; border-radius: 4px; border: 1px solid rgba(245,241,235,0.1);">
+                </div>
             </div>
         </div>
     </section>
@@ -809,6 +1336,9 @@
                 <span>&#x26A0; Each team wins <strong style="color: rgba(245,241,235,0.6);">one category only</strong></span>
                 <span>&#x26A0; Declare all pre-existing work &mdash; only hackathon code is judged</span>
             </div>
+            <div class="reveal" style="margin-top: clamp(0.5rem, 1vh, 0.8rem); font-family: var(--font-mono); font-size: var(--small-size); color: rgba(245,241,235,0.5);">
+                Visit <a href="https://sg-hackathon.tinyfish.ai/judging" target="_blank" style="color: var(--accent); text-decoration: underline;">sg-hackathon.tinyfish.ai/judging</a> for more details
+            </div>
         </div>
     </section>
 
@@ -880,7 +1410,7 @@
                     <div style="font-family: var(--font-mono); font-size: var(--small-size); text-transform: uppercase; letter-spacing: 0.15em; color: var(--bg); font-weight: 700;">OpenAI</div>
                     <div style="color: var(--bg); font-family: var(--font-headline); font-weight: 800; font-size: clamp(1.2rem, 2vw, 1.6rem); margin-top: 0.8em;">Redeem via Dashboard</div>
                     <div style="color: rgba(245,241,235,0.5); font-family: var(--font-body); font-size: clamp(0.8rem, 1.1vw, 1rem); margin-top: 0.5em; line-height: 1.6;">
-                        Log into <strong style="color: var(--accent);">tinyfish-sg.tinyfish.ai</strong> to redeem your coupon for OpenAI API &amp; Codex credits. Separate instructions are on the dashboard.
+                        Log into <a href="https://sg-hackathon.tinyfish.ai" target="_blank" style="color: var(--accent); text-decoration: underline;">sg-hackathon.tinyfish.ai</a> to redeem your coupon for OpenAI API &amp; Codex credits. Separate instructions are on the dashboard.
                     </div>
                 </div>
             </div>
@@ -1361,6 +1891,10 @@
                                 this.updateProgressBar();
                                 this.updateNavDots();
                             }
+                        } else {
+                            // Reset agent grid animation when leaving the slide
+                            const grid = entry.target.querySelector('.ac-grid');
+                            if (grid) grid.classList.remove('playing');
                         }
                     });
                 }, { threshold: 0.5 });
