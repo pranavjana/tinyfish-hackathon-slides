@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__tinyfish-docs__search_tiny_fish_web_agent"
+    ]
+  }
+}
