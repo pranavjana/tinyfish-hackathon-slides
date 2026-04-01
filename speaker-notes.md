@@ -32,7 +32,7 @@ Take 2-3 answers from the audience. Challenge each one gently.
 "What people thought couldn't be done by coding agents 2 years ago is now routine."
 
 ## Slide 9: GPT-2 Analogy
-*Let the visual comparison do the work. Reinforce: "We're in the GPT-2 era. Distribution is the game now."*
+*"GPT-2 was promising but rough — few people took it seriously. Then GPT-4 arrived and it just worked. Undeniable. Web agents are at that GPT-2 moment right now. The GPT-4 moment is coming."*
 
 ## Slide 10: Illegal for Humans to Drive
 "Elon predicted it will be illegal for humans to drive. The same will happen for the web."
