@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Future of the Web &mdash; TinyFish Workshop</title>
+
+    <!-- Fonts: Inter for headlines, IBM Plex Mono for body/labels -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===========================================
+           CSS CUSTOM PROPERTIES — TINYFISH BRAND
+           =========================================== */
+        :root {
+            --bg: #F0EFEA;
+            --ink: #111111;
+            --accent: #E8611A;
+            --rule: rgba(0,0,0,0.07);
+
+            --font-headline: 'Inter', sans-serif;
+            --font-mono: 'IBM Plex Mono', monospace;
+
+            --title-size: clamp(4.5rem, 11vw, 9rem);
+            --h2-size: clamp(3.5rem, 9vw, 7.5rem);
+            --h3-size: clamp(2.2rem, 4.5vw, 3.2rem);
+            --body-size: clamp(1.4rem, 2.5vw, 2rem);
+            --label-size: clamp(1.05rem, 1.6vw, 1.4rem);
+            --small-size: clamp(0.95rem, 1.4vw, 1.25rem);
+
+            --slide-padding: clamp(1.5rem, 5vw, 5rem);
+            --content-gap: clamp(0.75rem, 2vw, 2rem);
+            --element-gap: clamp(0.25rem, 1vw, 1rem);
+
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            --duration: 0.6s;
+        }
+
+        /* ===========================================
+           RESET & BASE
+           =========================================== */
+        @font-face {
+            font-family: 'Host Grotesk';
+            src: url('hostGrotesk.ttf') format('truetype');
+            font-weight: 400 800;
+        }
+        @font-face {
+            font-family: 'Pristine';
+            src: url('pristine-Bold.ttf') format('truetype');
+            font-weight: 700;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        /* ===========================================
+           VIEWPORT FITTING: MANDATORY BASE STYLES
+           =========================================== */
+        html, body {
+            height: 100%;
+            overflow-x: hidden;
+        }
+        html {
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+        body {
+            background: var(--bg);
+            background-image: url("data:image/svg+xml,%3Csvg width='48' height='48' xmlns='http://www.w3.org/2000/svg'%3E%3Cline x1='48' y1='0' x2='48' y2='48' stroke='%23000' stroke-opacity='0.1' stroke-width='1' stroke-dasharray='2 4'/%3E%3Cline x1='0' y1='48' x2='48' y2='48' stroke='%23000' stroke-opacity='0.1' stroke-width='1' stroke-dasharray='2 4'/%3E%3C/svg%3E");
+            background-size: 48px 48px;
+            color: var(--ink);
+            font-family: var(--font-mono);
+            font-size: var(--body-size);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            height: 100dvh;
+            overflow: hidden;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            padding: var(--slide-padding);
+        }
+
+        .slide-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            max-height: 100%;
+            overflow: auto;
+        }
+
+        /* ===========================================
+           TYPOGRAPHY
+           =========================================== */
+        h1, h2 {
+            font-family: var(--font-headline);
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            line-height: 0.92;
+            color: var(--ink);
+        }
+        h1 { font-size: var(--title-size); }
+        h2 { font-size: var(--h2-size); }
+
+        .label {
+            font-family: var(--font-mono);
+            font-size: var(--label-size);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--ink);
+        }
+
+        .body-text {
+            font-family: var(--font-mono);
+            font-size: var(--body-size);
+            font-weight: 400;
+            line-height: 1.6;
+            max-width: 52ch;
+        }
+
+        /* ===========================================
+           ELEMENTS — PILLS, CTA, TICKER
+           =========================================== */
+        .pill {
+            display: inline-block;
+            background: var(--accent);
+            color: #fff;
+            font-family: var(--font-mono);
+            font-size: var(--label-size);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 0.25em 0.75em;
+            border-radius: 3px;
+        }
+
+        .cta {
+            display: inline-block;
+            background: var(--ink);
+            color: var(--bg);
+            font-family: var(--font-mono);
+            font-size: var(--label-size);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 0.5em 1.25em;
+        }
+
+        .divider {
+            width: 100%;
+            height: 1px;
+            background: var(--ink);
+            margin: var(--element-gap) 0;
+        }
+
+        .hairline {
+            width: 100%;
+            height: 1px;
+            background: var(--rule);
+        }
+
+        /* ===========================================
+           TICKER STRIP
+           =========================================== */
+        .ticker {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--ink);
+            color: var(--bg);
+            font-family: var(--font-mono);
+            font-size: var(--small-size);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 0.6em 0;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .ticker-inner {
+            display: inline-block;
+            animation: ticker-scroll 30s linear infinite;
+        }
+        @keyframes ticker-scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* ===========================================
+           SLIDE LAYOUTS
+           =========================================== */
+        .title-slide {
+            justify-content: flex-end;
+            padding-bottom: clamp(4rem, 8vh, 8rem);
+        }
+
+        .content-slide .slide-content {
+            justify-content: flex-start;
+            padding-top: clamp(2rem, 5vh, 5rem);
+            gap: var(--content-gap);
+        }
+
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(1.5rem, 3vw, 3rem);
+            margin-top: var(--content-gap);
+        }
+        .comparison-col {
+            display: flex;
+            flex-direction: column;
+            gap: var(--element-gap);
+        }
+
+        .flow {
+            display: flex;
+            align-items: center;
+            gap: clamp(0.5rem, 1.5vw, 1.5rem);
+            flex-wrap: wrap;
+            margin-top: var(--content-gap);
+        }
+        .flow-step {
+            font-family: var(--font-mono);
+            font-size: clamp(0.85rem, 1.6vw, 1.3rem);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 0.5em 1em;
+            border: 2px solid var(--ink);
+        }
+        .flow-arrow {
+            font-size: clamp(1rem, 2vw, 1.5rem);
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .three-up {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: clamp(1rem, 2vw, 2rem);
+            margin-top: var(--content-gap);
+        }
+        .card {
+            border-top: 2px solid var(--ink);
+            padding-top: var(--element-gap);
+            display: flex;
+            flex-direction: column;
+            gap: clamp(0.3rem, 0.6vw, 0.5rem);
+        }
+        .card-title {
+            font-family: var(--font-headline);
+            font-weight: 900;
+            font-size: clamp(1rem, 2vw, 1.5rem);
+            letter-spacing: -0.02em;
+        }
+        .card-text {
+            font-family: var(--font-mono);
+            font-size: var(--body-size);
+            font-weight: 400;
+            line-height: 1.5;
+            opacity: 0.8;
+        }
+
+        .code-block {
+            background: var(--ink);
+            color: var(--bg);
+            font-family: var(--font-mono);
+            font-size: clamp(0.7rem, 1.1vw, 0.95rem);
+            padding: clamp(1rem, 2vw, 1.5rem);
+            border-radius: 2px;
+            line-height: 1.7;
+            overflow: visible;
+            margin-top: var(--element-gap);
+        }
+        .code-block .accent { color: var(--accent); }
+        .code-block .dim { opacity: 0.5; }
+
+        .bullet-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: clamp(0.4rem, 1vh, 0.8rem);
+        }
+        .bullet-list li {
+            font-family: var(--font-mono);
+            font-size: var(--body-size);
+            line-height: 1.5;
+            padding-left: 1.5em;
+            position: relative;
+        }
+        .bullet-list li::before {
+            content: '\25C6';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-size: 0.6em;
+            top: 0.4em;
+        }
+
+        .slide-num {
+            position: absolute;
+            top: var(--slide-padding);
+            right: var(--slide-padding);
+            font-family: var(--font-mono);
+            font-size: var(--small-size);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.4;
+        }
+
+        /* ===========================================
+           SPEAKER NOTES (hidden, for presenter reference)
+           =========================================== */
+        .speaker-notes {
+            display: none;
+        }
+
+        /* ===========================================
+           QUOTE BLOCK
+           =========================================== */
+        .big-quote {
+            font-family: 'Pristine', serif;
+            font-weight: 700;
+            font-size: clamp(2rem, 4.5vw, 4rem);
+            line-height: 1.15;
+            color: var(--bg);
+            max-width: 20ch;
+        }
+        .big-quote .highlight {
+            color: var(--accent);
+        }
+
+        /* ===========================================
+           COUNTER ANIMATION
+           =========================================== */
+        @keyframes countUp {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        .stat-number {
+            font-family: var(--font-headline);
+            font-weight: 900;
+            font-size: clamp(3rem, 7vw, 6rem);
+            line-height: 1;
+            color: var(--bg);
+        }
+        .stat-label {
+            font-family: var(--font-mono);
+            font-size: var(--small-size);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: rgba(245,241,235,0.4);
+            margin-top: 0.3em;
+        }
+
+        /* ===========================================
+           INTERACTIVE QUESTION SLIDE
+           =========================================== */
+        .question-mark {
+            position: absolute;
+            font-family: var(--font-headline);
+            font-weight: 900;
+            color: rgba(232,97,26,0.06);
+            font-size: clamp(20rem, 40vw, 40rem);
+            line-height: 1;
+            right: -5%;
+            top: -10%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* ===========================================
+           SCALE COMPARISON
+           =========================================== */
+        .scale-bar {
+            height: clamp(2rem, 4vh, 3rem);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            padding: 0 1em;
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: var(--small-size);
+            color: var(--bg);
+            transition: width 1s var(--ease-out-expo);
+        }
+
+        /* ===========================================
+           ANIMATIONS
+           =========================================== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity var(--duration) var(--ease-out-expo),
+                        transform var(--duration) var(--ease-out-expo);
+        }
+        .slide.visible .reveal {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal:nth-child(1) { transition-delay: 0.05s; }
+        .reveal:nth-child(2) { transition-delay: 0.15s; }
+        .reveal:nth-child(3) { transition-delay: 0.25s; }
+        .reveal:nth-child(4) { transition-delay: 0.35s; }
+        .reveal:nth-child(5) { transition-delay: 0.45s; }
+        .reveal:nth-child(6) { transition-delay: 0.55s; }
+        .reveal:nth-child(7) { transition-delay: 0.65s; }
+        .reveal:nth-child(8) { transition-delay: 0.75s; }
+
+        .reveal-fast {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.4s var(--ease-out-expo),
+                        transform 0.4s var(--ease-out-expo);
+        }
+        .slide.visible .reveal-fast {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide.visible .three-up .card:nth-child(1) { transition-delay: 0.1s; }
+        .slide.visible .three-up .card:nth-child(2) { transition-delay: 0.2s; }
+        .slide.visible .three-up .card:nth-child(3) { transition-delay: 0.3s; }
+
+        .slide.visible .flow .flow-step,
+        .slide.visible .flow .flow-arrow {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .flow .flow-step,
+        .flow .flow-arrow {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.4s var(--ease-out-expo),
+                        transform 0.4s var(--ease-out-expo);
+        }
+        .flow > :nth-child(1) { transition-delay: 0.1s; }
+        .flow > :nth-child(2) { transition-delay: 0.15s; }
+        .flow > :nth-child(3) { transition-delay: 0.2s; }
+        .flow > :nth-child(4) { transition-delay: 0.25s; }
+        .flow > :nth-child(5) { transition-delay: 0.3s; }
+        .flow > :nth-child(6) { transition-delay: 0.35s; }
+        .flow > :nth-child(7) { transition-delay: 0.4s; }
+        .flow > :nth-child(8) { transition-delay: 0.45s; }
+        .flow > :nth-child(9) { transition-delay: 0.5s; }
+
+        /* ===========================================
+           PROGRESS BAR
+           =========================================== */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: var(--accent);
+            z-index: 9999;
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+
+        /* ===========================================
+           NAV DOTS
+           =========================================== */
+        .nav-dots {
+            position: fixed;
+            right: clamp(0.75rem, 2vw, 1.5rem);
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            z-index: 9998;
+        }
+        .nav-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--ink);
+            opacity: 0.15;
+            cursor: pointer;
+            transition: opacity 0.3s, transform 0.3s;
+            border: none;
+            padding: 0;
+        }
+        .nav-dot.active {
+            opacity: 0.8;
+            transform: scale(1.4);
+        }
+
+        /* ===========================================
+           PULSE GLOW
+           =========================================== */
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.4; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.05); }
+        }
+
+        /* ===========================================
+           RESPONSIVE BREAKPOINTS
+           =========================================== */
+        @media (max-height: 700px) {
+            :root {
+                --slide-padding: clamp(0.75rem, 3vw, 2rem);
+                --content-gap: clamp(0.4rem, 1.5vw, 1rem);
+                --title-size: clamp(2.5rem, 7vw, 4.5rem);
+                --h2-size: clamp(2rem, 6vw, 4rem);
+                --body-size: clamp(1rem, 1.6vw, 1.3rem);
+            }
+        }
+        @media (max-height: 600px) {
+            :root {
+                --slide-padding: clamp(0.5rem, 2.5vw, 1.5rem);
+                --content-gap: clamp(0.3rem, 1vw, 0.75rem);
+                --title-size: clamp(2rem, 5.5vw, 3.5rem);
+                --body-size: clamp(0.9rem, 1.4vw, 1.1rem);
+            }
+            .nav-dots { display: none; }
+        }
+        @media (max-height: 500px) {
+            :root {
+                --slide-padding: clamp(0.4rem, 2vw, 1rem);
+                --title-size: clamp(1.6rem, 5vw, 2.5rem);
+                --h2-size: clamp(1.4rem, 4vw, 2rem);
+                --body-size: clamp(0.8rem, 1.2vw, 1rem);
+            }
+        }
+        @media (max-width: 768px) {
+            .three-up { grid-template-columns: 1fr; }
+            .comparison { grid-template-columns: 1fr; gap: var(--content-gap); }
+        }
+
+        /* ===========================================
+           REDUCED MOTION
+           =========================================== */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.2s !important;
+            }
+            html { scroll-behavior: auto; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Progress bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Navigation dots -->
+    <nav class="nav-dots" id="navDots" aria-label="Slide navigation"></nav>
+
+    <!-- ===========================================
+         SLIDE 1: TITLE
+         =========================================== -->
+    <section class="slide" aria-label="Title" style="padding: 0; background: var(--ink); background-image: none; overflow: hidden; position: relative;">
+        <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 30%, rgba(232,97,26,0.12) 0%, transparent 50%);"></div>
+        <div class="slide-content" style="justify-content: center; z-index: 5; padding: var(--slide-padding); gap: 0;">
+            <div class="reveal" style="display: flex; align-items: center; gap: 0.6em; margin-bottom: clamp(1.5rem, 3vh, 2.5rem);">
+                <img src="tinyfish.avif" alt="TinyFish" style="width: 50px; height: 50px;">
+            </div>
+            <h1 class="reveal" style="color: var(--bg); font-size: clamp(3.5rem, 8.5vw, 7rem); line-height: 1.05; font-family: var(--font-headline); font-weight: 900;">The Future<br>of the Web.</h1>
+            <p class="reveal" style="color: rgba(245,241,235,0.5); font-family: var(--font-mono); font-size: clamp(1.15rem, 1.8vw, 1.5rem); max-width: 50ch; margin-top: 0.8em; line-height: 1.6;">And why everything is about to change.</p>
+            <p class="reveal" style="color: rgba(245,241,235,0.3); font-family: var(--font-mono); font-size: var(--small-size); margin-top: 1.5em; text-transform: uppercase; letter-spacing: 0.15em;">TinyFish Workshop</p>
+        </div>
+        <div class="ticker" style="position: absolute; bottom: 0; left: 0; right: 0;">
+            <span class="ticker-inner">
+                SEARCH &#9670; BROWSE &#9670; FETCH &#9670; AUTOMATE &#9670; EXTRACT &#9670; NAVIGATE &#9670; FILL FORMS &#9670; CLICK BUTTONS &#9670; READ PAGES &#9670; RETURN JSON &#9670;
+                SEARCH &#9670; BROWSE &#9670; FETCH &#9670; AUTOMATE &#9670; EXTRACT &#9670; NAVIGATE &#9670; FILL FORMS &#9670; CLICK BUTTONS &#9670; READ PAGES &#9670; RETURN JSON &#9670;
+            </span>
+        </div>
+    </section>
+
+    <!-- ===========================================
+         SLIDE 2: THE HOOK — YOUR BROWSER TODAY
+         =========================================== -->
+    <section class="slide" aria-label="Your Browser Today" style="padding: 0; background: #0a0a0a; background-image: none; overflow: hidden; position: relative;">
+        <div class="question-mark">?</div>
+        <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 60%, rgba(232,97,26,0.06) 0%, transparent 50%);"></div>
+        <div class="slide-content" style="justify-content: center; z-index: 5; padding: var(--slide-padding); gap: 0;">
+            <div class="reveal" style="font-family: var(--font-mono); font-size: var(--label-size); text-transform: uppercase; letter-spacing: 0.3em; color: var(--accent); margin-bottom: 0.8em;">Think about it</div>
+            <h2 class="reveal" style="color: var(--bg); font-size: clamp(2.5rem, 6vw, 5rem); line-height: 1.1;">Everything you did on<br>your browser today.</h2>
+            <div class="reveal" style="display: flex; flex-wrap: wrap; gap: clamp(0.4rem, 0.8vw, 0.6rem); margin-top: var(--content-gap);">
+                <span style="background: rgba(245,241,235,0.06); border: 1px solid rgba(245,241,235,0.12); border-radius: 6px; padding: 0.4em 0.8em; color: rgba(245,241,235,0.6); font-size: var(--small-size);">Email</span>
+                <span style="background: rgba(245,241,235,0.06); border: 1px solid rgba(245,241,235,0.12); border-radius: 6px; padding: 0.4em 0.8em; color: rgba(245,241,235,0.6); font-size: var(--small-size);">Slack</span>
+                <span style="background: rgba(245,241,235,0.06); border: 1px solid rgba(245,241,235,0.12); border-radius: 6px; padding: 0.4em 0.8em; color: rgba(245,241,235,0.6); font-size: var(--small-size);">Filing forms</span>
+                <span style="background: rgba(245,241,235,0.06); border: 1px solid rgba(245,241,235,0.12); border-radius: 6px; padding: 0.4em 0.8em; color: rgba(245,241,235,0.6); font-size: var(--small-size);">Comparing prices</span>
+                <span style="background: rgba(245,241,235,0.06); border: 1px solid rgba(245,241,235,0.12); border-radius: 6px; padding: 0.4em 0.8em; color: rgba(245,241,235,0.6); font-size: var(--small-size);">Booking flights</span>
+                <span style="background: rgba(245,241,235,0.06); border: 1px solid rgba(245,241,235,0.12); border-radius: 6px; padding: 0.4em 0.8em; color: rgba(245,241,235,0.6); font-size: var(--small-size);">Researching</span>
+                <span style="background: rgba(245,241,235,0.06); border: 1px solid rgba(245,241,235,0.12); border-radius: 6px; padding: 0.4em 0.8em; color: rgba(245,241,235,0.6); font-size: var(--small-size);">Shopping</span>
+                <span style="background: rgba(245,241,235,0.06); border: 1px solid rgba(245,241,235,0.12); border-radius: 6px; padding: 0.4em 0.8em; color: rgba(245,241,235,0.6); font-size: var(--small-size);">Tax filing</span>
+            </div>
+            <p class="reveal" style="color: var(--accent); font-family: 'Pristine', serif; font-weight: 700; font-size: clamp(1.8rem, 3.5vw, 3rem); margin-top: var(--content-gap); line-height: 1.3;">What if all of that could run by an agent &mdash;<br>in the cloud &mdash; in seconds?</p>
+        </div>
+        <!-- Speaker notes -->
+        <div class="speaker-notes">
+            Let them sit with this. Pause. "Think about everything you did on your browser today. Email. Slack. Forms. Price comparison. Booking."
+            Then: "What if all of that could run by an agent?"
+        </div>
+    </section>
+
+    <!-- ===========================================
+         SLIDE 3: IT'S ALREADY HAPPENING
+         =========================================== -->
+    <section class="slide" aria-label="Already Happening" style="padding: 0; background: #0a0a0a; background-image: none; overflow: hidden; position: relative;">
+        <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 50%, rgba(34,197,94,0.06) 0%, transparent 50%);"></div>
+        <div class="slide-content" style="justify-content: center; z-index: 5; padding: var(--slide-padding); gap: 0;">
+            <div class="reveal" style="font-family: var(--font-mono); font-size: var(--label-size); text-transform: uppercase; letter-spacing: 0.3em; color: #22c55e; margin-bottom: 0.5em;">This is not hypothetical</div>
+            <h2 class="reveal" style="color: var(--bg); font-size: clamp(2.8rem, 6.5vw, 5.5rem); line-height: 1.05;">It's Already<br>Happening.</h2>
+            <div class="reveal" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1rem, 2vw, 2rem); margin-top: var(--content-gap); max-width: 900px;">
+                <div style="text-align: center;">
+                    <div class="stat-number" style="font-size: clamp(3rem, 6vw, 5rem);">4B</div>
+                    <div class="stat-label">websites exist</div>
+                </div>
+                <div style="text-align: center;">
+                    <div class="stat-number" style="font-size: clamp(3rem, 6vw, 5rem); color: var(--accent);">&#x2191;</div>
+                    <div class="stat-label">agents visiting web<br>more than humans</div>
+                </div>
+                <div style="text-align: center;">
+                    <div class="stat-number" style="font-size: clamp(3rem, 6vw, 5rem);">1000s</div>
+                    <div class="stat-label">of AI apps already<br>browsing autonomously</div>
+                </div>
+            </div>
+            <p class="reveal" style="color: rgba(245,241,235,0.5); font-family: var(--font-mono); font-size: clamp(1.1rem, 1.6vw, 1.4rem); margin-top: var(--content-gap); line-height: 1.7; max-width: 60ch;">The internet is shifting from something built for humans to something built for agents. ChatGPT, Gemini, Claude, and thousands of developer-built apps are already on the web.</p>
+        </div>
+    </section>
+
+    <!-- ===========================================
+         SLIDE 4: THE CODING AGENT MOMENT (INTERACTIVE)
+         =========================================== -->
+    <section class="slide" aria-label="Coding Agent Moment" style="padding: 0; background: var(--ink); background-image: none; overflow: hidden; position: relative;">
+        <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at 80% 20%, rgba(99,102,241,0.1) 0%, transparent 50%);"></div>
+        <div class="slide-content" style="justify-content: center; z-index: 5; padding: var(--slide-padding); gap: 0;">
+            <div class="reveal" style="font-family: var(--font-mono); font-size: var(--label-size); text-transform: uppercase; letter-spacing: 0.3em; color: #6366f1; margin-bottom: 0.5em;">Audience Question</div>
+            <h2 class="reveal" style="color: var(--bg); font-size: clamp(2.5rem, 6vw, 5rem); line-height: 1.1;">What was the impact of<br><span style="color: #6366f1;">coding agents</span>?</h2>
+            <div class="reveal" style="display: flex; flex-direction: column; gap: clamp(0.5rem, 1vw, 0.8rem); margin-top: var(--content-gap); max-width: 600px;">
+                <div style="background: rgba(99,102,241,0.1); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 0.8em 1.2em; display: flex; align-items: center; gap: 0.8em;">
+                    <span style="color: #6366f1; font-size: 1.4em;">&#x2197;</span>
+                    <span style="color: rgba(245,241,235,0.7); font-size: var(--body-size);">Hiring changed</span>
+                </div>
+                <div style="background: rgba(99,102,241,0.1); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 0.8em 1.2em; display: flex; align-items: center; gap: 0.8em;">
+                    <span style="color: #6366f1; font-size: 1.4em;">&#x2197;</span>
+                    <span style="color: rgba(245,241,235,0.7); font-size: var(--body-size);">Capital flows changed</span>
+                </div>
+                <div style="background: rgba(99,102,241,0.1); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 0.8em 1.2em; display: flex; align-items: center; gap: 0.8em;">
+                    <span style="color: #6366f1; font-size: 1.4em;">&#x2197;</span>
+                    <span style="color: rgba(245,241,235,0.7); font-size: var(--body-size);">Product velocity changed</span>
+                </div>
+            </div>
+            <p class="reveal" style="color: rgba(245,241,235,0.4); font-family: var(--font-mono); font-size: clamp(1.1rem, 1.6vw, 1.4rem); margin-top: var(--content-gap); line-height: 1.6;">And that already changed the flow of the world &mdash;<br>with a market of only <strong style="color: var(--bg);">a few million developers</strong>.</p>
+        </div>
+        <div class="speaker-notes">
+            INTERACTIVE: Ask the crowd: "What happened when coding agents arrived? What changed?"
+            Get 2-3 answers. Guide toward: hiring, capital, product velocity.
+            Then land on: "And coding is exclusive to a few million people on the planet."
+        </div>
+    </section>
+
+    <!-- ===========================================
+         SLIDE 5: WEB AGENT > CODING AGENT
+         =========================================== -->
+    <section class="slide" aria-label="Web Agent Bigger" style="padding: 0; background: #0a0a0a; background-image: none; overflow: hidden; position: relative;">
+        <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 70%, rgba(232,97,26,0.08) 0%, transparent 50%);"></div>
+        <div class="slide-content" style="justify-content: center; z-index: 5; padding: var(--slide-padding); gap: 0;">
+            <div class="reveal" style="font-family: var(--font-mono); font-size: var(--label-size); text-transform: uppercase; letter-spacing: 0.2em; color: rgba(245,241,235,0.4); margin-bottom: 0.5em;">Now imagine</div>
+            <h2 class="reveal" style="color: var(--bg); font-size: clamp(2.5rem, 6vw, 5rem); line-height: 1.1;">The Web Agent Moment<br>Will Be <span style="color: var(--accent);">Bigger</span>.</h2>
+            <!-- Scale comparison -->
+            <div class="reveal" style="margin-top: var(--content-gap); display: flex; flex-direction: column; gap: clamp(0.8rem, 1.5vw, 1.2rem); max-width: 700px;">
+                <div>
+                    <div style="font-family: var(--font-mono); font-size: var(--small-size); text-transform: uppercase; letter-spacing: 0.15em; color: rgba(245,241,235,0.35); margin-bottom: 0.4em;">Coding &mdash; developers</div>
+                    <div class="scale-bar" style="width: 15%; background: #6366f1;">~30M</div>
+                </div>
+                <div>
+                    <div style="font-family: var(--font-mono); font-size: var(--small-size); text-transform: uppercase; letter-spacing: 0.15em; color: rgba(245,241,235,0.35); margin-bottom: 0.4em;">Browsing &mdash; everyone</div>
+                    <div class="scale-bar" style="width: 100%; background: var(--accent);">5.5 Billion</div>
+                </div>
+            </div>
+            <p class="reveal" style="color: rgba(245,241,235,0.5); font-family: var(--font-mono); font-size: clamp(1.1rem, 1.6vw, 1.4rem); margin-top: var(--content-gap); line-height: 1.7; max-width: 55ch;">Coding is exclusive to a few million people.<br>Browsing? <strong style="color: var(--bg);">That's everyone. Every white-collar worker on earth.</strong></p>
+        </div>
+    </section>
+
+    <!-- ===========================================
+         SLIDE 6: THE TRILLION-DOLLAR QUESTION
+         =========================================== -->
+    <section class="slide" aria-label="Trillion Dollar Question" style="padding: 0; background: var(--ink); background-image: none; overflow: hidden; position: relative;">
+        <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 50%, rgba(232,97,26,0.08) 0%, transparent 40%);"></div>
+        <div class="slide-content" style="justify-content: center; align-items: center; z-index: 5; padding: var(--slide-padding); gap: 0; text-align: center;">
+            <div class="reveal big-quote" style="max-width: 18ch; text-align: center;">
+                &ldquo;Do you think <span class="highlight">trillions of dollars</span> will continue to be paid for people to click buttons and fill forms?&rdquo;
+            </div>
+            <div class="reveal" style="display: flex; flex-wrap: wrap; gap: clamp(0.5rem, 1vw, 0.8rem); margin-top: var(--content-gap); justify-content: center;">
+                <span style="background: rgba(232,97,26,0.15); border: 1px solid rgba(232,97,26,0.3); border-radius: 6px; padding: 0.4em 0.8em; color: var(--accent); font-size: var(--small-size); font-weight: 600;">Insurance</span>
+                <span style="background: rgba(232,97,26,0.15); border: 1px solid rgba(232,97,26,0.3); border-radius: 6px; padding: 0.4em 0.8em; color: var(--accent); font-size: var(--small-size); font-weight: 600;">Tax Filing</span>
+                <span style="background: rgba(232,97,26,0.15); border: 1px solid rgba(232,97,26,0.3); border-radius: 6px; padding: 0.4em 0.8em; color: var(--accent); font-size: var(--small-size); font-weight: 600;">Procurement</span>
+                <span style="background: rgba(232,97,26,0.15); border: 1px solid rgba(232,97,26,0.3); border-radius: 6px; padding: 0.4em 0.8em; color: var(--accent); font-size: var(--small-size); font-weight: 600;">HR Onboarding</span>
+                <span style="background: rgba(232,97,26,0.15); border: 1px solid rgba(232,97,26,0.3); border-radius: 6px; padding: 0.4em 0.8em; color: var(--accent); font-size: var(--small-size); font-weight: 600;">Compliance</span>
+                <span style="background: rgba(232,97,26,0.15); border: 1px solid rgba(232,97,26,0.3); border-radius: 6px; padding: 0.4em 0.8em; color: var(--accent); font-size: var(--small-size); font-weight: 600;">Data Entry</span>
+            </div>
+        </div>
+        <div class="speaker-notes">
+            Let this land. Pause. "How much are people paying for tax filing? Insurance comparison? That's already happening."
+            "This part of the economy can be automated, virtualised, all in the cloud. The capital will flow into things that actually matter."
+        </div>
+    </section>
+
+    <!-- ===========================================
+         SLIDE 7: THE PROVOCATION
+         =========================================== -->
+    <section class="slide" aria-label="Provocation" style="padding: 0; background: #0d0d0d; background-image: none; overflow: hidden; position: relative;">
+        <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 80%, rgba(168,85,247,0.06) 0%, transparent 50%);"></div>
+        <div class="slide-content" style="justify-content: center; z-index: 5; padding: var(--slide-padding); gap: 0;">
+            <h2 class="reveal" style="color: var(--bg); font-size: clamp(2.2rem, 5vw, 4rem); line-height: 1.15; max-width: 22ch;">When robots can fold your clothes&hellip;</h2>
+            <p class="reveal" style="color: rgba(245,241,235,0.5); font-family: var(--font-mono); font-size: clamp(1.1rem, 1.7vw, 1.4rem); margin-top: 0.8em; line-height: 1.7; max-width: 50ch;">When AI can make an Oscar-level movie overnight for $20&hellip;</p>
+            <p class="reveal" style="color: var(--accent); font-family: 'Pristine', serif; font-weight: 700; font-size: clamp(1.8rem, 3.5vw, 3rem); margin-top: var(--content-gap); line-height: 1.2; max-width: 25ch;">Imagine still clicking buttons yourself.</p>
+            <div class="reveal" style="margin-top: var(--content-gap); background: rgba(245,241,235,0.03); border: 1px solid rgba(245,241,235,0.08); border-radius: 6px; padding: 1.2em 1.5em; max-width: 500px;">
+                <div style="color: rgba(245,241,235,0.35); font-family: var(--font-mono); font-size: var(--small-size); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 0.5em;">The truth</div>
+                <div style="color: rgba(245,241,235,0.7); font-family: var(--font-mono); font-size: var(--body-size); line-height: 1.6;">Web operations is the largest addressable market. Not just developers &mdash; <strong style="color: var(--bg);">every knowledge worker needs it</strong>.</div>
+            </div>
+        </div>
+        <div class="speaker-notes">
+            "Video generation is already a billion-dollar industry. When you can make a movie at Oscar-level for $20 overnight, would you still pay millions?"
+            "The tech will get there. And web operations is a bigger market than all of those."
+        </div>
+    </section>
+
+    <!-- ===========================================
+         SLIDE 8: AUDIENCE QUESTION — WHAT CAN'T BE AUTOMATED?
+         =========================================== -->
+    <section class="slide" aria-label="What Can't Be Automated" style="padding: 0; background: var(--ink); background-image: none; overflow: hidden; position: relative;">
+        <div class="question-mark" style="left: -5%; right: auto;">?</div>
+        <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 40%, rgba(232,97,26,0.08) 0%, transparent 50%);"></div>
+        <div class="slide-content" style="justify-content: center; z-index: 5; padding: var(--slide-padding); gap: 0;">
+            <div class="reveal" style="font-family: var(--font-mono); font-size: var(--label-size); text-transform: uppercase; letter-spacing: 0.3em; color: var(--accent); margin-bottom: 0.5em;">Your Turn</div>
+            <h2 class="reveal" style="color: var(--bg); font-size: clamp(2.8rem, 6.5vw, 5.5rem); line-height: 1.05;">What do you think<br><span style="color: var(--accent);">can't</span> be automated<br>by web agents?</h2>
+            <p class="reveal" style="color: rgba(245,241,235,0.4); font-family: var(--font-mono); font-size: clamp(1.1rem, 1.6vw, 1.4rem); margin-top: var(--content-gap); line-height: 1.6; max-width: 45ch;">Think hard. Are you sure?</p>
+        </div>
+        <div class="speaker-notes">
+            INTERACTIVE: Take 2-3 answers from the audience. Challenge each one gently.
+            "Are you sure? Remember: not many people knew about GPT-2. Then GPT-4 arrived and it was already proven."
+            "What people thought couldn't be done by coding agents 2 years ago is now routine."
+        </div>
+    </section>
+
+    <!-- ===========================================
+         SLIDE 9: THE GPT-2 ANALOGY
+         =========================================== -->
+    <section class="slide" aria-label="GPT-2 Analogy" style="padding: 0; background: #0a0a0a; background-image: none; overflow: hidden; position: relative;">
+        <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at 60% 30%, rgba(59,130,246,0.08) 0%, transparent 50%);"></div>
+        <div class="slide-content" style="justify-content: center; z-index: 5; padding: var(--slide-padding); gap: 0;">
+            <div class="reveal" style="font-family: var(--font-mono); font-size: var(--label-size); text-transform: uppercase; letter-spacing: 0.2em; color: #3b82f6; margin-bottom: 0.5em;">Where We Are</div>
+            <h2 class="reveal" style="color: var(--bg); font-size: clamp(2.5rem, 6vw, 5rem); line-height: 1.1;">We're in the<br><span style="color: #3b82f6;">GPT-2 era</span><br>of web agents.</h2>
+            <div class="reveal" style="display: flex; gap: clamp(1rem, 3vw, 3rem); margin-top: var(--content-gap); align-items: flex-start; max-width: 700px;">
+                <!-- GPT-2 -->
+                <div style="flex: 1; background: rgba(245,241,235,0.03); border: 1px solid rgba(245,241,235,0.08); border-radius: 6px; padding: 1em;">
+                    <div style="font-family: var(--font-headline); font-weight: 900; font-size: clamp(1.8rem, 3vw, 2.5rem); color: rgba(245,241,235,0.3);">GPT-2</div>
+                    <div style="color: rgba(245,241,235,0.4); font-size: var(--small-size); margin-top: 0.4em; line-height: 1.5;">Few people knew about it.<br>The tech was there.<br>Distribution wasn't.</div>
+                </div>
+                <!-- Arrow -->
+                <div style="color: var(--accent); font-size: 2em; align-self: center;">&#x2192;</div>
+                <!-- GPT-4 -->
+                <div style="flex: 1; background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.3); border-radius: 6px; padding: 1em;">
+                    <div style="font-family: var(--font-headline); font-weight: 900; font-size: clamp(1.8rem, 3vw, 2.5rem); color: var(--bg);">GPT-4</div>
+                    <div style="color: rgba(245,241,235,0.6); font-size: var(--small-size); margin-top: 0.4em; line-height: 1.5;">Everyone knows it.<br>Already proven.<br>Changed everything.</div>
+                </div>
+            </div>
+            <p class="reveal" style="color: rgba(245,241,235,0.5); font-family: var(--font-mono); font-size: clamp(1.1rem, 1.6vw, 1.4rem); margin-top: var(--content-gap); line-height: 1.7; max-width: 55ch;">Web agents are feasible. Already working. Now it's about <strong style="color: var(--bg);">distribution</strong>.</p>
+            <p class="reveal" style="color: rgba(245,241,235,0.3); font-family: var(--font-mono); font-size: var(--small-size); margin-top: 0.5em;">Like Boston Dynamics 10 years ago. Look at it now.</p>
+        </div>
+    </section>
+
+    <!-- ===========================================
+         SLIDE 10: ILLEGAL FOR HUMANS TO DRIVE
+         =========================================== -->
+    <section class="slide" aria-label="Illegal to Drive" style="padding: 0; background: var(--ink); background-image: none; overflow: hidden; position: relative;">
+        <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 30%, rgba(232,97,26,0.1) 0%, transparent 50%);"></div>
+        <div class="slide-content" style="justify-content: center; z-index: 5; padding: var(--slide-padding); gap: 0;">
+            <div class="reveal" style="font-family: var(--font-mono); font-size: var(--label-size); text-transform: uppercase; letter-spacing: 0.2em; color: rgba(245,241,235,0.4); margin-bottom: 0.5em;">The Adoption Challenge</div>
+            <div class="reveal big-quote" style="max-width: 22ch;">
+                &ldquo;One day it will be <span class="highlight">illegal</span> for humans to drive.&rdquo;
+            </div>
+            <p class="reveal" style="color: rgba(245,241,235,0.4); font-family: var(--font-mono); font-size: var(--small-size); margin-top: 0.8em; letter-spacing: 0.05em;">&mdash; on autonomous driving</p>
+            <div class="reveal" style="width: 60px; height: 2px; background: var(--accent); margin: var(--content-gap) 0;"></div>
+            <h2 class="reveal" style="color: var(--bg); font-size: clamp(2rem, 4.5vw, 3.5rem); line-height: 1.15; max-width: 22ch;">The same will happen for the web.</h2>
+            <div class="reveal" style="display: flex; flex-direction: column; gap: clamp(0.5rem, 1vw, 0.8rem); margin-top: var(--content-gap); max-width: 550px;">
+                <div style="background: rgba(245,241,235,0.04); border-left: 3px solid var(--accent); padding: 0.8em 1em;">
+                    <span style="color: rgba(245,241,235,0.7); font-size: var(--body-size); line-height: 1.5;">Humans make mistakes. Agents can <strong style="color: var(--bg);">validate their own actions 100x</strong> before executing.</span>
+                </div>
+                <div style="background: rgba(245,241,235,0.04); border-left: 3px solid var(--accent); padding: 0.8em 1em;">
+                    <span style="color: rgba(245,241,235,0.7); font-size: var(--body-size); line-height: 1.5;">The hardest threshold: making agents make <strong style="color: var(--bg);">fewer mistakes than humans</strong>. We're getting there.</span>
+                </div>
+            </div>
+        </div>
+        <div class="speaker-notes">
+            "Elon predicted it will be illegal for humans to drive. The same will happen for the web."
+            "It's going to require approval for humans to touch the web. Why? Because agents validate 100x before doing something. Humans can't."
+        </div>
+    </section>
+
+    <!-- ===========================================
+         SLIDE 11: TINYFISH INTRO
+         =========================================== -->
+    <section class="slide" aria-label="TinyFish Intro" style="padding: 0; background: #0a0a0a; background-image: none; overflow: hidden; position: relative;">
+        <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at 80% 50%, rgba(100,60,180,0.12) 0%, transparent 50%), radial-gradient(ellipse at 20% 80%, rgba(232,97,26,0.08) 0%, transparent 50%);"></div>
+        <div class="slide-content" style="justify-content: center; z-index: 5; padding: var(--slide-padding); gap: 0;">
+            <div class="reveal" style="display: flex; align-items: center; gap: 0.6em; margin-bottom: clamp(1.5rem, 3vh, 2.5rem);">
+                <img src="tinyfish.avif" alt="TinyFish" style="width: 50px; height: 50px;">
+                <span style="color: var(--bg); font-family: 'Host Grotesk', var(--font-headline), sans-serif; font-weight: 800; font-size: clamp(1.3rem, 2vw, 1.6rem);">TinyFish</span>
+            </div>
+            <div class="reveal" style="font-family: var(--font-mono); font-size: var(--label-size); text-transform: uppercase; letter-spacing: 0.2em; color: rgba(245,241,235,0.4);">End-to-End Web Infrastructure</div>
+            <h1 class="reveal" style="color: var(--bg); font-size: clamp(2.8rem, 6.5vw, 5.5rem); line-height: 1.05; margin-top: 0.3em; font-family: var(--font-headline); font-weight: 900;">The Full Stack for<br><span style="background: linear-gradient(135deg, #8b5cf6, #a855f7, #ec4899, #f97316); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">the Agentic Web</span></h1>
+            <p class="reveal" style="color: rgba(245,241,235,0.5); font-family: var(--font-mono); font-size: clamp(1.1rem, 1.6vw, 1.4rem); max-width: 55ch; margin-top: 1em; line-height: 1.6;">The only company offering search, browser, content extraction, and autonomous agent in <strong style="color: var(--bg);">one integrated platform</strong>.</p>
+            <div class="reveal" style="display: flex; gap: 1em; margin-top: var(--content-gap); align-items: center;">
+                <span style="background: rgba(245,241,235,0.06); border: 1px solid rgba(245,241,235,0.12); border-radius: 4px; padding: 0.3em 0.8em; color: rgba(245,241,235,0.5); font-size: var(--small-size);">One API Key</span>
+                <span style="color: rgba(245,241,235,0.2);">&#x2022;</span>
+                <span style="background: rgba(245,241,235,0.06); border: 1px solid rgba(245,241,235,0.12); border-radius: 4px; padding: 0.3em 0.8em; color: rgba(245,241,235,0.5); font-size: var(--small-size);">One Dashboard</span>
+                <span style="color: rgba(245,241,235,0.2);">&#x2022;</span>
+                <span style="background: rgba(245,241,235,0.06); border: 1px solid rgba(245,241,235,0.12); border-radius: 4px; padding: 0.3em 0.8em; color: rgba(245,241,235,0.5); font-size: var(--small-size);">One Billing</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===========================================
+         SLIDE 12: THE FOUR PRIMITIVES
+         =========================================== -->
+    <section class="slide" aria-label="Four Primitives" style="padding: 0; background: #0d1b2a; background-image: none; overflow: hidden; position: relative;">
+        <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 80%, rgba(232,97,26,0.06) 0%, transparent 50%);"></div>
+        <div class="slide-content" style="justify-content: center; z-index: 5; padding: var(--slide-padding); gap: 0;">
+            <div class="reveal" style="font-family: var(--font-mono); font-size: var(--label-size); text-transform: uppercase; letter-spacing: 0.2em; color: rgba(245,241,235,0.4); margin-bottom: 0.5em;">The Primitives</div>
+            <h2 class="reveal" style="color: var(--bg); font-size: clamp(2rem, 4.5vw, 3.5rem); line-height: 1.05;">An Objective-Oriented System</h2>
+            <p class="reveal" style="color: rgba(245,241,235,0.4); font-family: var(--font-mono); font-size: var(--small-size); margin-top: 0.5em; max-width: 50ch;">The agent decides what to use. These are implementation details.</p>
+            <!-- Four product cards -->
+            <div class="reveal" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(0.6rem, 1.2vw, 1rem); margin-top: var(--content-gap);">
+                <div style="background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.25); border-radius: 6px; padding: clamp(0.8rem, 1.5vw, 1.2rem); text-align: center;">
+                    <div style="font-size: 2em; margin-bottom: 0.3em;">&#x1F50D;</div>
+                    <div style="color: var(--bg); font-family: var(--font-headline); font-weight: 800; font-size: clamp(1.15rem, 1.6vw, 1.4rem);">Search</div>
+                    <div style="color: rgba(245,241,235,0.4); font-size: var(--small-size); margin-top: 0.3em; line-height: 1.4;">Find what agents need</div>
+                    <div style="color: #3b82f6; font-family: var(--font-mono); font-size: 0.6rem; margin-top: 0.6em; font-weight: 600;">~488ms P50</div>
+                </div>
+                <div style="background: rgba(34,197,94,0.08); border: 1px solid rgba(34,197,94,0.25); border-radius: 6px; padding: clamp(0.8rem, 1.5vw, 1.2rem); text-align: center;">
+                    <div style="font-size: 2em; margin-bottom: 0.3em;">&#x1F4C4;</div>
+                    <div style="color: var(--bg); font-family: var(--font-headline); font-weight: 800; font-size: clamp(1.15rem, 1.6vw, 1.4rem);">Fetch</div>
+                    <div style="color: rgba(245,241,235,0.4); font-size: var(--small-size); margin-top: 0.3em; line-height: 1.4;">Read any page cleanly</div>
+                    <div style="color: #22c55e; font-family: var(--font-mono); font-size: 0.6rem; margin-top: 0.6em; font-weight: 600;">MD / JSON / HTML</div>
+                </div>
+                <div style="background: rgba(168,85,247,0.08); border: 1px solid rgba(168,85,247,0.25); border-radius: 6px; padding: clamp(0.8rem, 1.5vw, 1.2rem); text-align: center;">
+                    <div style="font-size: 2em; margin-bottom: 0.3em;">&#x1F310;</div>
+                    <div style="color: var(--bg); font-family: var(--font-headline); font-weight: 800; font-size: clamp(1.15rem, 1.6vw, 1.4rem);">Browser</div>
+                    <div style="color: rgba(245,241,235,0.4); font-size: var(--small-size); margin-top: 0.3em; line-height: 1.4;">Control the web</div>
+                    <div style="color: #a855f7; font-family: var(--font-mono); font-size: 0.6rem; margin-top: 0.6em; font-weight: 600;">&lt;250ms cold start</div>
+                </div>
+                <div style="background: rgba(232,97,26,0.08); border: 2px solid rgba(232,97,26,0.4); border-radius: 6px; padding: clamp(0.8rem, 1.5vw, 1.2rem); text-align: center;">
+                    <div style="font-size: 2em; margin-bottom: 0.3em;">&#x1F916;</div>
+                    <div style="color: var(--bg); font-family: var(--font-headline); font-weight: 800; font-size: clamp(1.15rem, 1.6vw, 1.4rem);">Agent</div>
+                    <div style="color: rgba(245,241,235,0.4); font-size: var(--small-size); margin-top: 0.3em; line-height: 1.4;">Autonomous action</div>
+                    <div style="color: var(--accent); font-family: var(--font-mono); font-size: 0.6rem; margin-top: 0.6em; font-weight: 600;">Multi-step workflows</div>
+                </div>
+            </div>
+            <!-- Flow diagram -->
+            <div class="reveal flow" style="justify-content: center; margin-top: clamp(1rem, 2vh, 1.5rem);">
+                <div class="flow-step" style="border-color: rgba(245,241,235,0.2); color: rgba(245,241,235,0.5); font-size: var(--small-size);">User Goal</div>
+                <span class="flow-arrow">&#x2192;</span>
+                <div class="flow-step" style="border-color: rgba(245,241,235,0.2); color: rgba(245,241,235,0.5); font-size: var(--small-size);">Agent Decides</div>
+                <span class="flow-arrow">&#x2192;</span>
+                <div class="flow-step" style="border-color: var(--accent); color: var(--accent); font-size: var(--small-size);">Search + Fetch + Browse + Act</div>
+                <span class="flow-arrow">&#x2192;</span>
+                <div class="flow-step" style="border-color: rgba(245,241,235,0.2); color: rgba(245,241,235,0.5); font-size: var(--small-size);">Result</div>
+            </div>
+        </div>
+        <div class="speaker-notes">
+            "Search, fetch, browsing, agent — these are implementation details. It's a really simple decision."
+            "It's an objective-oriented system. You give the agent a goal, and it decides what primitives to use."
+        </div>
+    </section>
+
+    <!-- ===========================================
+         SLIDE 13: WHY TINYFISH — THE TECH
+         =========================================== -->
+    <section class="slide" aria-label="Why TinyFish" style="padding: 0; background: #0d1b2a; background-image: none; overflow: hidden; position: relative;">
+        <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at 90% 60%, rgba(232,97,26,0.06) 0%, transparent 50%);"></div>
+        <div class="slide-content" style="justify-content: center; z-index: 5; padding: var(--slide-padding); gap: 0;">
+            <div class="reveal" style="font-family: var(--font-mono); font-size: var(--label-size); text-transform: uppercase; letter-spacing: 0.2em; color: var(--accent); margin-bottom: 0.5em;">Why TinyFish</div>
+            <h2 class="reveal" style="color: var(--bg); font-size: clamp(1.8rem, 4vw, 3rem); line-height: 1.1;">Rethinking How to &ldquo;Web&rdquo;</h2>
+            <div class="reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: clamp(0.6rem, 1.5vw, 1.2rem); margin-top: var(--content-gap); max-width: 800px;">
+                <div style="background: rgba(245,241,235,0.04); border: 1px solid rgba(245,241,235,0.08); border-radius: 4px; padding: 1em;">
+                    <div style="color: var(--accent); font-family: var(--font-headline); font-weight: 800; font-size: clamp(1.15rem, 1.6vw, 1.4rem);">Custom Chromium Fork</div>
+                    <div style="color: rgba(245,241,235,0.45); font-size: var(--small-size); margin-top: 0.3em; line-height: 1.5;">Patches at the C++ level. Canvas, WebGL, audio fingerprinting, navigator spoofing. Not a wrapper.</div>
+                </div>
+                <div style="background: rgba(245,241,235,0.04); border: 1px solid rgba(245,241,235,0.08); border-radius: 4px; padding: 1em;">
+                    <div style="color: var(--accent); font-family: var(--font-headline); font-weight: 800; font-size: clamp(1.15rem, 1.6vw, 1.4rem);">Sub-250ms Cold Start</div>
+                    <div style="color: rgba(245,241,235,0.45); font-size: var(--small-size); margin-top: 0.3em; line-height: 1.5;">Competitors take 5&ndash;10 seconds. We're 20&ndash;40x faster to spin up a browser session.</div>
+                </div>
+                <div style="background: rgba(245,241,235,0.04); border: 1px solid rgba(245,241,235,0.08); border-radius: 4px; padding: 1em;">
+                    <div style="color: var(--accent); font-family: var(--font-headline); font-weight: 800; font-size: clamp(1.15rem, 1.6vw, 1.4rem);">Stealth Built In</div>
+                    <div style="color: rgba(245,241,235,0.45); font-size: var(--small-size); margin-top: 0.3em; line-height: 1.5;">JIT proxy switching, intelligent IP rotation per domain, anti-bot bypass. All invisible to the developer.</div>
+                </div>
+                <div style="background: rgba(245,241,235,0.04); border: 1px solid rgba(245,241,235,0.08); border-radius: 4px; padding: 1em;">
+                    <div style="color: var(--accent); font-family: var(--font-headline); font-weight: 800; font-size: clamp(1.15rem, 1.6vw, 1.4rem);">Microsecond Processing</div>
+                    <div style="color: rgba(245,241,235,0.45); font-size: var(--small-size); margin-top: 0.3em; line-height: 1.5;">Page manipulation, stream compiled pages into GPU. The bottleneck should be your network latency &mdash; nothing else.</div>
+                </div>
+            </div>
+        </div>
+        <div class="speaker-notes">
+            "We're rethinking how to 'web'. Microsecond-level page manipulation. Stream compiled pages into GPU."
+            "Imagine a future where the only bottleneck is your network latency, and verification."
+        </div>
+    </section>
+
+    <!-- ===========================================
+         SLIDE 14: THE BET — CLOSE
+         =========================================== -->
+    <section class="slide" aria-label="The Bet" style="padding: 0; background: #0a1628; background-image: none; overflow: hidden; position: relative;">
+        <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 50%, rgba(232,97,26,0.08) 0%, transparent 40%);"></div>
+        <div class="slide-content" style="justify-content: center; align-items: center; z-index: 5; padding: var(--slide-padding); gap: 0; text-align: center;">
+            <img src="tinyfish.avif" alt="TinyFish" class="reveal" style="width: clamp(60px, 8vw, 80px); height: clamp(60px, 8vw, 80px); margin-bottom: clamp(1rem, 2vh, 1.5rem);">
+            <div class="reveal" style="font-family: var(--font-mono); font-size: var(--label-size); text-transform: uppercase; letter-spacing: 0.3em; color: rgba(245,241,235,0.35);">Early Days</div>
+            <h1 class="reveal" style="color: var(--bg); font-size: clamp(2.5rem, 6vw, 5rem); font-family: var(--font-headline); font-weight: 900; margin-top: 0.3em; line-height: 1.1;">We're nowhere close to<br>where this is supposed to be.</h1>
+            <p class="reveal" style="color: rgba(245,241,235,0.5); font-family: var(--font-mono); font-size: clamp(1.1rem, 1.7vw, 1.4rem); max-width: 50ch; margin-top: 0.8em; line-height: 1.7;">But we invest so much that we're definitely seeing the path.</p>
+            <div class="reveal" style="width: 60px; height: 2px; background: var(--accent); margin: var(--content-gap) 0;"></div>
+            <p class="reveal" style="color: var(--accent); font-family: 'Pristine', serif; font-weight: 700; font-size: clamp(1.8rem, 3.5vw, 3rem); max-width: 30ch; line-height: 1.3;">TinyFish is the infrastructure to bet on.</p>
+            <p class="reveal" style="color: rgba(245,241,235,0.4); font-family: var(--font-mono); font-size: clamp(0.8rem, 1.1vw, 1rem); max-width: 45ch; margin-top: 0.8em; line-height: 1.6;">Build the solution that catches this capital. The web agent market is coming &mdash; and the capital will follow.</p>
+        </div>
+        <div class="speaker-notes">
+            "We're at the very early days. Like Boston Dynamics 10 years ago. But we're really accelerating."
+            "TinyFish is the best partner and infrastructure to bet on. Build a solution for use cases where money is being spent today — and that money will come to you."
+            "Sell hard on the future. We are the people. The solution will keep evolving."
+        </div>
+    </section>
+
+    <!-- ===========================================
+       PRESENTATION CONTROLLER
+       =========================================== -->
+    <script>
+        class SlidePresentation {
+            constructor() {
+                this.slides = document.querySelectorAll('.slide');
+                this.currentSlide = 0;
+                this.isScrolling = false;
+                this.setupIntersectionObserver();
+                this.setupKeyboardNav();
+                this.setupTouchNav();
+                this.setupWheelNav();
+                this.setupProgressBar();
+                this.setupNavDots();
+            }
+
+            setupIntersectionObserver() {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            const index = Array.from(this.slides).indexOf(entry.target);
+                            if (index !== -1) {
+                                this.currentSlide = index;
+                                this.updateProgressBar();
+                                this.updateNavDots();
+                            }
+                        }
+                    });
+                }, { threshold: 0.5 });
+
+                this.slides.forEach(slide => observer.observe(slide));
+            }
+
+            goToSlide(index) {
+                if (index >= 0 && index < this.slides.length) {
+                    this.slides[index].scrollIntoView({ behavior: 'smooth' });
+                    this.currentSlide = index;
+                    this.updateProgressBar();
+                    this.updateNavDots();
+                }
+            }
+
+            setupKeyboardNav() {
+                document.addEventListener('keydown', (e) => {
+                    switch(e.key) {
+                        case 'ArrowDown':
+                        case 'ArrowRight':
+                        case ' ':
+                        case 'PageDown':
+                            e.preventDefault();
+                            this.goToSlide(this.currentSlide + 1);
+                            break;
+                        case 'ArrowUp':
+                        case 'ArrowLeft':
+                        case 'PageUp':
+                            e.preventDefault();
+                            this.goToSlide(this.currentSlide - 1);
+                            break;
+                        case 'Home':
+                            e.preventDefault();
+                            this.goToSlide(0);
+                            break;
+                        case 'End':
+                            e.preventDefault();
+                            this.goToSlide(this.slides.length - 1);
+                            break;
+                    }
+                });
+            }
+
+            setupTouchNav() {
+                let startY = 0;
+                document.addEventListener('touchstart', (e) => {
+                    startY = e.touches[0].clientY;
+                }, { passive: true });
+
+                document.addEventListener('touchend', (e) => {
+                    const diff = startY - e.changedTouches[0].clientY;
+                    if (Math.abs(diff) > 50) {
+                        if (diff > 0) this.goToSlide(this.currentSlide + 1);
+                        else this.goToSlide(this.currentSlide - 1);
+                    }
+                }, { passive: true });
+            }
+
+            setupWheelNav() {
+                let lastScroll = 0;
+                document.addEventListener('wheel', (e) => {
+                    e.preventDefault();
+                    const now = Date.now();
+                    if (now - lastScroll < 800) return;
+                    lastScroll = now;
+
+                    if (e.deltaY > 0) this.goToSlide(this.currentSlide + 1);
+                    else this.goToSlide(this.currentSlide - 1);
+                }, { passive: false });
+            }
+
+            setupProgressBar() {
+                this.progressBar = document.getElementById('progressBar');
+                this.updateProgressBar();
+            }
+
+            updateProgressBar() {
+                if (!this.progressBar) return;
+                const progress = ((this.currentSlide + 1) / this.slides.length) * 100;
+                this.progressBar.style.width = progress + '%';
+            }
+
+            setupNavDots() {
+                const container = document.getElementById('navDots');
+                if (!container) return;
+
+                this.slides.forEach((_, i) => {
+                    const dot = document.createElement('button');
+                    dot.className = 'nav-dot' + (i === 0 ? ' active' : '');
+                    dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+                    dot.addEventListener('click', () => this.goToSlide(i));
+                    container.appendChild(dot);
+                });
+            }
+
+            updateNavDots() {
+                const dots = document.querySelectorAll('.nav-dot');
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === this.currentSlide);
+                });
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            new SlidePresentation();
+        });
+    </script>
+</body>
+</html>
