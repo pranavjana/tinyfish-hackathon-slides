@@ -552,6 +552,28 @@
 </head>
 <body>
 
+    <!-- Password gate -->
+    <div id="passwordGate" style="position: fixed; inset: 0; z-index: 99999; background: #111; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem;">
+        <img src="tinyfish.avif" alt="TinyFish" style="width: 60px; height: 60px; margin-bottom: 0.5rem;">
+        <div style="color: rgba(245,241,235,0.4); font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.15em;">Enter password</div>
+        <input id="pwInput" type="password" autofocus autocomplete="off" style="background: rgba(245,241,235,0.06); border: 1px solid rgba(245,241,235,0.15); border-radius: 6px; color: #f5f1eb; font-family: 'IBM Plex Mono', monospace; font-size: 1.1rem; padding: 0.6em 1em; text-align: center; outline: none; width: 260px;" placeholder="&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;">
+        <div id="pwError" style="color: #ff6666; font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; opacity: 0; transition: opacity 0.3s;">&nbsp;</div>
+    </div>
+    <script>
+    (function(){
+        var h='xebunyxaekdxu';var p='';for(var i=0;i<h.length;i++)p+=String.fromCharCode(h.charCodeAt(i)^12);
+        var gate=document.getElementById('passwordGate');
+        var inp=document.getElementById('pwInput');
+        var err=document.getElementById('pwError');
+        function check(){
+            if(inp.value===p){gate.style.display='none';document.body.style.overflow='';}
+            else{err.textContent='Wrong password';err.style.opacity='1';inp.value='';inp.focus();setTimeout(function(){err.style.opacity='0';},1500);}
+        }
+        inp.addEventListener('keydown',function(e){if(e.key==='Enter')check();});
+        document.body.style.overflow='hidden';
+    })();
+    </script>
+
     <!-- Progress bar -->
     <div class="progress-bar" id="progressBar"></div>
 
