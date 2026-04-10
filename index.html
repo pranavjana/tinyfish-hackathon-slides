@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Future of the Web &mdash; TinyFish Workshop</title>
+    <title>Houman's Singapore Adventure &mdash; TinyFish Townhall</title>
 
     <!-- Fonts: Inter for headlines, IBM Plex Mono for body/labels -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,6 +19,9 @@
             --ink: #111111;
             --accent: #E8611A;
             --rule: rgba(0,0,0,0.07);
+            --green: #22c55e;
+            --red: #ef4444;
+            --yellow: #eab308;
 
             --font-headline: 'Inter', sans-serif;
             --font-mono: 'IBM Plex Mono', monospace;
@@ -54,7 +57,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         /* ===========================================
-           VIEWPORT FITTING: MANDATORY BASE STYLES
+           VIEWPORT FITTING
            =========================================== */
         html, body {
             height: 100%;
@@ -127,7 +130,7 @@
         }
 
         /* ===========================================
-           ELEMENTS — PILLS, CTA, TICKER
+           ELEMENTS
            =========================================== */
         .pill {
             display: inline-block;
@@ -142,147 +145,12 @@
             border-radius: 3px;
         }
 
-        .cta {
-            display: inline-block;
-            background: var(--ink);
-            color: var(--bg);
-            font-family: var(--font-mono);
-            font-size: var(--label-size);
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            padding: 0.5em 1.25em;
-        }
-
         .divider {
             width: 100%;
             height: 1px;
             background: var(--ink);
             margin: var(--element-gap) 0;
         }
-
-        .hairline {
-            width: 100%;
-            height: 1px;
-            background: var(--rule);
-        }
-
-        /* ===========================================
-           TICKER STRIP
-           =========================================== */
-        .ticker {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: var(--ink);
-            color: var(--bg);
-            font-family: var(--font-mono);
-            font-size: var(--small-size);
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            padding: 0.6em 0;
-            overflow: hidden;
-            white-space: nowrap;
-        }
-        .ticker-inner {
-            display: inline-block;
-            animation: ticker-scroll 30s linear infinite;
-        }
-        @keyframes ticker-scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        /* ===========================================
-           SLIDE LAYOUTS
-           =========================================== */
-        .title-slide {
-            justify-content: flex-end;
-            padding-bottom: clamp(4rem, 8vh, 8rem);
-        }
-
-        .content-slide .slide-content {
-            justify-content: flex-start;
-            padding-top: clamp(2rem, 5vh, 5rem);
-            gap: var(--content-gap);
-        }
-
-        .comparison {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: clamp(1.5rem, 3vw, 3rem);
-            margin-top: var(--content-gap);
-        }
-        .comparison-col {
-            display: flex;
-            flex-direction: column;
-            gap: var(--element-gap);
-        }
-
-        .flow {
-            display: flex;
-            align-items: center;
-            gap: clamp(0.5rem, 1.5vw, 1.5rem);
-            flex-wrap: wrap;
-            margin-top: var(--content-gap);
-        }
-        .flow-step {
-            font-family: var(--font-mono);
-            font-size: clamp(0.85rem, 1.6vw, 1.3rem);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            padding: 0.5em 1em;
-            border: 2px solid var(--ink);
-        }
-        .flow-arrow {
-            font-size: clamp(1rem, 2vw, 1.5rem);
-            color: var(--accent);
-            font-weight: 700;
-        }
-
-        .three-up {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: clamp(1rem, 2vw, 2rem);
-            margin-top: var(--content-gap);
-        }
-        .card {
-            border-top: 2px solid var(--ink);
-            padding-top: var(--element-gap);
-            display: flex;
-            flex-direction: column;
-            gap: clamp(0.3rem, 0.6vw, 0.5rem);
-        }
-        .card-title {
-            font-family: var(--font-headline);
-            font-weight: 900;
-            font-size: clamp(1rem, 2vw, 1.5rem);
-            letter-spacing: -0.02em;
-        }
-        .card-text {
-            font-family: var(--font-mono);
-            font-size: var(--body-size);
-            font-weight: 400;
-            line-height: 1.5;
-            opacity: 0.8;
-        }
-
-        .code-block {
-            background: var(--ink);
-            color: var(--bg);
-            font-family: var(--font-mono);
-            font-size: clamp(0.7rem, 1.1vw, 0.95rem);
-            padding: clamp(1rem, 2vw, 1.5rem);
-            border-radius: 2px;
-            line-height: 1.7;
-            overflow: visible;
-            margin-top: var(--element-gap);
-        }
-        .code-block .accent { color: var(--accent); }
-        .code-block .dim { opacity: 0.5; }
 
         .bullet-list {
             list-style: none;
@@ -318,14 +186,154 @@
         }
 
         /* ===========================================
-           SPEAKER NOTES (hidden, for presenter reference)
+           STAT GRID
            =========================================== */
-        .speaker-notes {
-            display: none;
+        .stat-grid {
+            display: grid;
+            gap: clamp(1.5rem, 3vw, 3rem);
+            margin-top: var(--content-gap);
+        }
+        .stat-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+        .stat-grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
+        .stat-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+        .stat-box {
+            border-top: 3px solid var(--accent);
+            padding-top: clamp(0.5rem, 1vh, 1rem);
+        }
+        .stat-number {
+            font-family: var(--font-headline);
+            font-weight: 900;
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            line-height: 1;
+            color: var(--bg);
+            letter-spacing: -0.02em;
+        }
+        .stat-number.dark { color: var(--ink); }
+        .stat-label {
+            font-family: var(--font-mono);
+            font-size: var(--small-size);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-top: 0.3em;
+            opacity: 0.5;
+        }
+        .stat-label.light { color: rgba(245,241,235,0.4); }
+        .stat-label.dark { color: rgba(0,0,0,0.4); }
+
+        /* ===========================================
+           FUNNEL
+           =========================================== */
+        .funnel {
+            display: flex;
+            flex-direction: column;
+            gap: clamp(0.5rem, 1vh, 0.75rem);
+            margin-top: var(--content-gap);
+        }
+        .funnel-row {
+            display: flex;
+            align-items: center;
+            gap: clamp(0.75rem, 1.5vw, 1.5rem);
+        }
+        .funnel-bar {
+            height: clamp(2.5rem, 5vh, 3.5rem);
+            background: var(--accent);
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            padding: 0 1em;
+            font-family: var(--font-headline);
+            font-weight: 900;
+            font-size: clamp(1rem, 2vw, 1.5rem);
+            color: #fff;
+            transition: width 1s var(--ease-out-expo);
+            min-width: fit-content;
+        }
+        .funnel-label {
+            font-family: var(--font-mono);
+            font-size: var(--small-size);
+            color: rgba(245,241,235,0.5);
+            white-space: nowrap;
         }
 
         /* ===========================================
-           QUOTE BLOCK
+           FEEDBACK CARDS
+           =========================================== */
+        .feedback-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: clamp(0.5rem, 1.2vh, 1rem);
+            margin-top: var(--content-gap);
+        }
+        .feedback-card {
+            background: rgba(255,255,255,0.06);
+            border-left: 3px solid var(--accent);
+            padding: clamp(0.6rem, 1.5vh, 1rem) clamp(0.8rem, 2vw, 1.5rem);
+            font-family: var(--font-mono);
+            font-size: clamp(1rem, 1.8vw, 1.4rem);
+            line-height: 1.5;
+            color: rgba(245,241,235,0.85);
+        }
+        .feedback-card.good { border-left-color: var(--green); }
+        .feedback-card.bad { border-left-color: var(--red); }
+        .feedback-card.request { border-left-color: var(--yellow); }
+        .feedback-tag {
+            font-size: clamp(0.7rem, 1vw, 0.85rem);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 0.3em;
+        }
+        .feedback-tag.good { color: var(--green); }
+        .feedback-tag.bad { color: var(--red); }
+        .feedback-tag.request { color: var(--yellow); }
+
+        /* ===========================================
+           PHOTO PLACEHOLDER
+           =========================================== */
+        .photo-placeholder {
+            background: rgba(255,255,255,0.05);
+            border: 2px dashed rgba(255,255,255,0.15);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-mono);
+            font-size: var(--small-size);
+            color: rgba(255,255,255,0.25);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* ===========================================
+           TICKER STRIP
+           =========================================== */
+        .ticker {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--ink);
+            color: var(--bg);
+            font-family: var(--font-mono);
+            font-size: var(--small-size);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 0.6em 0;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .ticker-inner {
+            display: inline-block;
+            animation: ticker-scroll 30s linear infinite;
+        }
+        @keyframes ticker-scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* ===========================================
+           QUOTE
            =========================================== */
         .big-quote {
             font-family: 'Pristine', serif;
@@ -340,58 +348,56 @@
         }
 
         /* ===========================================
-           COUNTER ANIMATION
+           TIMELINE
            =========================================== */
-        @keyframes countUp {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-        .stat-number {
-            font-family: var(--font-headline);
-            font-weight: 900;
-            font-size: clamp(3rem, 7vw, 6rem);
-            line-height: 1;
-            color: var(--bg);
-        }
-        .stat-label {
-            font-family: var(--font-mono);
-            font-size: var(--small-size);
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: rgba(245,241,235,0.4);
-            margin-top: 0.3em;
-        }
-
-        /* ===========================================
-           INTERACTIVE QUESTION SLIDE
-           =========================================== */
-        .question-mark {
-            position: absolute;
-            font-family: var(--font-headline);
-            font-weight: 900;
-            color: rgba(232,97,26,0.06);
-            font-size: clamp(20rem, 40vw, 40rem);
-            line-height: 1;
-            right: -5%;
-            top: -10%;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        /* ===========================================
-           SCALE COMPARISON
-           =========================================== */
-        .scale-bar {
-            height: clamp(2rem, 4vh, 3rem);
-            border-radius: 4px;
+        .timeline {
             display: flex;
-            align-items: center;
-            padding: 0 1em;
+            align-items: flex-start;
+            gap: 0;
+            margin-top: var(--content-gap);
+            position: relative;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 12px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: rgba(255,255,255,0.15);
+        }
+        .timeline-node {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            position: relative;
+        }
+        .timeline-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent);
+            margin-bottom: 0.75em;
+            position: relative;
+            z-index: 2;
+        }
+        .timeline-dot.dim { background: rgba(255,255,255,0.2); }
+        .timeline-time {
             font-family: var(--font-mono);
+            font-size: clamp(0.75rem, 1.1vw, 0.95rem);
+            color: var(--accent);
             font-weight: 700;
-            font-size: var(--small-size);
-            color: var(--bg);
-            transition: width 1s var(--ease-out-expo);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 0.3em;
+        }
+        .timeline-text {
+            font-family: var(--font-mono);
+            font-size: clamp(0.85rem, 1.3vw, 1.1rem);
+            color: rgba(245,241,235,0.7);
+            line-height: 1.5;
+            max-width: 18ch;
         }
 
         /* ===========================================
@@ -415,43 +421,30 @@
         .reveal:nth-child(6) { transition-delay: 0.55s; }
         .reveal:nth-child(7) { transition-delay: 0.65s; }
         .reveal:nth-child(8) { transition-delay: 0.75s; }
+        .reveal:nth-child(9) { transition-delay: 0.85s; }
+        .reveal:nth-child(10) { transition-delay: 0.95s; }
 
-        .reveal-fast {
-            opacity: 0;
-            transform: translateY(10px);
-            transition: opacity 0.4s var(--ease-out-expo),
-                        transform 0.4s var(--ease-out-expo);
-        }
-        .slide.visible .reveal-fast {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .slide.visible .stat-grid .stat-box:nth-child(1) { transition-delay: 0.15s; }
+        .slide.visible .stat-grid .stat-box:nth-child(2) { transition-delay: 0.25s; }
+        .slide.visible .stat-grid .stat-box:nth-child(3) { transition-delay: 0.35s; }
+        .slide.visible .stat-grid .stat-box:nth-child(4) { transition-delay: 0.45s; }
+        .slide.visible .stat-grid .stat-box:nth-child(5) { transition-delay: 0.55s; }
 
-        .slide.visible .three-up .card:nth-child(1) { transition-delay: 0.1s; }
-        .slide.visible .three-up .card:nth-child(2) { transition-delay: 0.2s; }
-        .slide.visible .three-up .card:nth-child(3) { transition-delay: 0.3s; }
+        .slide.visible .funnel .funnel-row:nth-child(1) { transition-delay: 0.1s; }
+        .slide.visible .funnel .funnel-row:nth-child(2) { transition-delay: 0.25s; }
+        .slide.visible .funnel .funnel-row:nth-child(3) { transition-delay: 0.4s; }
+        .slide.visible .funnel .funnel-row:nth-child(4) { transition-delay: 0.55s; }
+        .slide.visible .funnel .funnel-row:nth-child(5) { transition-delay: 0.7s; }
 
-        .slide.visible .flow .flow-step,
-        .slide.visible .flow .flow-arrow {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .flow .flow-step,
-        .flow .flow-arrow {
-            opacity: 0;
-            transform: translateY(10px);
-            transition: opacity 0.4s var(--ease-out-expo),
-                        transform 0.4s var(--ease-out-expo);
-        }
-        .flow > :nth-child(1) { transition-delay: 0.1s; }
-        .flow > :nth-child(2) { transition-delay: 0.15s; }
-        .flow > :nth-child(3) { transition-delay: 0.2s; }
-        .flow > :nth-child(4) { transition-delay: 0.25s; }
-        .flow > :nth-child(5) { transition-delay: 0.3s; }
-        .flow > :nth-child(6) { transition-delay: 0.35s; }
-        .flow > :nth-child(7) { transition-delay: 0.4s; }
-        .flow > :nth-child(8) { transition-delay: 0.45s; }
-        .flow > :nth-child(9) { transition-delay: 0.5s; }
+        .slide.visible .feedback-grid .feedback-card:nth-child(1) { transition-delay: 0.1s; }
+        .slide.visible .feedback-grid .feedback-card:nth-child(2) { transition-delay: 0.2s; }
+        .slide.visible .feedback-grid .feedback-card:nth-child(3) { transition-delay: 0.3s; }
+        .slide.visible .feedback-grid .feedback-card:nth-child(4) { transition-delay: 0.4s; }
+
+        .slide.visible .timeline .timeline-node:nth-child(1) { transition-delay: 0.1s; }
+        .slide.visible .timeline .timeline-node:nth-child(2) { transition-delay: 0.25s; }
+        .slide.visible .timeline .timeline-node:nth-child(3) { transition-delay: 0.4s; }
+        .slide.visible .timeline .timeline-node:nth-child(4) { transition-delay: 0.55s; }
 
         /* ===========================================
            PROGRESS BAR
@@ -495,17 +488,10 @@
             opacity: 0.8;
             transform: scale(1.4);
         }
+        .nav-dot.light { background: var(--bg); }
 
         /* ===========================================
-           PULSE GLOW
-           =========================================== */
-        @keyframes pulseGlow {
-            0%, 100% { opacity: 0.4; transform: scale(1); }
-            50% { opacity: 0.8; transform: scale(1.05); }
-        }
-
-        /* ===========================================
-           RESPONSIVE BREAKPOINTS
+           RESPONSIVE
            =========================================== */
         @media (max-height: 700px) {
             :root {
@@ -534,13 +520,12 @@
             }
         }
         @media (max-width: 768px) {
-            .three-up { grid-template-columns: 1fr; }
-            .comparison { grid-template-columns: 1fr; gap: var(--content-gap); }
+            .stat-grid.cols-3 { grid-template-columns: repeat(2, 1fr); }
+            .stat-grid.cols-4 { grid-template-columns: repeat(2, 1fr); }
+            .timeline { flex-direction: column; gap: 1.5rem; }
+            .timeline::before { display: none; }
         }
 
-        /* ===========================================
-           REDUCED MOTION
-           =========================================== */
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after {
                 animation-duration: 0.01ms !important;
@@ -551,28 +536,6 @@
     </style>
 </head>
 <body>
-
-    <!-- Password gate -->
-    <div id="passwordGate" style="position: fixed; inset: 0; z-index: 99999; background: #111; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem;">
-        <img src="tinyfish.avif" alt="TinyFish" style="width: 60px; height: 60px; margin-bottom: 0.5rem;">
-        <div style="color: rgba(245,241,235,0.4); font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.15em;">Enter password</div>
-        <input id="pwInput" type="password" autofocus autocomplete="off" style="background: rgba(245,241,235,0.06); border: 1px solid rgba(245,241,235,0.15); border-radius: 6px; color: #f5f1eb; font-family: 'IBM Plex Mono', monospace; font-size: 1.1rem; padding: 0.6em 1em; text-align: center; outline: none; width: 260px;" placeholder="&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;">
-        <div id="pwError" style="color: #ff6666; font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; opacity: 0; transition: opacity 0.3s;">&nbsp;</div>
-    </div>
-    <script>
-    (function(){
-        var h='xebunyxaekdxu';var p='';for(var i=0;i<h.length;i++)p+=String.fromCharCode(h.charCodeAt(i)^12);
-        var gate=document.getElementById('passwordGate');
-        var inp=document.getElementById('pwInput');
-        var err=document.getElementById('pwError');
-        function check(){
-            if(inp.value===p){gate.style.display='none';document.body.style.overflow='';}
-            else{err.textContent='Wrong password';err.style.opacity='1';inp.value='';inp.focus();setTimeout(function(){err.style.opacity='0';},1500);}
-        }
-        inp.addEventListener('keydown',function(e){if(e.key==='Enter')check();});
-        document.body.style.overflow='hidden';
-    })();
-    </script>
 
     <!-- Progress bar -->
     <div class="progress-bar" id="progressBar"></div>
@@ -588,324 +551,305 @@
         <div class="slide-content" style="justify-content: center; z-index: 5; padding: var(--slide-padding); gap: 0;">
             <div class="reveal" style="display: flex; align-items: center; gap: 0.6em; margin-bottom: clamp(1.5rem, 3vh, 2.5rem);">
                 <img src="tinyfish.avif" alt="TinyFish" style="width: 50px; height: 50px;">
+                <span style="color: rgba(245,241,235,0.3); font-family: var(--font-mono); font-size: var(--small-size); text-transform: uppercase; letter-spacing: 0.15em;">Townhall Update</span>
             </div>
-            <h1 class="reveal" style="color: var(--bg); font-size: clamp(3.5rem, 8.5vw, 7rem); line-height: 1.05; font-family: var(--font-headline); font-weight: 900;">The Future<br>of the Web.</h1>
-            <p class="reveal" style="color: rgba(245,241,235,0.5); font-family: var(--font-mono); font-size: clamp(1.15rem, 1.8vw, 1.5rem); max-width: 50ch; margin-top: 0.8em; line-height: 1.6;">And why everything is about to change.</p>
-            <p class="reveal" style="color: rgba(245,241,235,0.3); font-family: var(--font-mono); font-size: var(--small-size); margin-top: 1.5em; text-transform: uppercase; letter-spacing: 0.15em;">TinyFish Workshop</p>
+            <h1 class="reveal" style="color: var(--bg); font-size: clamp(3.5rem, 8.5vw, 7rem); line-height: 1.05; font-family: var(--font-headline); font-weight: 900;">Houman's<br>Singapore<br>Adventure</h1>
+            <p class="reveal" style="color: rgba(245,241,235,0.5); font-family: var(--font-mono); font-size: clamp(1.15rem, 1.8vw, 1.5rem); max-width: 50ch; margin-top: 0.8em; line-height: 1.6;">Hackathon, workshop, and everything in between.</p>
+            <p class="reveal" style="color: rgba(245,241,235,0.3); font-family: var(--font-mono); font-size: var(--small-size); margin-top: 1.5em; text-transform: uppercase; letter-spacing: 0.15em;">March 2026</p>
         </div>
         <div class="ticker" style="position: absolute; bottom: 0; left: 0; right: 0;">
             <span class="ticker-inner">
-                SEARCH &#9670; BROWSE &#9670; FETCH &#9670; AUTOMATE &#9670; EXTRACT &#9670; NAVIGATE &#9670; FILL FORMS &#9670; CLICK BUTTONS &#9670; READ PAGES &#9670; RETURN JSON &#9670;
-                SEARCH &#9670; BROWSE &#9670; FETCH &#9670; AUTOMATE &#9670; EXTRACT &#9670; NAVIGATE &#9670; FILL FORMS &#9670; CLICK BUTTONS &#9670; READ PAGES &#9670; RETURN JSON &#9670;
+                SINGAPORE &#9670; HACKATHON &#9670; 350+ ATTENDEES &#9670; 143 TEAMS &#9670; 60.8K API CALLS &#9670; 220K+ IMPRESSIONS &#9670; WEB AGENTS &#9670; BUILDERS &#9670;
+                SINGAPORE &#9670; HACKATHON &#9670; 350+ ATTENDEES &#9670; 143 TEAMS &#9670; 60.8K API CALLS &#9670; 220K+ IMPRESSIONS &#9670; WEB AGENTS &#9670; BUILDERS &#9670;
             </span>
         </div>
     </section>
 
     <!-- ===========================================
-         SLIDE 2: THE HOOK — YOUR BROWSER TODAY
+         SLIDE 2: HOW IT STARTED
          =========================================== -->
-    <section class="slide" aria-label="Your Browser Today" style="padding: 0; background: #0a0a0a; background-image: none; overflow: hidden; position: relative;">
-        <div class="question-mark">?</div>
-        <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 60%, rgba(232,97,26,0.06) 0%, transparent 50%);"></div>
+    <section class="slide" aria-label="How It Started" style="padding: 0; background: #0a0a0a; background-image: none; overflow: hidden; position: relative;">
         <div class="slide-content" style="justify-content: center; z-index: 5; padding: var(--slide-padding); gap: 0;">
-            <div class="reveal" style="font-family: var(--font-mono); font-size: var(--label-size); text-transform: uppercase; letter-spacing: 0.3em; color: var(--accent); margin-bottom: 0.8em;">Think about it</div>
-            <h2 class="reveal" style="color: var(--bg); font-size: clamp(2.5rem, 6vw, 5rem); line-height: 1.1;">Everything you did on<br>your browser today.</h2>
-            <div class="reveal" style="display: flex; flex-wrap: wrap; gap: clamp(0.4rem, 0.8vw, 0.6rem); margin-top: var(--content-gap);">
-                <span style="background: rgba(245,241,235,0.06); border: 1px solid rgba(245,241,235,0.12); border-radius: 6px; padding: 0.4em 0.8em; color: rgba(245,241,235,0.6); font-size: var(--small-size);">Email</span>
-                <span style="background: rgba(245,241,235,0.06); border: 1px solid rgba(245,241,235,0.12); border-radius: 6px; padding: 0.4em 0.8em; color: rgba(245,241,235,0.6); font-size: var(--small-size);">Slack</span>
-                <span style="background: rgba(245,241,235,0.06); border: 1px solid rgba(245,241,235,0.12); border-radius: 6px; padding: 0.4em 0.8em; color: rgba(245,241,235,0.6); font-size: var(--small-size);">Filing forms</span>
-                <span style="background: rgba(245,241,235,0.06); border: 1px solid rgba(245,241,235,0.12); border-radius: 6px; padding: 0.4em 0.8em; color: rgba(245,241,235,0.6); font-size: var(--small-size);">Comparing prices</span>
-                <span style="background: rgba(245,241,235,0.06); border: 1px solid rgba(245,241,235,0.12); border-radius: 6px; padding: 0.4em 0.8em; color: rgba(245,241,235,0.6); font-size: var(--small-size);">Booking flights</span>
-                <span style="background: rgba(245,241,235,0.06); border: 1px solid rgba(245,241,235,0.12); border-radius: 6px; padding: 0.4em 0.8em; color: rgba(245,241,235,0.6); font-size: var(--small-size);">Researching</span>
-                <span style="background: rgba(245,241,235,0.06); border: 1px solid rgba(245,241,235,0.12); border-radius: 6px; padding: 0.4em 0.8em; color: rgba(245,241,235,0.6); font-size: var(--small-size);">Shopping</span>
-                <span style="background: rgba(245,241,235,0.06); border: 1px solid rgba(245,241,235,0.12); border-radius: 6px; padding: 0.4em 0.8em; color: rgba(245,241,235,0.6); font-size: var(--small-size);">Tax filing</span>
+            <span class="reveal" style="color: rgba(245,241,235,0.3); font-family: var(--font-mono); font-size: var(--small-size); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: clamp(1rem, 2vh, 1.5rem);">The backstory</span>
+            <h2 class="reveal" style="color: var(--bg); font-size: clamp(2.8rem, 6.5vw, 5.5rem); line-height: 1.05;">How it<br>got started</h2>
+            <div class="timeline reveal" style="margin-top: clamp(2rem, 4vh, 3rem);">
+                <div class="timeline-node reveal">
+                    <div class="timeline-dot dim"></div>
+                    <div class="timeline-time">Months ago</div>
+                    <div class="timeline-text">1:1 with Shuhao. We talked about a SG hackathon. Made a Google Doc draft.</div>
+                </div>
+                <div class="timeline-node reveal">
+                    <div class="timeline-dot dim"></div>
+                    <div class="timeline-time">For weeks...</div>
+                    <div class="timeline-text">The doc just sat there. Not sure if we're actually doing this.</div>
+                </div>
+                <div class="timeline-node reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-time">2 weeks before</div>
+                    <div class="timeline-text">OK let's do it. Still wasn't 100% sure until I booked my flight ticket.</div>
+                </div>
+                <div class="timeline-node reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-time">Flight booked</div>
+                    <div class="timeline-text">It's real. We're going to Singapore.</div>
+                </div>
             </div>
-            <p class="reveal" style="color: var(--accent); font-family: 'Pristine', serif; font-weight: 700; font-size: clamp(1.8rem, 3.5vw, 3rem); margin-top: var(--content-gap); line-height: 1.3;">What if all of that could run by an agent &mdash;<br>in the cloud &mdash; in seconds?</p>
         </div>
-        <!-- Speaker notes -->
+        <span class="slide-num" style="color: rgba(245,241,235,0.2);">02</span>
     </section>
 
     <!-- ===========================================
-         SLIDE 3: IT'S ALREADY HAPPENING
+         SLIDE 3: IT WASN'T EASY
          =========================================== -->
-    <section class="slide" aria-label="Already Happening" style="padding: 0; background: #0a0a0a; background-image: none; overflow: hidden; position: relative;">
-        <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 50%, rgba(34,197,94,0.06) 0%, transparent 50%);"></div>
+    <section class="slide" aria-label="It Wasn't Easy" style="padding: 0; background: #0a0a0a; background-image: none; overflow: hidden; position: relative;">
         <div class="slide-content" style="justify-content: center; z-index: 5; padding: var(--slide-padding); gap: 0;">
-            <div class="reveal" style="font-family: var(--font-mono); font-size: var(--label-size); text-transform: uppercase; letter-spacing: 0.3em; color: #22c55e; margin-bottom: 0.5em;">This is not hypothetical</div>
-            <h2 class="reveal" style="color: var(--bg); font-size: clamp(2.8rem, 6.5vw, 5.5rem); line-height: 1.05;">It's Already<br>Happening.</h2>
-            <div class="reveal" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1rem, 2vw, 2rem); margin-top: var(--content-gap); max-width: 900px;">
-                <div style="text-align: center;">
-                    <div class="stat-number" style="font-size: clamp(3rem, 6vw, 5rem);">1.34B</div>
-                    <div class="stat-label">websites exist</div>
-                </div>
-                <div style="text-align: center;">
-                    <div class="stat-number" style="font-size: clamp(3rem, 6vw, 5rem); color: var(--accent);">51%</div>
-                    <div class="stat-label">of web traffic is<br>already bots</div>
-                </div>
-                <div style="text-align: center;">
-                    <div class="stat-number" style="font-size: clamp(3rem, 6vw, 5rem);">188%</div>
-                    <div class="stat-label">AI traffic growth<br>in 2025 alone</div>
-                </div>
-            </div>
-            <p class="reveal" style="color: rgba(245,241,235,0.5); font-family: var(--font-mono); font-size: clamp(1.1rem, 1.6vw, 1.4rem); margin-top: var(--content-gap); line-height: 1.7; max-width: 60ch;">The internet is shifting from something built for humans to something built for agents. ChatGPT, Gemini, Claude, and thousands of developer-built apps are already on the web.</p>
+            <span class="reveal" style="color: rgba(245,241,235,0.3); font-family: var(--font-mono); font-size: var(--small-size); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: clamp(1rem, 2vh, 1.5rem);">Behind the scenes</span>
+            <h2 class="reveal" style="color: var(--bg); font-size: clamp(2.5rem, 5.5vw, 4.5rem); line-height: 1.08;">It wasn't easy.</h2>
+            <ul class="bullet-list reveal" style="margin-top: clamp(1.5rem, 3vh, 2.5rem);">
+                <li style="color: rgba(245,241,235,0.75);">Everyone has to have the <strong style="color: var(--bg);">best experience</strong> out there</li>
+                <li style="color: rgba(245,241,235,0.75);">People must <strong style="color: var(--bg);">feel good</strong> when they're making their post</li>
+                <li style="color: rgba(245,241,235,0.75);">A lot of <strong style="color: var(--bg);">pre-planning and luck</strong></li>
+                <li style="color: rgba(245,241,235,0.75);">Web agents is a <strong style="color: var(--bg);">very new topic</strong> in Singapore</li>
+            </ul>
         </div>
+        <span class="slide-num" style="color: rgba(245,241,235,0.2);">04</span>
     </section>
 
     <!-- ===========================================
-         SLIDE 4: THE CODING AGENT MOMENT (INTERACTIVE)
+         SLIDE 5: EVENT AT A GLANCE
          =========================================== -->
-    <section class="slide" aria-label="Coding Agent Moment" style="padding: 0; background: var(--ink); background-image: none; overflow: hidden; position: relative;">
-        <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at 80% 20%, rgba(99,102,241,0.1) 0%, transparent 50%);"></div>
+    <section class="slide" aria-label="Event At A Glance" style="padding: 0; background: var(--ink); background-image: none; overflow: hidden; position: relative;">
+        <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at 80% 20%, rgba(232,97,26,0.1) 0%, transparent 50%);"></div>
         <div class="slide-content" style="justify-content: center; z-index: 5; padding: var(--slide-padding); gap: 0;">
-            <div class="reveal" style="font-family: var(--font-mono); font-size: var(--label-size); text-transform: uppercase; letter-spacing: 0.3em; color: #6366f1; margin-bottom: 0.5em;">Audience Question</div>
-            <h2 class="reveal" style="color: var(--bg); font-size: clamp(2.5rem, 6vw, 5rem); line-height: 1.1;">What was the impact of<br><span style="color: #6366f1;">coding agents</span>?</h2>
-            <div class="reveal" style="display: flex; flex-direction: column; gap: clamp(0.5rem, 1vw, 0.8rem); margin-top: var(--content-gap); max-width: 600px;">
-                <div style="background: rgba(99,102,241,0.1); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 0.8em 1.2em; display: flex; align-items: center; gap: 0.8em;">
-                    <span style="color: #6366f1; font-size: 1.4em;">&#x2197;</span>
-                    <span style="color: rgba(245,241,235,0.7); font-size: var(--body-size);">Hiring changed</span>
+            <span class="reveal" style="color: var(--accent); font-family: var(--font-mono); font-size: var(--small-size); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: clamp(1rem, 2vh, 1.5rem);">The hackathon</span>
+            <h2 class="reveal" style="color: var(--bg); font-size: clamp(2.5rem, 5.5vw, 4.5rem); line-height: 1.08;">At a glance</h2>
+            <div class="stat-grid cols-3 reveal" style="margin-top: clamp(1.5rem, 3vh, 2.5rem);">
+                <div class="stat-box reveal">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label light">Luma signups</div>
                 </div>
-                <div style="background: rgba(99,102,241,0.1); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 0.8em 1.2em; display: flex; align-items: center; gap: 0.8em;">
-                    <span style="color: #6366f1; font-size: 1.4em;">&#x2197;</span>
-                    <span style="color: rgba(245,241,235,0.7); font-size: var(--body-size);">Capital flows changed</span>
+                <div class="stat-box reveal">
+                    <div class="stat-number">350+</div>
+                    <div class="stat-label light">Attendees</div>
                 </div>
-                <div style="background: rgba(99,102,241,0.1); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 0.8em 1.2em; display: flex; align-items: center; gap: 0.8em;">
-                    <span style="color: #6366f1; font-size: 1.4em;">&#x2197;</span>
-                    <span style="color: rgba(245,241,235,0.7); font-size: var(--body-size);">Product velocity changed</span>
+                <div class="stat-box reveal">
+                    <div class="stat-number">143</div>
+                    <div class="stat-label light">Teams submitted</div>
                 </div>
             </div>
-            <p class="reveal" style="color: rgba(245,241,235,0.4); font-family: var(--font-mono); font-size: clamp(1.1rem, 1.6vw, 1.4rem); margin-top: var(--content-gap); line-height: 1.6;">And that already changed the flow of the world &mdash;<br>with a market of only <strong style="color: var(--bg);">a few million developers</strong>.</p>
-        </div>
-    </section>
-
-    <!-- ===========================================
-         SLIDE 5: WEB AGENT > CODING AGENT
-         =========================================== -->
-    <section class="slide" aria-label="Web Agent Bigger" style="padding: 0; background: #0a0a0a; background-image: none; overflow: hidden; position: relative;">
-        <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 70%, rgba(232,97,26,0.08) 0%, transparent 50%);"></div>
-        <div class="slide-content" style="justify-content: center; z-index: 5; padding: var(--slide-padding); gap: 0;">
-            <div class="reveal" style="font-family: var(--font-mono); font-size: var(--label-size); text-transform: uppercase; letter-spacing: 0.2em; color: rgba(245,241,235,0.4); margin-bottom: 0.5em;">Now imagine</div>
-            <h2 class="reveal" style="color: var(--bg); font-size: clamp(2.5rem, 6vw, 5rem); line-height: 1.1;">The Web Agent Moment<br>Will Be <span style="color: var(--accent);">Bigger</span>.</h2>
-            <!-- Scale comparison -->
-            <div class="reveal" style="margin-top: var(--content-gap); display: flex; flex-direction: column; gap: clamp(0.8rem, 1.5vw, 1.2rem); max-width: 700px;">
+            <div class="reveal" style="display: flex; gap: clamp(2rem, 5vw, 5rem); margin-top: clamp(1.5rem, 3vh, 2.5rem);">
                 <div>
-                    <div style="font-family: var(--font-mono); font-size: var(--small-size); text-transform: uppercase; letter-spacing: 0.15em; color: rgba(245,241,235,0.35); margin-bottom: 0.4em;">Coding &mdash; developers</div>
-                    <div class="scale-bar" style="width: 15%; background: #6366f1;">~30M</div>
+                    <span style="font-family: var(--font-headline); font-weight: 900; font-size: clamp(1.8rem, 3.5vw, 2.8rem); color: var(--accent);">28</span>
+                    <span style="color: rgba(245,241,235,0.4); font-family: var(--font-mono); font-size: var(--small-size); text-transform: uppercase; letter-spacing: 0.1em; margin-left: 0.5em;">judges</span>
                 </div>
                 <div>
-                    <div style="font-family: var(--font-mono); font-size: var(--small-size); text-transform: uppercase; letter-spacing: 0.15em; color: rgba(245,241,235,0.35); margin-bottom: 0.4em;">Browsing &mdash; everyone</div>
-                    <div class="scale-bar" style="width: 100%; background: var(--accent);">5.5 Billion</div>
+                    <span style="font-family: var(--font-headline); font-weight: 900; font-size: clamp(1.8rem, 3.5vw, 2.8rem); color: var(--accent);">6</span>
+                    <span style="color: rgba(245,241,235,0.4); font-family: var(--font-mono); font-size: var(--small-size); text-transform: uppercase; letter-spacing: 0.1em; margin-left: 0.5em;">organisers</span>
                 </div>
             </div>
-            <p class="reveal" style="color: rgba(245,241,235,0.5); font-family: var(--font-mono); font-size: clamp(1.1rem, 1.6vw, 1.4rem); margin-top: var(--content-gap); line-height: 1.7; max-width: 55ch;">Coding is exclusive to a few million people.<br>Browsing? <strong style="color: var(--bg);">That's everyone. Every white-collar worker on earth.</strong></p>
+            <p class="reveal" style="color: rgba(245,241,235,0.35); font-family: var(--font-mono); font-size: var(--small-size); margin-top: clamp(1rem, 2vh, 1.5rem); font-style: italic;">There was another hackathon that same weekend. We overshadowed them.</p>
         </div>
+        <span class="slide-num" style="color: rgba(245,241,235,0.2);">05</span>
     </section>
 
     <!-- ===========================================
-         SLIDE 6: THE TRILLION-DOLLAR QUESTION
+         SLIDE 6: PLATFORM NUMBERS — API
          =========================================== -->
-    <section class="slide" aria-label="Trillion Dollar Question" style="padding: 0; background: var(--ink); background-image: none; overflow: hidden; position: relative;">
-        <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 50%, rgba(232,97,26,0.08) 0%, transparent 40%);"></div>
-        <div class="slide-content" style="justify-content: center; align-items: center; z-index: 5; padding: var(--slide-padding); gap: 0; text-align: center;">
-            <div class="reveal big-quote" style="max-width: 18ch; text-align: center;">
-                &ldquo;Do you think <span class="highlight">trillions of dollars</span> will continue to be paid for people to click buttons and fill forms?&rdquo;
-            </div>
-            <div class="reveal" style="display: flex; flex-wrap: wrap; gap: clamp(0.5rem, 1vw, 0.8rem); margin-top: var(--content-gap); justify-content: center;">
-                <span style="background: rgba(232,97,26,0.15); border: 1px solid rgba(232,97,26,0.3); border-radius: 6px; padding: 0.4em 0.8em; color: var(--accent); font-size: var(--small-size); font-weight: 600;">Insurance</span>
-                <span style="background: rgba(232,97,26,0.15); border: 1px solid rgba(232,97,26,0.3); border-radius: 6px; padding: 0.4em 0.8em; color: var(--accent); font-size: var(--small-size); font-weight: 600;">Tax Filing</span>
-                <span style="background: rgba(232,97,26,0.15); border: 1px solid rgba(232,97,26,0.3); border-radius: 6px; padding: 0.4em 0.8em; color: var(--accent); font-size: var(--small-size); font-weight: 600;">Procurement</span>
-                <span style="background: rgba(232,97,26,0.15); border: 1px solid rgba(232,97,26,0.3); border-radius: 6px; padding: 0.4em 0.8em; color: var(--accent); font-size: var(--small-size); font-weight: 600;">HR Onboarding</span>
-                <span style="background: rgba(232,97,26,0.15); border: 1px solid rgba(232,97,26,0.3); border-radius: 6px; padding: 0.4em 0.8em; color: var(--accent); font-size: var(--small-size); font-weight: 600;">Compliance</span>
-                <span style="background: rgba(232,97,26,0.15); border: 1px solid rgba(232,97,26,0.3); border-radius: 6px; padding: 0.4em 0.8em; color: var(--accent); font-size: var(--small-size); font-weight: 600;">Data Entry</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===========================================
-         SLIDE 7: THE PROVOCATION
-         =========================================== -->
-    <section class="slide" aria-label="Provocation" style="padding: 0; background: #0d0d0d; background-image: none; overflow: hidden; position: relative;">
-        <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 80%, rgba(168,85,247,0.06) 0%, transparent 50%);"></div>
+    <section class="slide" aria-label="Platform Numbers" style="padding: 0; background: #0a0a0a; background-image: none; overflow: hidden; position: relative;">
         <div class="slide-content" style="justify-content: center; z-index: 5; padding: var(--slide-padding); gap: 0;">
-            <h2 class="reveal" style="color: var(--bg); font-size: clamp(2.2rem, 5vw, 4rem); line-height: 1.15; max-width: 22ch;">When robots can fold your clothes&hellip;</h2>
-            <p class="reveal" style="color: rgba(245,241,235,0.5); font-family: var(--font-mono); font-size: clamp(1.1rem, 1.7vw, 1.4rem); margin-top: 0.8em; line-height: 1.7; max-width: 50ch;">When AI can make an Oscar-level movie overnight for $20&hellip;</p>
-            <p class="reveal" style="color: var(--accent); font-family: 'Pristine', serif; font-weight: 700; font-size: clamp(1.8rem, 3.5vw, 3rem); margin-top: var(--content-gap); line-height: 1.2; max-width: 25ch;">Imagine still clicking buttons yourself.</p>
-            <div class="reveal" style="margin-top: var(--content-gap); background: rgba(245,241,235,0.03); border: 1px solid rgba(245,241,235,0.08); border-radius: 6px; padding: 1.2em 1.5em; max-width: 500px;">
-                <div style="color: rgba(245,241,235,0.35); font-family: var(--font-mono); font-size: var(--small-size); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 0.5em;">The truth</div>
-                <div style="color: rgba(245,241,235,0.7); font-family: var(--font-mono); font-size: var(--body-size); line-height: 1.6;">Web operations is the largest addressable market. Not just developers &mdash; <strong style="color: var(--bg);">every knowledge worker needs it</strong>.</div>
+            <span class="reveal" style="color: var(--accent); font-family: var(--font-mono); font-size: var(--small-size); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: clamp(1rem, 2vh, 1.5rem);">Platform stats</span>
+            <h2 class="reveal" style="color: var(--bg); font-size: clamp(2.5rem, 5.5vw, 4.5rem); line-height: 1.08;">Real usage</h2>
+            <div class="stat-grid cols-2 reveal" style="margin-top: clamp(1.5rem, 3vh, 2rem);">
+                <div class="stat-box reveal">
+                    <div class="stat-number" style="font-size: clamp(3rem, 7vw, 5.5rem);">60.8K</div>
+                    <div class="stat-label light">API calls</div>
+                </div>
+                <div class="stat-box reveal">
+                    <div class="stat-number" style="font-size: clamp(3rem, 7vw, 5.5rem);">33.4K</div>
+                    <div class="stat-label light">Completed runs</div>
+                </div>
             </div>
+            <div class="reveal" style="margin-top: clamp(1.5rem, 2vh, 2rem); display: flex; align-items: baseline; gap: 0.5em;">
+                <span style="font-family: var(--font-headline); font-weight: 900; font-size: clamp(2.5rem, 5vw, 4rem); color: var(--green);">99.94%</span>
+                <span style="color: rgba(245,241,235,0.4); font-family: var(--font-mono); font-size: var(--small-size); text-transform: uppercase; letter-spacing: 0.1em;">success rate</span>
+            </div>
+            <p class="reveal" style="color: rgba(245,241,235,0.35); font-family: var(--font-mono); font-size: var(--small-size); margin-top: 0.5em;">33,443 completed / 21 cancelled</p>
         </div>
+        <span class="slide-num" style="color: rgba(245,241,235,0.2);">06</span>
     </section>
 
     <!-- ===========================================
-         SLIDE 8: AUDIENCE QUESTION — WHAT CAN'T BE AUTOMATED?
+         SLIDE 7: PLATFORM NUMBERS — FUNNEL
          =========================================== -->
-    <section class="slide" aria-label="What Can't Be Automated" style="padding: 0; background: var(--ink); background-image: none; overflow: hidden; position: relative;">
-        <div class="question-mark" style="left: -5%; right: auto;">?</div>
-        <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 40%, rgba(232,97,26,0.08) 0%, transparent 50%);"></div>
+    <section class="slide" aria-label="User Funnel" style="padding: 0; background: var(--ink); background-image: none; overflow: hidden; position: relative;">
+        <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 80%, rgba(232,97,26,0.08) 0%, transparent 50%);"></div>
         <div class="slide-content" style="justify-content: center; z-index: 5; padding: var(--slide-padding); gap: 0;">
-            <div class="reveal" style="font-family: var(--font-mono); font-size: var(--label-size); text-transform: uppercase; letter-spacing: 0.3em; color: var(--accent); margin-bottom: 0.5em;">Your Turn</div>
-            <h2 class="reveal" style="color: var(--bg); font-size: clamp(2.8rem, 6.5vw, 5.5rem); line-height: 1.05;">What do you think<br><span style="color: var(--accent);">can't</span> be automated<br>by web agents?</h2>
-            <p class="reveal" style="color: rgba(245,241,235,0.4); font-family: var(--font-mono); font-size: clamp(1.1rem, 1.6vw, 1.4rem); margin-top: var(--content-gap); line-height: 1.6; max-width: 45ch;">Think hard. Are you sure?</p>
-        </div>
-    </section>
-
-    <!-- ===========================================
-         SLIDE 9: THE GPT-2 ANALOGY
-         =========================================== -->
-    <section class="slide" aria-label="GPT-2 Analogy" style="padding: 0; background: #0a0a0a; background-image: none; overflow: hidden; position: relative;">
-        <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at 60% 30%, rgba(59,130,246,0.08) 0%, transparent 50%);"></div>
-        <div class="slide-content" style="justify-content: center; z-index: 5; padding: var(--slide-padding); gap: 0;">
-            <div class="reveal" style="font-family: var(--font-mono); font-size: var(--label-size); text-transform: uppercase; letter-spacing: 0.2em; color: #3b82f6; margin-bottom: 0.5em;">Where We Are</div>
-            <h2 class="reveal" style="color: var(--bg); font-size: clamp(2.5rem, 6vw, 5rem); line-height: 1.1;">We're in the<br><span style="color: #3b82f6;">GPT-2 era</span><br>of web agents.</h2>
-            <div class="reveal" style="display: flex; gap: clamp(1rem, 3vw, 3rem); margin-top: var(--content-gap); align-items: flex-start; max-width: 700px;">
-                <!-- GPT-2 -->
-                <div style="flex: 1; background: rgba(245,241,235,0.03); border: 1px solid rgba(245,241,235,0.08); border-radius: 6px; padding: 1em;">
-                    <div style="font-family: var(--font-headline); font-weight: 900; font-size: clamp(1.8rem, 3vw, 2.5rem); color: rgba(245,241,235,0.3);">GPT-2</div>
-                    <div style="color: rgba(245,241,235,0.4); font-size: var(--small-size); margin-top: 0.4em; line-height: 1.5;">The tech was emerging.<br>Promising, but clunky.<br>Not quite there yet.</div>
+            <span class="reveal" style="color: var(--accent); font-family: var(--font-mono); font-size: var(--small-size); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: clamp(1rem, 2vh, 1.5rem);">User funnel</span>
+            <h2 class="reveal" style="color: var(--bg); font-size: clamp(2.5rem, 5.5vw, 4.5rem); line-height: 1.08;">From signup<br>to shipped</h2>
+            <div class="funnel reveal" style="margin-top: clamp(1.5rem, 3vh, 2.5rem);">
+                <div class="funnel-row reveal">
+                    <div class="funnel-bar" style="width: 100%;">356</div>
+                    <div class="funnel-label">Signups</div>
                 </div>
-                <!-- Arrow -->
-                <div style="color: var(--accent); font-size: 2em; align-self: center;">&#x2192;</div>
-                <!-- GPT-4 -->
-                <div style="flex: 1; background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.3); border-radius: 6px; padding: 1em;">
-                    <div style="font-family: var(--font-headline); font-weight: 900; font-size: clamp(1.8rem, 3vw, 2.5rem); color: var(--bg);">GPT-4</div>
-                    <div style="color: rgba(245,241,235,0.6); font-size: var(--small-size); margin-top: 0.4em; line-height: 1.5;">The moment it just works.<br>Undeniable. Everywhere.<br>Changed everything.</div>
+                <div class="funnel-row reveal">
+                    <div class="funnel-bar" style="width: 98%; opacity: 0.9;">350</div>
+                    <div class="funnel-label">Created projects</div>
                 </div>
-            </div>
-            <p class="reveal" style="color: rgba(245,241,235,0.5); font-family: var(--font-mono); font-size: clamp(1.1rem, 1.6vw, 1.4rem); margin-top: var(--content-gap); line-height: 1.7; max-width: 55ch;">Web agents are feasible. Already working. Now it's about <strong style="color: var(--bg);">distribution</strong>.</p>
-            <p class="reveal" style="color: rgba(245,241,235,0.3); font-family: var(--font-mono); font-size: var(--small-size); margin-top: 0.5em;">Like Boston Dynamics 10 years ago. Look at it now.</p>
-        </div>
-    </section>
-
-    <!-- ===========================================
-         SLIDE 10: ILLEGAL FOR HUMANS TO DRIVE
-         =========================================== -->
-    <section class="slide" aria-label="Illegal to Drive" style="padding: 0; background: var(--ink); background-image: none; overflow: hidden; position: relative;">
-        <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 30%, rgba(232,97,26,0.1) 0%, transparent 50%);"></div>
-        <div class="slide-content" style="justify-content: center; z-index: 5; padding: var(--slide-padding); gap: 0;">
-            <div class="reveal" style="font-family: var(--font-mono); font-size: var(--label-size); text-transform: uppercase; letter-spacing: 0.2em; color: rgba(245,241,235,0.4); margin-bottom: 0.5em;">The Adoption Challenge</div>
-            <div class="reveal big-quote" style="max-width: 22ch;">
-                &ldquo;One day it will be <span class="highlight">illegal</span> for humans to drive.&rdquo;
-            </div>
-            <p class="reveal" style="color: rgba(245,241,235,0.4); font-family: var(--font-mono); font-size: var(--small-size); margin-top: 0.8em; letter-spacing: 0.05em;">&mdash; on autonomous driving</p>
-            <div class="reveal" style="width: 60px; height: 2px; background: var(--accent); margin: var(--content-gap) 0;"></div>
-            <h2 class="reveal" style="color: var(--bg); font-size: clamp(2rem, 4.5vw, 3.5rem); line-height: 1.15; max-width: 22ch;">The same will happen for the web.</h2>
-            <div class="reveal" style="display: flex; flex-direction: column; gap: clamp(0.5rem, 1vw, 0.8rem); margin-top: var(--content-gap); max-width: 550px;">
-                <div style="background: rgba(245,241,235,0.04); border-left: 3px solid var(--accent); padding: 0.8em 1em;">
-                    <span style="color: rgba(245,241,235,0.7); font-size: var(--body-size); line-height: 1.5;">Humans make mistakes. Agents can <strong style="color: var(--bg);">validate their own actions 100x</strong> before executing.</span>
+                <div class="funnel-row reveal">
+                    <div class="funnel-bar" style="width: 80%; opacity: 0.8;">286</div>
+                    <div class="funnel-label">Ran tasks</div>
                 </div>
-                <div style="background: rgba(245,241,235,0.04); border-left: 3px solid var(--accent); padding: 0.8em 1em;">
-                    <span style="color: rgba(245,241,235,0.7); font-size: var(--body-size); line-height: 1.5;">The hardest threshold: making agents make <strong style="color: var(--bg);">fewer mistakes than humans</strong>. We're getting there.</span>
+                <div class="funnel-row reveal">
+                    <div class="funnel-bar" style="width: 60%; opacity: 0.7; background: var(--accent);">1,075</div>
+                    <div class="funnel-label">Projects created (avg ~3/user)</div>
                 </div>
             </div>
         </div>
+        <span class="slide-num" style="color: rgba(245,241,235,0.2);">07</span>
     </section>
 
     <!-- ===========================================
-         SLIDE 11: TINYFISH INTRO
+         SLIDE 8: SOCIAL REACH
          =========================================== -->
-    <section class="slide" aria-label="TinyFish Intro" style="padding: 0; background: #0a0a0a; background-image: none; overflow: hidden; position: relative;">
-        <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at 80% 50%, rgba(100,60,180,0.12) 0%, transparent 50%), radial-gradient(ellipse at 20% 80%, rgba(232,97,26,0.08) 0%, transparent 50%);"></div>
+    <section class="slide" aria-label="Social Reach" style="padding: 0; background: #0a0a0a; background-image: none; overflow: hidden; position: relative;">
         <div class="slide-content" style="justify-content: center; z-index: 5; padding: var(--slide-padding); gap: 0;">
-            <div class="reveal" style="display: flex; align-items: center; gap: 0.6em; margin-bottom: clamp(1.5rem, 3vh, 2.5rem);">
-                <img src="tinyfish.avif" alt="TinyFish" style="width: 50px; height: 50px;">
-                <span style="color: var(--bg); font-family: 'Host Grotesk', var(--font-headline), sans-serif; font-weight: 800; font-size: clamp(1.3rem, 2vw, 1.6rem);">TinyFish</span>
+            <span class="reveal" style="color: var(--accent); font-family: var(--font-mono); font-size: var(--small-size); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: clamp(1rem, 2vh, 1.5rem);">Social media</span>
+            <div class="reveal" style="display: flex; align-items: baseline; gap: 0.4em;">
+                <span style="font-family: var(--font-headline); font-weight: 900; font-size: clamp(4rem, 10vw, 8rem); line-height: 1; color: var(--bg);">220K+</span>
             </div>
-            <div class="reveal" style="font-family: var(--font-mono); font-size: var(--label-size); text-transform: uppercase; letter-spacing: 0.2em; color: rgba(245,241,235,0.4);">End-to-End Web Infrastructure</div>
-            <h1 class="reveal" style="color: var(--bg); font-size: clamp(2.8rem, 6.5vw, 5.5rem); line-height: 1.05; margin-top: 0.3em; font-family: var(--font-headline); font-weight: 900;">The Full Stack for<br><span style="background: linear-gradient(135deg, #8b5cf6, #a855f7, #ec4899, #f97316); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">the Agentic Web</span></h1>
-            <p class="reveal" style="color: rgba(245,241,235,0.5); font-family: var(--font-mono); font-size: clamp(1.1rem, 1.6vw, 1.4rem); max-width: 55ch; margin-top: 1em; line-height: 1.6;">The only company offering search, browser, content extraction, and autonomous agent in <strong style="color: var(--bg);">one integrated platform</strong>.</p>
-            <div class="reveal" style="display: flex; gap: 1em; margin-top: var(--content-gap); align-items: center;">
-                <span style="background: rgba(245,241,235,0.06); border: 1px solid rgba(245,241,235,0.12); border-radius: 4px; padding: 0.3em 0.8em; color: rgba(245,241,235,0.5); font-size: var(--small-size);">One API Key</span>
-                <span style="color: rgba(245,241,235,0.2);">&#x2022;</span>
-                <span style="background: rgba(245,241,235,0.06); border: 1px solid rgba(245,241,235,0.12); border-radius: 4px; padding: 0.3em 0.8em; color: rgba(245,241,235,0.5); font-size: var(--small-size);">One Dashboard</span>
-                <span style="color: rgba(245,241,235,0.2);">&#x2022;</span>
-                <span style="background: rgba(245,241,235,0.06); border: 1px solid rgba(245,241,235,0.12); border-radius: 4px; padding: 0.3em 0.8em; color: rgba(245,241,235,0.5); font-size: var(--small-size);">One Billing</span>
+            <p class="reveal" style="color: rgba(245,241,235,0.5); font-family: var(--font-mono); font-size: clamp(1.1rem, 1.8vw, 1.5rem); max-width: 48ch; margin-top: 0.4em; line-height: 1.6;">impressions across LinkedIn and X</p>
+            <p class="reveal" style="color: rgba(245,241,235,0.3); font-family: var(--font-mono); font-size: var(--small-size); max-width: 52ch; margin-top: 1em; line-height: 1.6;">Realistically this number is probably 2x &mdash; couldn't reliably scrape every post on LinkedIn and X. Based on submissions and what we manually tracked.</p>
+            <div class="reveal" style="margin-top: clamp(2rem, 3vh, 3rem); background: rgba(232,97,26,0.1); border-left: 3px solid var(--accent); padding: clamp(0.8rem, 1.5vh, 1.2rem) clamp(1rem, 2vw, 1.5rem);">
+                <p style="color: var(--bg); font-family: var(--font-mono); font-size: clamp(1rem, 1.6vw, 1.3rem); line-height: 1.6; font-style: italic;">We're everywhere on LinkedIn in Singapore.</p>
             </div>
         </div>
+        <span class="slide-num" style="color: rgba(245,241,235,0.2);">08</span>
     </section>
 
     <!-- ===========================================
-         SLIDE 12: THE FOUR PRIMITIVES
+         SLIDE 9: THE WORKSHOP
          =========================================== -->
-    <section class="slide" aria-label="Four Primitives" style="padding: 0; background: #0a0a0a; background-image: none; overflow: hidden; position: relative;">
-        <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at 80% 50%, rgba(100,60,180,0.12) 0%, transparent 50%), radial-gradient(ellipse at 20% 80%, rgba(232,97,26,0.08) 0%, transparent 50%);"></div>
+    <section class="slide" aria-label="The Workshop" style="padding: 0; background: var(--ink); background-image: none; overflow: hidden; position: relative;">
+        <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at 60% 40%, rgba(232,97,26,0.1) 0%, transparent 50%);"></div>
         <div class="slide-content" style="justify-content: center; z-index: 5; padding: var(--slide-padding); gap: 0;">
-            <div class="reveal" style="display: flex; align-items: center; gap: 0.5em; margin-bottom: 0.5em;">
-                <div style="width: 30px; height: 2px; background: var(--accent);"></div>
-                <span style="font-family: var(--font-mono); font-size: var(--label-size); text-transform: uppercase; letter-spacing: 0.2em; color: var(--accent);">One Platform</span>
-            </div>
-            <h2 class="reveal" style="color: var(--bg); font-size: clamp(2.5rem, 6vw, 5rem); line-height: 1.05;">Search. Fetch.<br>Browse. Act.</h2>
-            <p class="reveal" style="color: rgba(245,241,235,0.5); font-family: var(--font-mono); font-size: var(--body-size); margin-top: 0.5em; max-width: 50ch; line-height: 1.6;">Give the agent a goal. It decides what to use.<br>These are <strong style="color: var(--bg);">implementation details</strong>.</p>
-            <!-- Simplified flow -->
-            <div class="reveal" style="display: flex; align-items: center; gap: clamp(0.8rem, 2vw, 2rem); margin-top: var(--content-gap); flex-wrap: wrap;">
-                <div style="display: flex; flex-direction: column; align-items: center; gap: 0.3em;">
-                    <div style="width: clamp(60px, 8vw, 90px); height: clamp(60px, 8vw, 90px); border-radius: 50%; background: rgba(59,130,246,0.15); border: 2px solid rgba(59,130,246,0.4); display: flex; align-items: center; justify-content: center; font-size: clamp(1.5rem, 3vw, 2.5rem);">&#x1F50D;</div>
-                    <span style="color: var(--bg); font-family: var(--font-headline); font-weight: 800; font-size: var(--body-size);">Search</span>
-                </div>
-                <div style="color: rgba(245,241,235,0.2); font-size: clamp(1.5rem, 3vw, 2.5rem);">+</div>
-                <div style="display: flex; flex-direction: column; align-items: center; gap: 0.3em;">
-                    <div style="width: clamp(60px, 8vw, 90px); height: clamp(60px, 8vw, 90px); border-radius: 50%; background: rgba(34,197,94,0.15); border: 2px solid rgba(34,197,94,0.4); display: flex; align-items: center; justify-content: center; font-size: clamp(1.5rem, 3vw, 2.5rem);">&#x1F4C4;</div>
-                    <span style="color: var(--bg); font-family: var(--font-headline); font-weight: 800; font-size: var(--body-size);">Fetch</span>
-                </div>
-                <div style="color: rgba(245,241,235,0.2); font-size: clamp(1.5rem, 3vw, 2.5rem);">+</div>
-                <div style="display: flex; flex-direction: column; align-items: center; gap: 0.3em;">
-                    <div style="width: clamp(60px, 8vw, 90px); height: clamp(60px, 8vw, 90px); border-radius: 50%; background: rgba(168,85,247,0.15); border: 2px solid rgba(168,85,247,0.4); display: flex; align-items: center; justify-content: center; font-size: clamp(1.5rem, 3vw, 2.5rem);">&#x1F310;</div>
-                    <span style="color: var(--bg); font-family: var(--font-headline); font-weight: 800; font-size: var(--body-size);">Browser</span>
-                </div>
-                <div style="color: rgba(245,241,235,0.2); font-size: clamp(1.5rem, 3vw, 2.5rem);">+</div>
-                <div style="display: flex; flex-direction: column; align-items: center; gap: 0.3em;">
-                    <div style="width: clamp(60px, 8vw, 90px); height: clamp(60px, 8vw, 90px); border-radius: 50%; background: rgba(232,97,26,0.15); border: 2px solid rgba(232,97,26,0.5); display: flex; align-items: center; justify-content: center; font-size: clamp(1.5rem, 3vw, 2.5rem);">&#x1F916;</div>
-                    <span style="color: var(--bg); font-family: var(--font-headline); font-weight: 800; font-size: var(--body-size);">Agent</span>
-                </div>
-                <div style="color: var(--accent); font-size: clamp(1.5rem, 3vw, 2.5rem); font-weight: 700;">=</div>
-                <div style="display: flex; flex-direction: column; align-items: center; gap: 0.3em;">
-                    <div style="width: clamp(60px, 8vw, 90px); height: clamp(60px, 8vw, 90px); border-radius: 50%; background: rgba(232,97,26,0.2); border: 2px solid var(--accent); display: flex; align-items: center; justify-content: center;">
-                        <img src="tinyfish.avif" alt="TinyFish" style="width: 70%; height: 70%;">
+            <span class="reveal" style="color: var(--accent); font-family: var(--font-mono); font-size: var(--small-size); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: clamp(1rem, 2vh, 1.5rem);">Days after the hackathon</span>
+            <h2 class="reveal" style="color: var(--bg); font-size: clamp(2.5rem, 5.5vw, 4.5rem); line-height: 1.08;">The Workshop</h2>
+            <p class="reveal" style="color: rgba(245,241,235,0.6); font-family: var(--font-mono); font-size: var(--body-size); max-width: 50ch; margin-top: 0.8em; line-height: 1.6;">Following the momentum. A deep, intense conversation about the future of the open web.</p>
+            <div class="reveal" style="margin-top: clamp(1.5rem, 3vh, 2rem); display: flex; gap: clamp(1.5rem, 3vw, 2.5rem); align-items: flex-start; flex-wrap: wrap;">
+                <img src="workshop.JPG" alt="Workshop" style="width: clamp(200px, 30vw, 380px); height: clamp(150px, 22vh, 280px); object-fit: cover; border-radius: 6px; flex-shrink: 0;">
+                <div style="display: flex; flex-direction: column; gap: clamp(0.6rem, 1.2vh, 1rem); flex: 1; min-width: 250px;">
+                    <div style="background: rgba(255,255,255,0.06); padding: clamp(0.5rem, 1vh, 0.8rem) clamp(0.8rem, 1.5vw, 1.2rem); border-radius: 3px;">
+                        <p style="color: var(--accent); font-family: var(--font-mono); font-size: clamp(0.85rem, 1.4vw, 1.15rem); font-weight: 700; line-height: 1.5;">"Tell me something that can't be automated by a web agent, and I'll give you a $25 gift card."</p>
                     </div>
-                    <span style="color: var(--accent); font-family: var(--font-headline); font-weight: 800; font-size: var(--body-size);">TinyFish</span>
+                    <div style="background: rgba(255,255,255,0.06); padding: clamp(0.5rem, 1vh, 0.8rem) clamp(0.8rem, 1.5vw, 1.2rem); border-radius: 3px;">
+                        <p style="color: rgba(245,241,235,0.7); font-family: var(--font-mono); font-size: clamp(0.85rem, 1.4vw, 1.15rem); line-height: 1.5;">"We're in the <strong style="color: var(--bg);">GPT-2 era</strong> of web agents."</p>
+                    </div>
+                    <div style="background: rgba(232,97,26,0.1); padding: clamp(0.5rem, 1vh, 0.8rem) clamp(0.8rem, 1.5vw, 1.2rem); border-radius: 3px;">
+                        <p style="color: var(--accent); font-family: 'Pristine', serif; font-weight: 700; font-size: clamp(1rem, 1.8vw, 1.4rem); line-height: 1.3;">"TinyFish is the infra to bet on."</p>
+                    </div>
                 </div>
             </div>
         </div>
+        <span class="slide-num" style="color: rgba(245,241,235,0.2);">09</span>
     </section>
 
     <!-- ===========================================
-         SLIDE 13: WHY TINYFISH
+         SLIDE 10: WHAT WE HEARD — THE GOOD
          =========================================== -->
-    <section class="slide" aria-label="Why TinyFish" style="padding: 0; background: var(--ink); background-image: none; overflow: hidden; position: relative;">
-        <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 50%, rgba(232,97,26,0.1) 0%, transparent 50%);"></div>
+    <section class="slide" aria-label="The Good" style="padding: 0; background: #0a0a0a; background-image: none; overflow: hidden; position: relative;">
         <div class="slide-content" style="justify-content: center; z-index: 5; padding: var(--slide-padding); gap: 0;">
-            <div class="reveal" style="display: flex; align-items: center; gap: 0.5em; margin-bottom: 0.5em;">
-                <div style="width: 30px; height: 2px; background: var(--accent);"></div>
-                <span style="font-family: var(--font-mono); font-size: var(--label-size); text-transform: uppercase; letter-spacing: 0.2em; color: var(--accent);">Why TinyFish</span>
-            </div>
-            <h2 class="reveal" style="color: var(--bg); font-size: clamp(2.5rem, 6vw, 5rem); line-height: 1.05;">We're Rethinking<br>How to &ldquo;Web&rdquo;.</h2>
-            <p class="reveal" style="color: rgba(245,241,235,0.5); font-family: var(--font-mono); font-size: var(--body-size); margin-top: 0.8em; line-height: 1.7; max-width: 50ch;">Today, developers cobble together 3&ndash;4 different point solutions. We replace all of them with one platform.</p>
-            <div class="reveal" style="display: flex; flex-direction: column; gap: clamp(0.5rem, 1vw, 0.8rem); margin-top: var(--content-gap); max-width: 650px;">
-                <div style="background: rgba(245,241,235,0.04); border-left: 3px solid var(--accent); padding: 0.8em 1.2em;">
-                    <span style="color: var(--bg); font-size: var(--body-size); line-height: 1.5; font-family: var(--font-mono);">The solution <strong>keeps evolving</strong>. We're investing deeply into every layer.</span>
+            <span class="reveal" style="color: var(--green); font-family: var(--font-mono); font-size: var(--small-size); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: clamp(1rem, 2vh, 1.5rem);">What we heard</span>
+            <h2 class="reveal" style="color: var(--bg); font-size: clamp(2.5rem, 5.5vw, 4.5rem); line-height: 1.08;">The good</h2>
+            <div class="feedback-grid reveal" style="margin-top: clamp(1.5rem, 3vh, 2rem);">
+                <div class="feedback-card good reveal">
+                    <div class="feedback-tag good">Integration</div>
+                    "The API is cool" &mdash; very good integration experience across the board
                 </div>
-                <div style="background: rgba(245,241,235,0.04); border-left: 3px solid var(--accent); padding: 0.8em 1.2em;">
-                    <span style="color: var(--bg); font-size: var(--body-size); line-height: 1.5; font-family: var(--font-mono);">One API key. One dashboard. One billing. <strong>The default engine</strong> for the agentic web.</span>
+                <div class="feedback-card good reveal">
+                    <div class="feedback-tag good">Product</div>
+                    Live preview is really eye-catching. People were drawn to it immediately.
+                </div>
+                <div class="feedback-card good reveal">
+                    <div class="feedback-tag good">Onboarding</div>
+                    Quick to get started &mdash; people went from signup to running their first task within minutes.
                 </div>
             </div>
         </div>
+        <span class="slide-num" style="color: rgba(245,241,235,0.2);">10</span>
     </section>
 
     <!-- ===========================================
-         SLIDE 14: THE BET — CLOSE
+         SLIDE 11: WHAT WE HEARD — THE HARD TRUTHS
          =========================================== -->
-    <section class="slide" aria-label="The Bet" style="padding: 0; background: #0a1628; background-image: none; overflow: hidden; position: relative;">
+    <section class="slide" aria-label="Hard Truths" style="padding: 0; background: var(--ink); background-image: none; overflow: hidden; position: relative;">
+        <div class="slide-content" style="justify-content: center; z-index: 5; padding: var(--slide-padding); gap: 0;">
+            <span class="reveal" style="color: var(--red); font-family: var(--font-mono); font-size: var(--small-size); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: clamp(1rem, 2vh, 1.5rem);">What we heard</span>
+            <h2 class="reveal" style="color: var(--bg); font-size: clamp(2.5rem, 5.5vw, 4.5rem); line-height: 1.08;">The hard truths</h2>
+            <div class="feedback-grid reveal" style="margin-top: clamp(1.5rem, 3vh, 2rem);">
+                <div class="feedback-card bad reveal">
+                    <div class="feedback-tag bad">Perception</div>
+                    People still assume we're scrapers or an out-of-the-box solution for every website. Had to correct this repeatedly.
+                </div>
+                <div class="feedback-card bad reveal">
+                    <div class="feedback-tag bad">Scaling</div>
+                    Didn't manage to scale some services in time. Users got 2x concurrency instead of the 10x we promised. Nothing broke &mdash; just slow.
+                </div>
+                <div class="feedback-card request reveal">
+                    <div class="feedback-tag request">Feature requests</div>
+                    Browser session persistence, faster agent speed, more reliable anti-bot solutions.
+                </div>
+            </div>
+        </div>
+        <span class="slide-num" style="color: rgba(245,241,235,0.2);">11</span>
+    </section>
+
+    <!-- ===========================================
+         SLIDE 12: THE ROSTER
+         =========================================== -->
+    <section class="slide" aria-label="The Roster" style="padding: 0; background: var(--ink); background-image: none; overflow: hidden; position: relative;">
+        <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 70%, rgba(232,97,26,0.08) 0%, transparent 50%);"></div>
+        <div class="slide-content" style="justify-content: center; z-index: 5; padding: var(--slide-padding); gap: 0;">
+            <span class="reveal" style="color: var(--accent); font-family: var(--font-mono); font-size: var(--small-size); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: clamp(1rem, 2vh, 1.5rem);">The team</span>
+            <h2 class="reveal" style="color: var(--bg); font-size: clamp(2.8rem, 6.5vw, 5.5rem); line-height: 1.05;">This roster made<br>the impossible<br><span style="color: var(--accent);">possible.</span></h2>
+            <div class="reveal" style="margin-top: clamp(2rem, 4vh, 3rem); display: flex; gap: clamp(1rem, 2vw, 2rem); flex-wrap: wrap; align-items: center;">
+                <img src="team photo.jpg" alt="The team" style="width: clamp(300px, 60vw, 800px); height: clamp(200px, 35vh, 450px); object-fit: cover; border-radius: 6px;">
+            </div>
+        </div>
+        <span class="slide-num" style="color: rgba(245,241,235,0.2);">12</span>
+    </section>
+
+    <!-- ===========================================
+         SLIDE 13: REFLECTION
+         =========================================== -->
+    <section class="slide" aria-label="Reflection" style="padding: 0; background: #0a0a0a; background-image: none; overflow: hidden; position: relative;">
+        <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 50%, rgba(232,97,26,0.08) 0%, transparent 50%);"></div>
+        <div class="slide-content" style="justify-content: center; z-index: 5; padding: var(--slide-padding); gap: 0;">
+            <span class="reveal" style="color: var(--accent); font-family: var(--font-mono); font-size: var(--small-size); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: clamp(1rem, 2vh, 1.5rem);">Reflection</span>
+            <h2 class="reveal" style="color: var(--bg); font-size: clamp(2.5rem, 5.5vw, 4.5rem); line-height: 1.08;">We unintentionally held<br>the largest <span style="color: var(--accent);">web agent hackathon</span><br>in Singapore.</h2>
+            <ul class="bullet-list reveal" style="margin-top: clamp(1.5rem, 3vh, 2.5rem);">
+                <li style="color: rgba(245,241,235,0.75);"><strong style="color: var(--bg);">6 people, 2 weeks</strong> &mdash; events this scale usually take 30+ people and 6 months (Hack&Roll)</li>
+                <li style="color: rgba(245,241,235,0.75);">Second-largest hackathon at NUS. 300+ people within <strong style="color: var(--bg);">10 minutes</strong> of check-in opening</li>
+                <li style="color: rgba(245,241,235,0.75);">Workshop talk came together in <strong style="color: var(--bg);">a few hours</strong> from a morning call &mdash; by evening it changed how a room thinks about the future</li>
+            </ul>
+        </div>
+        <span class="slide-num" style="color: rgba(245,241,235,0.2);">12</span>
+    </section>
+
+    <!-- ===========================================
+         SLIDE 13: CLOSING
+         =========================================== -->
+    <section class="slide" aria-label="Closing" style="padding: 0; background: #0a1628; background-image: none; overflow: hidden; position: relative;">
         <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 40%, rgba(232,97,26,0.12) 0%, transparent 50%);"></div>
         <div class="slide-content" style="justify-content: center; align-items: center; z-index: 5; padding: var(--slide-padding); gap: 0; text-align: center;">
-            <img src="tinyfish.avif" alt="TinyFish" class="reveal" style="width: clamp(80px, 10vw, 120px); height: clamp(80px, 10vw, 120px); margin-bottom: clamp(1rem, 2vh, 1.5rem);">
-            <h1 class="reveal" style="color: var(--bg); font-size: clamp(3rem, 7vw, 6rem); font-family: var(--font-headline); font-weight: 900; line-height: 1.05;">We're at the<br>very early days.</h1>
-            <p class="reveal" style="color: rgba(245,241,235,0.5); font-family: var(--font-mono); font-size: var(--body-size); max-width: 45ch; margin-top: 0.8em; line-height: 1.7;">Nowhere close to where this is supposed to be. But we're definitely seeing the path.</p>
+            <img src="tinyfish.avif" alt="TinyFish" class="reveal" style="width: clamp(60px, 8vw, 100px); height: clamp(60px, 8vw, 100px); margin-bottom: clamp(1rem, 2vh, 1.5rem);">
+            <h1 class="reveal" id="closingHeadline" style="color: var(--bg); font-size: clamp(3rem, 7vw, 6rem); font-family: var(--font-headline); font-weight: 900; line-height: 1.05;">Singapore is locked <span id="tfReveal" style="color: var(--accent); transition: all 0.5s var(--ease-out-expo);">TF</span> in.</h1>
+            <p class="reveal" style="color: rgba(245,241,235,0.5); font-family: var(--font-mono); font-size: var(--body-size); max-width: 40ch; margin-top: 0.8em; line-height: 1.7;">What's next?</p>
             <div class="reveal" style="width: 80px; height: 3px; background: var(--accent); margin: var(--content-gap) 0;"></div>
-            <p class="reveal" style="color: var(--accent); font-family: 'Pristine', serif; font-weight: 700; font-size: clamp(2rem, 4.5vw, 3.5rem); max-width: 25ch; line-height: 1.2;">TinyFish is the infrastructure to bet on.</p>
         </div>
         <div class="ticker" style="position: absolute; bottom: 0; left: 0; right: 0;">
             <span class="ticker-inner">
-                SEARCH &#9670; BROWSE &#9670; FETCH &#9670; AUTOMATE &#9670; EXTRACT &#9670; NAVIGATE &#9670; FILL FORMS &#9670; CLICK BUTTONS &#9670; READ PAGES &#9670; RETURN JSON &#9670;
-                SEARCH &#9670; BROWSE &#9670; FETCH &#9670; AUTOMATE &#9670; EXTRACT &#9670; NAVIGATE &#9670; FILL FORMS &#9670; CLICK BUTTONS &#9670; READ PAGES &#9670; RETURN JSON &#9670;
+                SINGAPORE &#9670; HACKATHON &#9670; 350+ ATTENDEES &#9670; 143 TEAMS &#9670; 60.8K API CALLS &#9670; 220K+ IMPRESSIONS &#9670; WEB AGENTS &#9670; BUILDERS &#9670;
+                SINGAPORE &#9670; HACKATHON &#9670; 350+ ATTENDEES &#9670; 143 TEAMS &#9670; 60.8K API CALLS &#9670; 220K+ IMPRESSIONS &#9670; WEB AGENTS &#9670; BUILDERS &#9670;
             </span>
         </div>
     </section>
@@ -955,7 +899,19 @@
             }
 
             setupKeyboardNav() {
+                this.tfRevealed = false;
                 document.addEventListener('keydown', (e) => {
+                    // On the last slide, Enter reveals TF → TinyFish
+                    if (e.key === 'Enter' && this.currentSlide === this.slides.length - 1 && !this.tfRevealed) {
+                        e.preventDefault();
+                        const tf = document.getElementById('tfReveal');
+                        if (tf) {
+                            tf.style.fontSize = '1.05em';
+                            tf.textContent = 'TinyFish';
+                            this.tfRevealed = true;
+                        }
+                        return;
+                    }
                     switch(e.key) {
                         case 'ArrowDown':
                         case 'ArrowRight':
@@ -1027,7 +983,7 @@
 
                 this.slides.forEach((_, i) => {
                     const dot = document.createElement('button');
-                    dot.className = 'nav-dot' + (i === 0 ? ' active' : '');
+                    dot.className = 'nav-dot light' + (i === 0 ? ' active' : '');
                     dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
                     dot.addEventListener('click', () => this.goToSlide(i));
                     container.appendChild(dot);
